@@ -14,16 +14,16 @@
 </head>
 
 <body class="container-fluid row">
-<!--loader-->
+<!-------------loader------------->
 <!--<div id="loader_Container">-->
 <!--    <div></div>-->
 <!--</div>-->
 
-<!--navbar-->
-<nav class="navbar navbar-dark bg-dark fixed-top">
+<!----------navbar---------->
+<nav class="navbar navbar-dark bg-dark fixed-top border-4">
     <div class="container-fluid">
-        <a class="navbar-brand fst-italic ms-3" href="#">Easy Car Rental Pvt. Ltd.</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+        <a class="navbar-brand fst-italic ms-3" href="index.html">Easy Car Rental Pvt. Ltd.</a>
+        <button class="navbar-toggler me-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
                 aria-controls="offcanvasDarkNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,8 +38,10 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <!--<a class="nav-link text-success font-monospace" aria-current="page" href="#">LOGIN</a>-->
                         <button type="button" class="btn btn-outline-success font-monospace mb-3">L O G I N</button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">Administrator Login</a>
@@ -64,8 +66,13 @@
     </div>
 </nav>
 
-<!--image carousel-->
-<div id="carouselExampleFade" class="carousel slide position-fixed col-12 mt-5 p-0" data-bs-ride="carousel">
+<!-----------image carousel------------->
+<div id="carouselExampleFade" class="carousel slide position-absolute col-12 mt-5 p-0" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="5000">
             <img src="../Front-End/assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="...">
@@ -82,7 +89,7 @@
         <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="carousel-control-next-icon visually-hidden" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
 </div>
