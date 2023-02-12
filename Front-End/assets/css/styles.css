@@ -1,15 +1,3 @@
-/*body container*/
-body {
-    background: url("../images/istockphoto-628453996-612x612.jpg") repeat-x;
-    background-size: cover;
-}
-
-/*dashboard buttons hover effect all in common*/
-#btn_Customer:hover, #btn_Item:hover, #btn_Place_Order:hover, #btn_Manage_Orders:hover {
-    cursor: pointer;
-    background: linear-gradient(45deg, rgba(29, 236, 197, 0.5), rgba(91, 14, 214, 0.5) 100%);
-}
-
 /*#loader_Container{*/
 /*    position: relative;*/
 /*    left: 0;*/
@@ -36,3 +24,15 @@ body {
 /*    background-size: cover;*/
 /*    background-position: center;*/
 /*}*/
+
+/*body container*/
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/*carousel images*/
+.carousel-inner > div > img {
+    height: 100vh;
+}
