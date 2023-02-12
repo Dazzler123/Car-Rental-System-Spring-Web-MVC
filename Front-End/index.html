@@ -10,14 +10,117 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/images/75702.png" rel="icon">
+
 </head>
-<body>
-<!--main dashboard-->
-<div id="main_dashboard_bg" class="container-fluid img-fluid">
+<body class="container-fluid img-fluid row">
+<!--loader-->
+<!--<div id="loader_Container">-->
+<!--    <div></div>-->
+<!--</div>-->
 
-</div>
+<!--navbar-->
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand fst-italic ms-3" href="#">Easy Car Rental Pvt. Ltd.</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+             aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Settings</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <!--            sitemap, about, search-->
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <!--                    &lt;!&ndash;            admin login&ndash;&gt;-->
+                    <!--                    <div class="dropdown ms-1">-->
+                    <!--                        <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"-->
+                    <!--                                aria-expanded="false" data-bs-auto-close="outside">-->
+                    <!--                            Administrator Login-->
+                    <!--                        </button>-->
+                    <!--                        <form class="dropdown-menu p-4">-->
+                    <!--                            <div class="mb-3">-->
+                    <!--                                <label for="exampleDropdownFormEmail2" class="form-label">Username</label>-->
+                    <!--                                <input type="text" class="form-control" id="exampleDropdownFormEmail2"-->
+                    <!--                                       placeholder="email@example.com">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="mb-3">-->
+                    <!--                                <label for="exampleDropdownFormPassword2" class="form-label">Password</label>-->
+                    <!--                                <input type="password" class="form-control" id="exampleDropdownFormPassword2"-->
+                    <!--                                       placeholder="Password">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="mb-3">-->
+                    <!--                                <div class="form-check">-->
+                    <!--                                    <input type="checkbox" class="form-check-input" id="dropdownCheck2">-->
+                    <!--                                    <label class="form-check-label" for="dropdownCheck2">-->
+                    <!--                                        Remember me-->
+                    <!--                                    </label>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                            <button type="submit" class="btn btn-primary">Sign in</button>-->
+                    <!--                        </form>-->
+                    <!--                    </div>-->
 
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Administrator Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Driver Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Sitemap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex mt-3" role="search">
+                    <input class="form-control me-2 fst-italic" type="search" placeholder="Type Keyword"
+                           aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
 
+<!--description-->
+<aside class="col-6 mt-5">
+    <div class="col-12" style="height: 20%"></div>
+    <h3 class="fst-italic fw-lighter ms-4 text-white text-start">Easy Car Rental is a Car Rental Service with 5 years of
+        history, renting
+        more than 50 cars and 40 drivers working for them in regular shifts. This company is located at No. 200, Galle
+        Road, Panadura, and well known for their services. Usually, people who don’t own a car, people who
+        are waiting for their car to be repaired and, travelers or tourists seek their services.</h3>
+</aside>
+
+<!--buttons-->
+<aside class="col-6 row gap-4 mt-5 mb-5 ms-2 justify-content-center text-center">
+    <div class="col-12" style="height: 10%"></div>
+    <div id="btn_Customer" class="col-6 shadow rounded-3 h-50">
+        <!--        <i class='fas fa-user-friends mt-5' style='font-size:48px'></i>-->
+        <h3 class="display-6 text-white fs-3 text-center mt-5">Login</h3>
+    </div>
+    <div id="btn_Item" class="col-6 shadow rounded-3 h-50">
+        <!--        <i class="fa-solid fa-cubes mt-5" style='font-size:48px'></i>-->
+        <h3 class="display-6 text-white fs-3 mt-5">Register</h3>
+    </div>
+    <div id="btn_Place_Order" class="col-6 shadow rounded-3 h-50">
+        <!--        <i class="fa-solid fa-cart-shopping mt-5" style='font-size:48px'></i>-->
+        <h3 class="display-6 text-white fs-3 mt-5">View Vehicles</h3>
+    </div>
+</aside>
+
+<!--trademark-->
+<small class="col-12 text-white fw-lighter fs-6 text-end mt-5 pe-4">@2023 Designed & Developed By Dasindu
+    Hewagamage</small>
+
+<!--================================================================-->
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery-3.6.1.min.js"></script>
 </body>
