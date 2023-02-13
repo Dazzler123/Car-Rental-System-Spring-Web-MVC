@@ -43,7 +43,8 @@
                         <button type="button" class="btn btn-outline-success font-monospace mb-3">L O G I N</button>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Register</a>
+                        <a id="navRegisterLink" class="nav-link" aria-current="page" data-toggle="modal"
+                           href="#custRegisterModel">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">Administrator Login</a>
@@ -79,6 +80,23 @@
                 aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
+        <div id="carousel_desc" class="col-7 position-absolute mt-5 ms-5">
+            <!--            <div class="col-12" style="height: 20%"></div>-->
+            <h4 class="fst-italic fw-light ms-4 text-white mt-3 me-3 ms-3">Easy Car Rental is a Car Rental Service with
+                5 years of
+                history, renting
+                more than 50 cars and 40 drivers working for them in regular shifts. This company is located at No. 200,
+                Galle
+                Road, Panadura, and well known for their services. Usually, people who don’t own a car, people who
+                are waiting for their car to be repaired and, travelers or tourists seek their services.</h4>
+            <h5 class="fst-italic fw-light ms-5 ps-4 text-white mt-5">Register to rent a car now!</h5>
+            <!----- customer registration model trigger button ----->
+            <button id="btnRegisterCustModel" type="button" class="btn col-4 btn-outline-success btn-lg mt-3 ms-5 mb-5"
+                    data-bs-toggle="modal"
+                    data-bs-target="#custRegisterModel">
+                Register Now
+            </button>
+        </div>
         <div class="carousel-item active" data-bs-interval="5000">
             <img src="../Front-End/assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="...">
         </div>
@@ -89,24 +107,18 @@
             <img src="../Front-End/assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="...">
         </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-        <span class="carousel-control-next-icon visually-hidden" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+    <!--    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">-->
+    <!--        <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>-->
+    <!--        <span class="visually-hidden">Previous</span>-->
+    <!--    </button>-->
+    <!--    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">-->
+    <!--        <span class="carousel-control-next-icon visually-hidden" aria-hidden="true"></span>-->
+    <!--        <span class="visually-hidden">Next</span>-->
+    <!--    </button>-->
 </div>
 
-<!----- customer registration model trigger button ----->
-<button type="button" class="btn btn-primary position-absolute top-100" data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop">
-    Register
-</button>
-
 <!-- customer registration Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade" id="custRegisterModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -198,33 +210,6 @@
         </div>
     </div>
 </div>
-
-
-<!--&lt;!&ndash;description&ndash;&gt;-->
-<!--<aside class="col-6 mt-5">-->
-<!--    <div class="col-12" style="height: 20%"></div>-->
-<!--    <h3 class="fst-italic fw-lighter ms-4 text-white text-start">Easy Car Rental is a Car Rental Service with 5 years of-->
-<!--        history, renting-->
-<!--        more than 50 cars and 40 drivers working for them in regular shifts. This company is located at No. 200, Galle-->
-<!--        Road, Panadura, and well known for their services. Usually, people who don’t own a car, people who-->
-<!--        are waiting for their car to be repaired and, travelers or tourists seek their services.</h3>-->
-<!--</aside>-->
-<!--&lt;!&ndash;buttons&ndash;&gt;-->
-<!--<aside class="col-6 row gap-4 mt-5 mb-5 ms-2 justify-content-center text-center">-->
-<!--    <div class="col-12" style="height: 10%"></div>-->
-<!--    <div id="btn_Customer" class="col-6 shadow rounded-3 h-50">-->
-<!--        &lt;!&ndash;        <i class='fas fa-user-friends mt-5' style='font-size:48px'></i>&ndash;&gt;-->
-<!--        <h3 class="display-6 text-white fs-3 text-center mt-5">Login</h3>-->
-<!--    </div>-->
-<!--    <div id="btn_Item" class="col-6 shadow rounded-3 h-50">-->
-<!--        &lt;!&ndash;        <i class="fa-solid fa-cubes mt-5" style='font-size:48px'></i>&ndash;&gt;-->
-<!--        <h3 class="display-6 text-white fs-3 mt-5">Register</h3>-->
-<!--    </div>-->
-<!--    <div id="btn_Place_Order" class="col-6 shadow rounded-3 h-50">-->
-<!--        &lt;!&ndash;        <i class="fa-solid fa-cart-shopping mt-5" style='font-size:48px'></i>&ndash;&gt;-->
-<!--        <h3 class="display-6 text-white fs-3 mt-5">View Vehicles</h3>-->
-<!--    </div>-->
-<!--</aside>-->
 
 
 <!--<small class="col-12 text-white fw-lighter fs-6 text-end mt-5 pe-4">@2023 Designed & Developed By Dasindu-->

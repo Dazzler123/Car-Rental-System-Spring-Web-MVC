@@ -35,4 +35,17 @@ body {
 /*carousel images*/
 .carousel-inner > div > img {
     height: 78vh;
+    /*filter: blur(7px);*/
+}
+
+/*carouse description*/
+#carousel_desc {
+    z-index: 1;
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+}
+
+/*register customer btn inside carousel*/
+#btnRegisterCustModel {
+    height: 4rem;
 }
