@@ -41,11 +41,21 @@ body {
 /*carouse description*/
 #carousel_desc {
     z-index: 1;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(70px);
     border-radius: 10px;
 }
 
 /*register customer btn inside carousel*/
 #btnRegisterCustModel {
     height: 4rem;
+}
+
+/*cards carousel*/
+.card_carousel {
+    display: flex;
+}
+
+/*cards divs*/
+.card {
+    margin: 0.5em;
 }
