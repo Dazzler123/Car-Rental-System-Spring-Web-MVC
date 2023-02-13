@@ -59,3 +59,10 @@ body {
 .card {
     margin: 0.5em;
 }
+
+/*btn to vehicles page*/
+#btnToVehiclesPage {
+    position: absolute;
+    top: 200%;
+    left: 37%;
+}
