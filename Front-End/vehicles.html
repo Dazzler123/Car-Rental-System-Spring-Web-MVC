@@ -175,8 +175,9 @@
 <div id="cars_container" class="row row-cols-1 row-cols-md-3 g-4 m-0">
     <div class="col">
         <div class="card">
+            <!--------car type--------->
             <div class="card-header fw-semibold fst-italic">General Cars</div>
-            <!--            <img src="assets/images/13-min-32.jpg" class="card-img-top" alt="...">-->
+            <!-----------image carousel---------->
             <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -202,38 +203,81 @@
                 </button>
             </div>
             <div class="card-body">
-                <h5 class="card-title fs-3">Dihatsu Mira 2015</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                    additional
-                    content. This content is a little bit longer.</p>
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item col-8">Make</li>
-                    <li class="list-group-item col-4">Dihatsu</li>
-                </ul>
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item col-8">YOM</li>
-                    <li class="list-group-item col-4">2015</li>
-                </ul>
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item col-8">Fuel Type</li>
-                    <li class="list-group-item col-4">Petrol</li>
-                </ul>
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item col-8">Transmission</li>
-                    <li class="list-group-item col-4">6 Speed</li>
-                </ul>
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item col-8">Mileage</li>
-                    <li class="list-group-item col-4">15kmpl approx</li>
-                </ul>
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item col-8">Passenger Count</li>
-                    <li class="list-group-item col-4">4</li>
+                <!------head title------>
+                <h5 class="card-title fs-3">Mercedes Benz CLA 200 2022</h5>
+                <!-------description------->
+                <p class="card-text fst-italic">General type car recommended for day-to-day use. General type car
+                    recommended for day-to-day use.</p>
+                <!-----------specifications accordion--------->
+                <div class="accordion mt-3" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Specifications
+                            </button>
+                        </h2>
+                        <!---------------specifications-------------->
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body text-secondary">
+                                <ul class="list-group list-group-horizontal fw-bold">
+                                    <li class="list-group-item col-7">Make</li>
+                                    <li class="list-group-item col-5">Mercedes Benz</li>
+                                </ul>
+                                <ul class="list-group list-group-horizontal">
+                                    <li class="list-group-item col-7">YOM</li>
+                                    <li class="list-group-item col-5">2022</li>
+                                </ul>
+                                <ul class="list-group list-group-horizontal">
+                                    <li class="list-group-item col-7">Fuel Type</li>
+                                    <li class="list-group-item col-5">Petrol</li>
+                                </ul>
+                                <ul class="list-group list-group-horizontal">
+                                    <li class="list-group-item col-7">Transmission</li>
+                                    <li class="list-group-item col-5">6 Speed</li>
+                                </ul>
+                                <ul class="list-group list-group-horizontal">
+                                    <li class="list-group-item col-7">Mileage</li>
+                                    <li class="list-group-item col-5">18.5 kmpl approx</li>
+                                </ul>
+                                <ul class="list-group list-group-horizontal">
+                                    <li class="list-group-item col-7">Passenger Count</li>
+                                    <li class="list-group-item col-5">5</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-----------rate price details list------------->
+                <ul class="list-group list-group-horizontal fw-bold mt-2">
+                    <li class="list-group-item list-group-item-primary col-9">Daily Rate (Rs.)</li>
+                    <li class="list-group-item list-group-item-primary col-3">3,800</li>
                 </ul>
                 <ul class="list-group list-group-horizontal fw-bold">
-                    <li class="list-group-item list-group-item-primary col-8">Available for Rent</li>
-                    <li class="list-group-item list-group-item-primary col-4">20</li>
+                    <li class="list-group-item list-group-item-primary col-9">Daily KM</li>
+                    <li class="list-group-item list-group-item-primary col-3">100</li>
                 </ul>
+                <ul class="list-group list-group-horizontal fw-bold">
+                    <li class="list-group-item list-group-item-primary col-9">Monthly Rate (Rs.)</li>
+                    <li class="list-group-item list-group-item-primary col-3">90, 200</li>
+                </ul>
+                <ul class="list-group list-group-horizontal fw-bold">
+                    <li class="list-group-item list-group-item-primary col-9">Monthly KM</li>
+                    <li class="list-group-item list-group-item-primary col-3">2,400</li>
+                </ul>
+                <ul class="list-group list-group-horizontal fw-bold">
+                    <li class="list-group-item list-group-item-primary col-9">Price Per Extra KM (Rs.)</li>
+                    <li class="list-group-item list-group-item-primary col-3">35</li>
+                </ul>
+                <!-----------available for rent--------->
+                <ul class="list-group list-group-horizontal fw-bold mt-2">
+                    <li class="list-group-item list-group-item-success col-9">Available for Rent</li>
+                    <li class="list-group-item list-group-item-success col-3">20&nbsp;&nbsp;&nbsp;Cars</li>
+                </ul>
+                <!-------------rent button--------------->
+                <button type="button" class="btn col-10 fs-5 btn-outline-success d-grid mx-auto fw-bold mt-4">Rent
+                </button>
             </div>
         </div>
     </div>
@@ -500,7 +544,7 @@
 </div>
 
 
-<button id="btngoaddacar" type="button" class="btn fs-5 col-3 btn-secondary">View All Cars</button>
+<!--<button id="btngoaddacar" type="button" class="btn fs-5 col-3 btn-secondary">View All Cars</button>-->
 
 <!------------about us footer--------->
 <footer class="position-relative bg-dark row m-0" style="top: 220vh; height: 50vh">
