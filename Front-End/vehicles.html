@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="Dasindu Hewagamage" name="author">
+    <meta content="Dasindu Hewagamage" name="owner">
+    <meta content="width=device-width initial-scale=1 maximum-scale=1 minimum-scale=1 user-scalable=no" name="viewport">
+
+    <title>Easy Car Rental Pvt. Ltd.</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/images/75702.png" rel="icon">
+</head>
+<body class="m-0 p-0 border-0">
+<main class="container-fluid row m-0 p-0 border-0"></main>
+<!-------------loader------------->
+<!--<div id="loader_Container">-->
+<!--    <div></div>-->
+<!--</div>-->
+
+<!----------navbar---------->
+<nav class="navbar navbar-dark bg-dark fixed-top border-4">
+    <div class="container-fluid">
+        <a class="navbar-brand fst-italic ms-3" href="index.html">Easy Car Rental Pvt. Ltd.</a>
+        <button class="navbar-toggler me-1" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar"
+                aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+             aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <span class="navbar-toggler-icon ms-2 me-3"></span>
+                <h5 class="offcanvas-title text-primary" id="offcanvasDarkNavbarLabel">Guest User</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <!--sitemap, about, search-->
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-success font-monospace mb-3">L O G I N</button>
+                    </li>
+                    <li class="nav-item">
+                        <a id="navRegisterLink" class="nav-link" aria-current="page" data-toggle="modal"
+                           href="#custRegisterModel">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Rent Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Administrator Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Driver Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Sitemap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex mt-3" role="search">
+                    <input class="form-control me-2 fst-italic" type="search" placeholder="Type Keyword"
+                           aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- customer registration Modal -->
+<div class="modal fade" id="custRegisterModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Customer Registration Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row g-3 mb-3">
+                        <!-------------name & address------------->
+                        <div class="col">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control fw-light" placeholder="D B Hewagamage" aria-label="">
+                            <div class="form-text fst-italic">Please enter your full name with initials.</div>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-control form-control fw-light"
+                                   placeholder="23/1, Galle Road, Panadura" aria-label="">
+                        </div>
+                    </div>
+                    <!----------nic, email & contact no----------->
+                    <div class="row g-3 mb-3">
+                        <div class="col">
+                            <label class="form-label">National Identity Card Number</label>
+                            <input type="text" class="form-control fw-light" placeholder="923478293492V" aria-label="">
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Email address</label>
+                            <input type="text" class="form-control form-control fw-light"
+                                   placeholder="pragmaticdeveloper@gmail.com" aria-label="">
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Contact Number</label>
+                            <input type="text" class="form-control form-control fw-light" placeholder="0773434343"
+                                   aria-label="">
+                        </div>
+                    </div>
+                    <!-------------dl no & gender------------>
+                    <div class="row g-3">
+                        <div class="col-4">
+                            <label class="form-label">Driving License Number</label>
+                            <input type="text" class="form-control fw-light" placeholder="9234782934920" aria-label="">
+                        </div>
+                        <div class="col-4 mt-5">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Gender</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!---------dl image & nic image--------->
+                    <div class="row g-3 mt-3">
+                        <div class="col-6">
+                            <label class="form-label fw-light">National Identity Card Image</label>
+                            <input class="form-control" type="file" id="nicImageFile">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label fw-light">Driving License Image</label>
+                            <input class="form-control" type="file" id="dlImageFile">
+                        </div>
+                    </div>
+                    <!------------username & password---------->
+                    <div class="row g-3 mt-3">
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="New Username">
+                            <div class="form-text fst-italic">Your username should be least three characters long and
+                                must not contain special characters or emoji's.
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <input type="password" class="form-control" placeholder="New Password">
+                            <div class="form-text fst-italic">Your password must be 8-20 characters long, contain
+                                letters and numbers,
+                                and must not contain spaces, special characters, or emoji's.
+                            </div>
+                        </div>
+                    </div>
+                    <!-----------save customer details----------->
+                    <button type="submit" class="btn btn-primary btn-lg mt-4 col-4">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--================================================================-->
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="controller/HomeDashboardController.js"></script>
+</body>
+</html>
