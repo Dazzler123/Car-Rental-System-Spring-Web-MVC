@@ -12,8 +12,65 @@
     <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/images/75702.png" rel="icon">
 </head>
-<body>
+<body class="m-0 p-0 border-0">
+<main class="container-fluid row m-0 p-0 border-0"></main>
+<!-------------loader------------->
+<!--<div id="loader_Container">-->
+<!--    <div></div>-->
+<!--</div>-->
 
+<!----------navbar---------->
+<nav class="navbar navbar-dark bg-dark fixed-top border-4">
+    <div class="container-fluid">
+        <a class="navbar-brand fst-italic ms-3" href="index.html">Easy Car Rental Pvt. Ltd.</a>
+        <button class="navbar-toggler me-1" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar"
+                aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+             aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <span class="navbar-toggler-icon ms-2 me-3"></span>
+                <h5 class="offcanvas-title text-primary" id="offcanvasDarkNavbarLabel">Guest User</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <!--sitemap, about, search-->
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-success font-monospace mb-3">L O G I N</button>
+                    </li>
+                    <li class="nav-item">
+                        <a id="navRegisterLink" class="nav-link" aria-current="page" data-toggle="modal"
+                           href="#custRegisterModel">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Rent Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Administrator Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Driver Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Sitemap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex mt-3" role="search">
+                    <input class="form-control me-2 fst-italic" type="search" placeholder="Type Keyword"
+                           aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
 
 <!--================================================================-->
 <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
