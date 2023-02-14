@@ -72,6 +72,7 @@
     </div>
 </nav>
 
+
 <!--------- customer registration Modal ------------->
 <div class="modal fade" id="custRegisterModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -166,17 +167,20 @@
     </div>
 </div>
 
+
 <!----------------heading---------------->
 <h1 class="col-12 text-center mt-5 mb-5 fw-semibold border-5">Available Cars</h1>
+
 
 <!------filter by title------->
 <div class="row col-11 mt-5 ms-5 pt-4">
     <h4 class="col-11 fw-lighter fst-italic">Filter by</h4>
-    <button type="button" class="btn btn-success col-1">Reset</button>
+    <button type="reset" class="btn btn-success col-1">Reset</button>
 </div>
 
+
 <!---------filter combo boxes------------->
-<div class="col-12 row mt-5 p-0 m-0 gap-4">g
+<div class="col-12 row pt-3 p-0 m-0 gap-4 ms-5" style="width: 90vw">
     <div class="m-0 p-0 col">
         <select class="form-select" aria-label="Default select example">
             <option selected class="fst-italic">Car Type</option>
@@ -226,8 +230,12 @@
 </div>
 
 
+<!------divider line------>
+<div class="col-12 mt-4" style="border: 0.1px solid gray; width: 95vw; left: 0; right: 0; margin: auto"></div>
+
+
 <!-----------all cars cards----------->
-<div id="cars_container" class="row row-cols-1 row-cols-md-3 g-4 m-0">
+<div id="cars_container" class="row row-cols-1 row-cols-md-3 g-4 m-0 pb-5">
     <div class="col">
         <div class="card">
             <!--------car type--------->
@@ -599,10 +607,11 @@
 </div>
 
 
-<button id="btngoaddacar" type="button" class="btn fs-5 col-3 btn-secondary">View All Cars</button>
+<!--<button id="btngoaddacar" type="button" class="btn fs-5 col-3 btn-secondary">View All Cars</button>-->
+
 
 <!------------about us footer--------->
-<footer class="position-relative bg-dark row m-0" style="top: 220vh; height: 50vh">
+<footer class="position-relative bg-dark row m-0 mt-5" style="height: 50vh">
     <h3 class="mt-4 fw-normal text-white col-12 text-center">About Us</h3>
     <small class="position-absolute col-12 text-white fw-lighter fs-6 text-end pe-4" style="top: 45vh">@2023 Designed &
         Developed By Dasindu
