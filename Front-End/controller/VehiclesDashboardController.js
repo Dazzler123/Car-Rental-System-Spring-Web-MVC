@@ -58,6 +58,7 @@ function generateCarCard() {
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+            <!----------car body content----------->
             <div class="card-body">
                 <!------head title------>
                 <h5 class="card-title fs-3">Mercedes Benz CLA 200 2022</h5>
