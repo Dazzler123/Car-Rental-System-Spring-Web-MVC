@@ -1,5 +1,6 @@
 package lk.ijse.rental.config;
 
+import lk.ijse.rental.advicer.AppWideExceptionHandler;
 import lk.ijse.rental.controller.CustomerController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@ComponentScan(basePackageClasses = {CustomerController.class})
+@ComponentScan(basePackageClasses = {CustomerController.class, AppWideExceptionHandler.class})
 @EnableWebMvc
 public class WebAppConfig implements WebMvcConfigurer {
     //configure MultipartResolver
