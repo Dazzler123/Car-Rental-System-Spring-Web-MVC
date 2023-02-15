@@ -1,6 +1,6 @@
-package lk.ijse.Car_Rental_System.config;
+package lk.ijse.rental.config;
 
-import lk.ijse.Car_Rental_System.controller.CustomerController;
+import lk.ijse.rental.controller.CustomerController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

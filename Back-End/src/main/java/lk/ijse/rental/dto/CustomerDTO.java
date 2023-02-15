@@ -1,4 +1,4 @@
-package lk.ijse.Car_Rental_System.dto;
+package lk.ijse.rental.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

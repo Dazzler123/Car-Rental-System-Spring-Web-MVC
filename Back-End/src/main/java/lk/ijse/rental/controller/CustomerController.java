@@ -1,4 +1,4 @@
-package lk.ijse.Car_Rental_System.controller;
+package lk.ijse.rental.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
