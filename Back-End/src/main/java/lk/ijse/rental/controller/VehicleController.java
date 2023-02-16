@@ -19,7 +19,7 @@ public class VehicleController {
     @Autowired
     VehicleService service;
 
-    @GetMapping
+    @GetMapping(path = "/loadAll")
     public ResponseUtil getAllVehicles() {
         ArrayList<VehicleDTO> allVehicles = service.loadAllVehicles();
         return new ResponseUtil("200", "All Vehicles Loaded", allVehicles);
