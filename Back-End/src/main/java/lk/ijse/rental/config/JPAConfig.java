@@ -22,7 +22,7 @@ public class JPAConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter adapter) {
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
-        bean.setPackagesToScan("lk.ijse.spring.entity"); //set entity location
+        bean.setPackagesToScan("lk.ijse.rental.entity"); //set entity location
 
         bean.setJpaVendorAdapter(adapter);  //join hibernate here
         bean.setDataSource(dataSource);  // a data source

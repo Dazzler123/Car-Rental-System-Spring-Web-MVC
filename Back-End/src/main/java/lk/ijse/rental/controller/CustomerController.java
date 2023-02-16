@@ -99,7 +99,7 @@ public class CustomerController {
         return new ResponseEntity(allImages, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping(path = "/register")
     public String saveCustomer(CustomerDTO dto) {
         service.saveCustomer(dto);
 

@@ -6,18 +6,18 @@ let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 $('#btnSaveCustomer').click(function () {
     //send ajax request to the customer servlet
     $.ajax({
-        url: baseURL + "customer",
+        url: baseURL + "customer/register",
         method: "post",
         data: {
-            "nic": $("#txtCustomerNIC").val(),
-            "name": $("#txtCustomerName").val(),
-            "address": $("#txtCustomerAddress").val(),
-            "contact_no": $("#txtCustomerContactNo").val(),
-            "email": $("#txtCustomerEmail").val(),
+            "nic": $('#txtCustomerNIC').val(),
+            "name": $('#txtCustomerName').val(),
+            "address": $('#txtCustomerAddress').val(),
+            "contact_no": $('#txtCustomerContactNo').val(),
+            "email": $('#txtCustomerEmail').val(),
             "nic_img": true,
             "dl_img": true,
-            "gender": $("#cbxCustomerGender").getSelection().val(),
-            "dl_no": $("#txtCustomerDLNo").val(),
+            "gender": $('#cbxCustomerGender option:selected').text(),
+            "dl_no": $('#txtCustomerDLNo').val(),
         },
 
         dataType: "json",
