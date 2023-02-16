@@ -24,4 +24,6 @@ public class Customer {
     private boolean nic_img;
     private boolean dl_img;
     private String gender;
+    private String username;
+    private String password;
 }

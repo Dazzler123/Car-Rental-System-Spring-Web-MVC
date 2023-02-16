@@ -10,6 +10,7 @@ $('#btnSaveCustomer').click(function () {
         method: "post",
         data: {
             "nic": $('#txtCustomerNIC').val(),
+            "dl_no": $('#txtCustomerDLNo').val(),
             "name": $('#txtCustomerName').val(),
             "address": $('#txtCustomerAddress').val(),
             "contact_no": $('#txtCustomerContactNo').val(),
@@ -17,7 +18,8 @@ $('#btnSaveCustomer').click(function () {
             "nic_img": true,
             "dl_img": true,
             "gender": $('#cbxCustomerGender option:selected').text(),
-            "dl_no": $('#txtCustomerDLNo').val(),
+            "username": $('#txtCustomerUsername').val(),
+            "password": $('#pwdCustomerPassword').val()
         },
 
         dataType: "json",
