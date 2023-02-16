@@ -16,6 +16,7 @@ import javax.persistence.Id;
 public class Rates {
     @Id
     private String model;
+    private String type;
     private double daily_rate;
     private double km_daily;
     private double monthly_rate;

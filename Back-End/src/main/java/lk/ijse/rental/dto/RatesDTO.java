@@ -11,6 +11,7 @@ import lombok.ToString;
 @ToString
 public class RatesDTO {
     private String model;  //toyota corolla 2015
+    private String type; //general, premium, luxury
     private double daily_rate;
     private double km_daily;
     private double monthly_rate;
