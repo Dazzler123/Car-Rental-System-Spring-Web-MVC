@@ -1,5 +1,9 @@
 package lk.ijse.rental.controller;
 
+import lk.ijse.rental.dto.CustomerDTO;
+import lk.ijse.rental.service.CustomerService;
+import lk.ijse.rental.util.ResponseUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +19,9 @@ import java.util.ArrayList;
 @RequestMapping("/customer")
 @CrossOrigin
 public class CustomerController {
+
+    @Autowired
+    CustomerService service;
 
     private static final ArrayList<String> allImages = new ArrayList<>();
 
@@ -90,5 +97,13 @@ public class CustomerController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllImagesFromDatabase() {
         return new ResponseEntity(allImages, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public String saveCustomer(CustomerDTO dto) {
+        service.saveCustomer(dto);
+
+        System.out.println(dto.toString());
+        return "Customer Saved Successfully.";
     }
 }
