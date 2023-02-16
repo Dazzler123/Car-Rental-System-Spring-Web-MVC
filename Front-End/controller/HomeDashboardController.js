@@ -25,7 +25,6 @@ $('#btnSaveCustomer').click(function () {
             "username": $('#txtCustomerUsername').val(),
             "password": $('#pwdCustomerPassword').val()
         },
-
         dataType: "json",
         success: function (res) {
             alert(res.message);
@@ -34,7 +33,4 @@ $('#btnSaveCustomer').click(function () {
             alert(JSON.parse(error.responseText).message);
         }
     });
-
-    //login user (set username)
-
 });

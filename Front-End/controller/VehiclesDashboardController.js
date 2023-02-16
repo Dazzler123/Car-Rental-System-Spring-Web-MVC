@@ -30,7 +30,6 @@ $(window).on('load', function () {
 loadAllVehicles();
 
 
-
 // load all vehicles as cards
 function loadAllVehicles() {
     //select container
@@ -39,7 +38,7 @@ function loadAllVehicles() {
     //generated id's for bootstrap controls
     let id = 0;
 
-    //get all vehicles from the backend
+    //request all vehicles from the backend
     $.ajax({
         url: baseURL + "vehicle/loadAll",
         dataType: "json",
