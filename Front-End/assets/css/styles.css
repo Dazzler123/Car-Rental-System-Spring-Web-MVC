@@ -1,29 +1,29 @@
-/*#loader_Container{*/
-/*    position: relative;*/
-/*    left: 0;*/
-/*    right: 0;*/
-/*    top: 0;*/
-/*    bottom: 0;*/
-/*    background: white;*/
-/*    overflow: hidden;*/
-/*    z-index: 1;*/
-/*}*/
+#loader_Container{
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: white;
+    overflow: hidden;
+    z-index: 1;
+}
 
-/*!*loader spinner*!*/
-/*#loader_Container > div{*/
-/*    position: absolute;*/
-/*    left: 0;*/
-/*    right: 0;*/
-/*    top: 0;*/
-/*    bottom: 0;*/
-/*    margin: auto;*/
+/*loader spinner*/
+#loader_Container > div{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 
-/*    width: 657px;*/
-/*    height: 600px;*/
-/*    background: url("../images/loading_spinner.gif");*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*}*/
+    width: 657px;
+    height: 600px;
+    background: url("../images/loading_spinner.gif");
+    background-size: cover;
+    background-position: center;
+}
 
 /*body container*/
 body {

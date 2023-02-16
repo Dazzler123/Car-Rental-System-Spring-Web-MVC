@@ -16,7 +16,10 @@
 // //     var bgimg = document.getElementById(`cards${i}`);
 // //     bgimg.style.backgroundImage = `url('img/${titlearray[i]}.jpg')`;
 // // }
-
+// loader
+$(window).on('load', function () {
+    $("#loader_Container").fadeOut(700);
+});
 
 $('#btngoaddacar').click(function () {
     generateCarCard();
