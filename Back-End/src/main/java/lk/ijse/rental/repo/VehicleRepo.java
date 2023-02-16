@@ -1,4 +1,7 @@
 package lk.ijse.rental.repo;
 
-public interface VehicleRepo {
+import lk.ijse.rental.entity.Vehicle;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface VehicleRepo extends JpaRepository<Vehicle, String> {
 }
