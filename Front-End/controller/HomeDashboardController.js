@@ -24,10 +24,8 @@ $('#btnSaveCustomer').click(function () {
         success: function (res) {
             alert(res.message);
         },
-
         error: function (error) {
-            var jsObject = JSON.parse(error.responseText);
-            alert(jsObject.message);
+            alert(JSON.parse(error.responseText).message);
         }
     });
 });
