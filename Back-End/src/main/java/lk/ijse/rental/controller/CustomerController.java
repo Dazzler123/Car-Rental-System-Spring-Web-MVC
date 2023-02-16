@@ -64,7 +64,7 @@ public class CustomerController {
 //        }
 //    }
 
-    //Formalized end-point to upload files using Spring
+//    Formalized end-point to upload files using Spring
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile) {
         try {
