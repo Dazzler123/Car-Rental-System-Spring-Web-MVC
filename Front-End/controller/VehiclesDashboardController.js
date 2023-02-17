@@ -162,6 +162,49 @@ function loadAllVehicles() {
     });
 }
 
+//set selected range value to the label
+function updateTextInput(input) {
+    $('#lblPriceRange').value = input;
+}
+
+//search filters and load vehicles
+$('#btnSearchFilter').click(function () {
+    var type = $('#cbxFilterByCarType option:selected').text();
+    var make = $('#cbxFilterByCarMake option:selected').text();
+    var passenger_count = $('#cbxFilterByCarPssngrCount option:selected').text();
+    var fuel_type = $('#cbxFilterByCarFuelType option:selected').text();
+    var transmission = $('#cbxFilterByCarTransmission option:selected').text();
+
+    //request for matching cars
+    $.ajax({
+        url: baseURL + "vehicle?type=" + type + "," + "make=?" + make + "," + "passenger_count=?" +
+            passenger_count + "," + "fuel_type=?" + fuel_type + "," + "transmission" + transmission + "",
+        method: "get",
+        dataType: "json",
+        success: function (data) {
+            console.log(data)
+
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+});
+
+
+//reset filter combo boxes
+$('#btnResetFilter').click(function () {
+    $('#cbxFilterByCarType').val('option:selected');
+    $('#cbxFilterByCarMake option:selected').text();
+    $('#cbxFilterByCarPssngrCount option:selected').text();
+    $('#cbxFilterByCarFuelType option:selected').text();
+    $('#cbxFilterByCarTransmission option:selected').text();
+
+    //load all vehicles
+    loadAllVehicles();
+});
+
+
 // function getVehicleRate(id) {
 //     var rates = {
 //         "daily_rate":"",

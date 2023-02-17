@@ -26,4 +26,14 @@ public class VehicleServiceImpl implements VehicleService {
         return mapper.map(repo.findAll(), new TypeToken<ArrayList<VehicleDTO>>() {
         }.getType());
     }
+
+    @Override
+    public ArrayList<VehicleDTO> findAllByFilters(String type, String make, int passenger_count, String fuel_type, String transmission) {
+//        return mapper.map(
+//                repo.findByTypeAndMakeAndPassenger_countAndFuel_typeAndTransmission(type, make, passenger_count,
+//                        fuel_type, transmission), new TypeToken<ArrayList<VehicleDTO>>() {
+//                }.getType());
+
+        return new ArrayList<>();
+    }
 }

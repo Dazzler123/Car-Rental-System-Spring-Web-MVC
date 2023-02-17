@@ -73,8 +73,8 @@
 </nav>
 
 
-<!--------- customer registration Modal ------------->
-<div class="modal fade" id="custRegisterModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<!-- customer registration Modal -->
+<div class="modal fade" id="custRegisterModel" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -83,17 +83,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="customerForm">
                     <div class="row g-3 mb-3">
                         <!-------------name & address------------->
                         <div class="col">
                             <label class="form-label">Full Name</label>
-                            <input type="text" class="form-control fw-light" placeholder="D B Hewagamage" aria-label="">
+                            <input id="txtCustomerName" type="text" class="form-control fw-light"
+                                   placeholder="D B Hewagamage" aria-label="">
                             <div class="form-text fst-italic">Please enter your full name with initials.</div>
                         </div>
                         <div class="col">
                             <label class="form-label">Address</label>
-                            <input type="text" class="form-control form-control fw-light"
+                            <input id="txtCustomerAddress" type="text" class="form-control form-control fw-light"
                                    placeholder="23/1, Galle Road, Panadura" aria-label="">
                         </div>
                     </div>
@@ -101,16 +102,18 @@
                     <div class="row g-3 mb-3">
                         <div class="col">
                             <label class="form-label">National Identity Card Number</label>
-                            <input type="text" class="form-control fw-light" placeholder="923478293492V" aria-label="">
+                            <input id="txtCustomerNIC" type="text" class="form-control fw-light"
+                                   placeholder="923478293492V" aria-label="">
                         </div>
                         <div class="col">
                             <label class="form-label">Email address</label>
-                            <input type="text" class="form-control form-control fw-light"
+                            <input id="txtCustomerEmail" type="text" class="form-control form-control fw-light"
                                    placeholder="pragmaticdeveloper@gmail.com" aria-label="">
                         </div>
                         <div class="col">
                             <label class="form-label">Contact Number</label>
-                            <input type="text" class="form-control form-control fw-light" placeholder="0773434343"
+                            <input id="txtCustomerContactNo" type="text" class="form-control form-control fw-light"
+                                   placeholder="0773434343"
                                    aria-label="">
                         </div>
                     </div>
@@ -118,10 +121,11 @@
                     <div class="row g-3">
                         <div class="col-4">
                             <label class="form-label">Driving License Number</label>
-                            <input type="text" class="form-control fw-light" placeholder="9234782934920" aria-label="">
+                            <input id="txtCustomerDLNo" type="text" class="form-control fw-light"
+                                   placeholder="9234782934920" aria-label="">
                         </div>
                         <div class="col-4 mt-5">
-                            <select class="form-select" aria-label="Default select example">
+                            <select id="cbxCustomerGender" class="form-select" aria-label="Default select example">
                                 <option selected>Select Gender</option>
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
@@ -143,13 +147,14 @@
                     <!------------username & password---------->
                     <div class="row g-3 mt-3">
                         <div class="col-6">
-                            <input type="text" class="form-control" placeholder="New Username">
+                            <input id="txtCustomerUsername" type="text" class="form-control" placeholder="New Username">
                             <div class="form-text fst-italic">Your username should be least three characters long and
                                 must not contain special characters or emoji's.
                             </div>
                         </div>
                         <div class="col-6">
-                            <input type="password" class="form-control" placeholder="New Password">
+                            <input id="pwdCustomerPassword" type="password" class="form-control"
+                                   placeholder="New Password">
                             <div class="form-text fst-italic">Your password must be 8-20 characters long, contain
                                 letters and numbers,
                                 and must not contain spaces, special characters, or emoji's.
@@ -157,7 +162,7 @@
                         </div>
                     </div>
                     <!-----------save customer details----------->
-                    <button type="submit" class="btn btn-primary btn-lg mt-4 col-4">Submit</button>
+                    <button id="btnSaveCustomer" type="button" class="btn btn-primary btn-lg mt-4 col-4">Submit</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -176,16 +181,16 @@
 <div class="row col-11 mt-5 ms-5 pt-4">
     <h4 class="col-9 fw-lighter fst-italic">Filter by</h4>
     <div class="col-3 row d-grid gap-2 d-md-block">
-        <button type="button" class="btn btn-primary col-5">Search</button>
-        <button type="reset" class="btn btn-success col-5">Reset</button>
+        <button id="btnSearchFilter" type="button" class="btn btn-primary col-5">Search</button>
+        <button id="btnResetFilter" type="button" class="btn btn-success col-5">Reset</button>
     </div>
 </div>
 
 
 <!---------filter combo boxes------------->
-<div class="col-12 row pt-3 p-0 m-0 gap-4 ms-5" style="width: 90vw">
+<div id="filterCbxContainer" class="col-12 row pt-3 p-0 m-0 gap-4 ms-5" style="width: 90vw">
     <div class="m-0 p-0 col">
-        <select class="form-select" aria-label="Default select example">
+        <select id="cbxFilterByCarType" class="form-select" aria-label="Default select example">
             <option selected class="fst-italic">Car Type</option>
             <option value="1">General Cars</option>
             <option value="2">Premium Cars</option>
@@ -193,7 +198,7 @@
         </select>
     </div>
     <div class="m-0 p-0 col">
-        <select class="form-select" aria-label="Default select example">
+        <select id="cbxFilterByCarMake" class="form-select" aria-label="Default select example">
             <option selected>Brand/Make</option>
             <option value="1">Mercedes Benz</option>
             <option value="2">Nissan</option>
@@ -201,34 +206,34 @@
         </select>
     </div>
     <div class="m-0 p-0 col">
-        <select class="form-select" aria-label="Default select example">
+        <select id="cbxFilterByCarPssngrCount" class="form-select" aria-label="Default select example">
             <option selected>Passengers</option>
             <option value="1">4</option>
             <option value="2">5</option>
         </select>
     </div>
     <div class="m-0 p-0 col">
-        <select class="form-select" aria-label="Default select example">
+        <select id="cbxFilterByCarFuelType" class="form-select" aria-label="Default select example">
             <option selected>Fuel Type</option>
             <option value="1">Petrol</option>
             <option value="2">Diesel</option>
         </select>
     </div>
     <div class="m-0 p-0 col">
-        <select class="form-select" aria-label="Default select example">
+        <select id="cbxFilterByCarTransmission" class="form-select" aria-label="Default select example">
             <option selected>Transmission</option>
             <option value="1">5 Speed Dual Clutch</option>
             <option value="2">6 Speed Dual Clutch</option>
             <option value="3">7 Speed Tronic</option>
         </select>
     </div>
-    <div class="m-0 p-0 col">
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Price Rate</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
+    <div class="col-12 m-0 p-0 ms-1">
+        <div class="m-0 p-0 col-3">
+            <label for="rngPriceRate" class="form-label">Price Rate</label>
+            <input id="rngPriceRate" type="range" value="0" class="form-range" min="2500" max="300000"
+                   onchange="updateTextInput(this.value);">
+            <label id="lblPriceRange">0</label>
+        </div>
     </div>
 </div>
 
@@ -239,376 +244,375 @@
 
 <!-----------all cars cards (cars container)----------->
 <div id="cars_container" class="row row-cols-1 row-cols-md-3 g-4 m-0 pb-5">
-<!--    <div class="col">-->
-<!--        <div class="card">-->
-<!--            &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;car type-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--            <div class="card-header fw-semibold fst-italic">General Cars</div>-->
-<!--            &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;image carousel&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--            <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel">-->
-<!--                <div class="carousel-inner">-->
-<!--                    <div class="carousel-item active">-->
-<!--                        <img src="assets/images/13-min-32.jpg" class="d-block w-100" alt="..." style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="assets/images/75702.png" class="d-block w-100" alt="..." style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="..."-->
-<!--                             style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1"-->
-<!--                        data-bs-slide="prev">-->
-<!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--                    <span class="visually-hidden">Previous</span>-->
-<!--                </button>-->
-<!--                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1"-->
-<!--                        data-bs-slide="next">-->
-<!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--                    <span class="visually-hidden">Next</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--                &lt;!&ndash;&#45;&#45;&#45;&#45;head title&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--                <h5 class="card-title fs-3">Mercedes Benz CLA 200 2022</h5>-->
-<!--                &lt;!&ndash;-&#45;&#45;&#45;&#45;description-&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--                <p class="card-text fst-italic">General type car recommended for day-to-day use. General type car-->
-<!--                    recommended for day-to-day use.</p>-->
-<!--                &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;specifications accordion-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--                <div class="accordion mt-3" id="accordionExample">-->
-<!--                    <div class="accordion-item">-->
-<!--                        <h2 class="accordion-header" id="headingTwo">-->
-<!--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
-<!--                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">-->
-<!--                                Specifications-->
-<!--                            </button>-->
-<!--                        </h2>-->
-<!--                        &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;specifications&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"-->
-<!--                             data-bs-parent="#accordionExample">-->
-<!--                            <div class="accordion-body text-secondary">-->
-<!--                                <ul class="list-group list-group-horizontal fw-bold">-->
-<!--                                    <li class="list-group-item col-7">Make</li>-->
-<!--                                    <li class="list-group-item col-5">Mercedes Benz</li>-->
-<!--                                </ul>-->
-<!--                                <ul class="list-group list-group-horizontal">-->
-<!--                                    <li class="list-group-item col-7">YOM</li>-->
-<!--                                    <li class="list-group-item col-5">2022</li>-->
-<!--                                </ul>-->
-<!--                                <ul class="list-group list-group-horizontal">-->
-<!--                                    <li class="list-group-item col-7">Fuel Type</li>-->
-<!--                                    <li class="list-group-item col-5">Petrol</li>-->
-<!--                                </ul>-->
-<!--                                <ul class="list-group list-group-horizontal">-->
-<!--                                    <li class="list-group-item col-7">Transmission</li>-->
-<!--                                    <li class="list-group-item col-5">6 Speed</li>-->
-<!--                                </ul>-->
-<!--                                <ul class="list-group list-group-horizontal">-->
-<!--                                    <li class="list-group-item col-7">Mileage</li>-->
-<!--                                    <li class="list-group-item col-5">18.5 kmpl approx</li>-->
-<!--                                </ul>-->
-<!--                                <ul class="list-group list-group-horizontal">-->
-<!--                                    <li class="list-group-item col-7">Passenger Count</li>-->
-<!--                                    <li class="list-group-item col-5">5</li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;rate price details list-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--                <ul class="list-group list-group-horizontal fw-bold mt-2">-->
-<!--                    <li class="list-group-item list-group-item-primary col-9">Daily Rate (Rs.)</li>-->
-<!--                    <li class="list-group-item list-group-item-primary col-3">3,800</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal fw-bold">-->
-<!--                    <li class="list-group-item list-group-item-primary col-9">Daily KM</li>-->
-<!--                    <li class="list-group-item list-group-item-primary col-3">100</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal fw-bold">-->
-<!--                    <li class="list-group-item list-group-item-primary col-9">Monthly Rate (Rs.)</li>-->
-<!--                    <li class="list-group-item list-group-item-primary col-3">90, 200</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal fw-bold">-->
-<!--                    <li class="list-group-item list-group-item-primary col-9">Monthly KM</li>-->
-<!--                    <li class="list-group-item list-group-item-primary col-3">2,400</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal fw-bold">-->
-<!--                    <li class="list-group-item list-group-item-primary col-9">Price Per Extra KM (Rs.)</li>-->
-<!--                    <li class="list-group-item list-group-item-primary col-3">35</li>-->
-<!--                </ul>-->
-<!--                &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;available for rent-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--                <ul class="list-group list-group-horizontal fw-bold mt-2">-->
-<!--                    <li class="list-group-item list-group-item-success col-9">Available for Rent</li>-->
-<!--                    <li class="list-group-item list-group-item-success col-3">20&nbsp;&nbsp;&nbsp;Cars</li>-->
-<!--                </ul>-->
-<!--                &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;rent button-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--                <button type="button" class="btn col-10 fs-5 btn-outline-success d-grid mx-auto fw-bold mt-4">Rent-->
-<!--                </button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col">-->
-<!--        <div class="card">-->
-<!--            <div class="card-header fw-semibold fst-italic">General Cars</div>-->
-<!--            &lt;!&ndash;            <img src="assets/images/13-min-32.jpg" class="card-img-top" alt="...">&ndash;&gt;-->
-<!--            <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel">-->
-<!--                <div class="carousel-inner">-->
-<!--                    <div class="carousel-item active">-->
-<!--                        <img src="assets/images/13-min-32.jpg" class="d-block w-100" alt="car_image"-->
-<!--                             style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="assets/images/75702.png" class="d-block w-100" alt="car_image" style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="car_image"-->
-<!--                             style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2"-->
-<!--                        data-bs-slide="prev">-->
-<!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--                    <span class="visually-hidden">Previous</span>-->
-<!--                </button>-->
-<!--                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2"-->
-<!--                        data-bs-slide="next">-->
-<!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--                    <span class="visually-hidden">Next</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--                <h5 class="card-title fs-3">Dihatsu Mira 2015</h5>-->
-<!--                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to-->
-<!--                    additional-->
-<!--                    content. This content is a little bit longer.</p>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Make</li>-->
-<!--                    <li class="list-group-item col-4">Dihatsu</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">YOM</li>-->
-<!--                    <li class="list-group-item col-4">2015</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Fuel Type</li>-->
-<!--                    <li class="list-group-item col-4">Petrol</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Transmission</li>-->
-<!--                    <li class="list-group-item col-4">6 Speed</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Mileage</li>-->
-<!--                    <li class="list-group-item col-4">15kmpl approx</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Passenger Count</li>-->
-<!--                    <li class="list-group-item col-4">4</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal fw-bold">-->
-<!--                    <li class="list-group-item list-group-item-primary col-8">Available for Rent</li>-->
-<!--                    <li class="list-group-item list-group-item-primary col-4">20</li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col">-->
-<!--        <div class="card">-->
-<!--            <div class="card-header fw-semibold fst-italic">General Cars</div>-->
-<!--            &lt;!&ndash;            <img src="assets/images/13-min-32.jpg" class="card-img-top" alt="...">&ndash;&gt;-->
-<!--            <div id="carouselExampleControls3" class="carousel slide" data-bs-ride="carousel">-->
-<!--                <div class="carousel-inner">-->
-<!--                    <div class="carousel-item active">-->
-<!--                        <img src="assets/images/13-min-32.jpg" class="d-block w-100" alt="car_image"-->
-<!--                             style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="assets/images/75702.png" class="d-block w-100" alt="car_image" style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="car_image"-->
-<!--                             style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls3"-->
-<!--                        data-bs-slide="prev">-->
-<!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--                    <span class="visually-hidden">Previous</span>-->
-<!--                </button>-->
-<!--                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls3"-->
-<!--                        data-bs-slide="next">-->
-<!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--                    <span class="visually-hidden">Next</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--                <h5 class="card-title fs-3">Dihatsu Mira 2015</h5>-->
-<!--                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to-->
-<!--                    additional-->
-<!--                    content. This content is a little bit longer.</p>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Make</li>-->
-<!--                    <li class="list-group-item col-4">Dihatsu</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">YOM</li>-->
-<!--                    <li class="list-group-item col-4">2015</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Fuel Type</li>-->
-<!--                    <li class="list-group-item col-4">Petrol</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Transmission</li>-->
-<!--                    <li class="list-group-item col-4">6 Speed</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Mileage</li>-->
-<!--                    <li class="list-group-item col-4">15kmpl approx</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Passenger Count</li>-->
-<!--                    <li class="list-group-item col-4">4</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal fw-bold">-->
-<!--                    <li class="list-group-item list-group-item-primary col-8">Available for Rent</li>-->
-<!--                    <li class="list-group-item list-group-item-primary col-4">20</li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col">-->
-<!--        <div class="card">-->
-<!--            <div class="card-header fw-semibold fst-italic">General Cars</div>-->
-<!--            &lt;!&ndash;            <img src="assets/images/13-min-32.jpg" class="card-img-top" alt="...">&ndash;&gt;-->
-<!--            <div id="carouselExampleControls4" class="carousel slide" data-bs-ride="carousel">-->
-<!--                <div class="carousel-inner">-->
-<!--                    <div class="carousel-item active">-->
-<!--                        <img src="assets/images/13-min-32.jpg" class="d-block w-100" alt="car_image"-->
-<!--                             style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="assets/images/75702.png" class="d-block w-100" alt="car_image" style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="car_image"-->
-<!--                             style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls4"-->
-<!--                        data-bs-slide="prev">-->
-<!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--                    <span class="visually-hidden">Previous</span>-->
-<!--                </button>-->
-<!--                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls4"-->
-<!--                        data-bs-slide="next">-->
-<!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--                    <span class="visually-hidden">Next</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--                <h5 class="card-title fs-3">Dihatsu Mira 2015</h5>-->
-<!--                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to-->
-<!--                    additional-->
-<!--                    content. This content is a little bit longer.</p>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Make</li>-->
-<!--                    <li class="list-group-item col-4">Dihatsu</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">YOM</li>-->
-<!--                    <li class="list-group-item col-4">2015</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Fuel Type</li>-->
-<!--                    <li class="list-group-item col-4">Petrol</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Transmission</li>-->
-<!--                    <li class="list-group-item col-4">6 Speed</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Mileage</li>-->
-<!--                    <li class="list-group-item col-4">15kmpl approx</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Passenger Count</li>-->
-<!--                    <li class="list-group-item col-4">4</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal fw-bold">-->
-<!--                    <li class="list-group-item list-group-item-primary col-8">Available for Rent</li>-->
-<!--                    <li class="list-group-item list-group-item-primary col-4">20</li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col">-->
-<!--        <div class="card">-->
-<!--            <div class="card-header fw-semibold fst-italic">General Cars</div>-->
-<!--            &lt;!&ndash;            <img src="assets/images/13-min-32.jpg" class="card-img-top" alt="...">&ndash;&gt;-->
-<!--            <div id="carouselExampleControls5" class="carousel slide" data-bs-ride="carousel">-->
-<!--                <div class="carousel-inner">-->
-<!--                    <div class="carousel-item active">-->
-<!--                        <img src="assets/images/13-min-32.jpg" class="d-block w-100" alt="car_image"-->
-<!--                             style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="assets/images/75702.png" class="d-block w-100" alt="car_image" style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="car_image"-->
-<!--                             style="height: 40vh;">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls5"-->
-<!--                        data-bs-slide="prev">-->
-<!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--                    <span class="visually-hidden">Previous</span>-->
-<!--                </button>-->
-<!--                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls5"-->
-<!--                        data-bs-slide="next">-->
-<!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--                    <span class="visually-hidden">Next</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--                <h5 class="card-title fs-3">Dihatsu Mira 2015</h5>-->
-<!--                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to-->
-<!--                    additional-->
-<!--                    content. This content is a little bit longer.</p>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Make</li>-->
-<!--                    <li class="list-group-item col-4">Dihatsu</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">YOM</li>-->
-<!--                    <li class="list-group-item col-4">2015</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Fuel Type</li>-->
-<!--                    <li class="list-group-item col-4">Petrol</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Transmission</li>-->
-<!--                    <li class="list-group-item col-4">6 Speed</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Mileage</li>-->
-<!--                    <li class="list-group-item col-4">15kmpl approx</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal">-->
-<!--                    <li class="list-group-item col-8">Passenger Count</li>-->
-<!--                    <li class="list-group-item col-4">4</li>-->
-<!--                </ul>-->
-<!--                <ul class="list-group list-group-horizontal fw-bold">-->
-<!--                    <li class="list-group-item list-group-item-primary col-8">Available for Rent</li>-->
-<!--                    <li class="list-group-item list-group-item-primary col-4">20</li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+    <!--    <div class="col">-->
+    <!--        <div class="card">-->
+    <!--            &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;car type-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--            <div class="card-header fw-semibold fst-italic">General Cars</div>-->
+    <!--            &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;image carousel&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--            <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel">-->
+    <!--                <div class="carousel-inner">-->
+    <!--                    <div class="carousel-item active">-->
+    <!--                        <img src="assets/images/13-min-32.jpg" class="d-block w-100" alt="..." style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                    <div class="carousel-item">-->
+    <!--                        <img src="assets/images/75702.png" class="d-block w-100" alt="..." style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                    <div class="carousel-item">-->
+    <!--                        <img src="assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="..."-->
+    <!--                             style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1"-->
+    <!--                        data-bs-slide="prev">-->
+    <!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+    <!--                    <span class="visually-hidden">Previous</span>-->
+    <!--                </button>-->
+    <!--                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1"-->
+    <!--                        data-bs-slide="next">-->
+    <!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+    <!--                    <span class="visually-hidden">Next</span>-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--            <div class="card-body">-->
+    <!--                &lt;!&ndash;&#45;&#45;&#45;&#45;head title&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--                <h5 class="card-title fs-3">Mercedes Benz CLA 200 2022</h5>-->
+    <!--                &lt;!&ndash;-&#45;&#45;&#45;&#45;description-&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--                <p class="card-text fst-italic">General type car recommended for day-to-day use. General type car-->
+    <!--                    recommended for day-to-day use.</p>-->
+    <!--                &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;specifications accordion-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--                <div class="accordion mt-3" id="accordionExample">-->
+    <!--                    <div class="accordion-item">-->
+    <!--                        <h2 class="accordion-header" id="headingTwo">-->
+    <!--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
+    <!--                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">-->
+    <!--                                Specifications-->
+    <!--                            </button>-->
+    <!--                        </h2>-->
+    <!--                        &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;specifications&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"-->
+    <!--                             data-bs-parent="#accordionExample">-->
+    <!--                            <div class="accordion-body text-secondary">-->
+    <!--                                <ul class="list-group list-group-horizontal fw-bold">-->
+    <!--                                    <li class="list-group-item col-7">Make</li>-->
+    <!--                                    <li class="list-group-item col-5">Mercedes Benz</li>-->
+    <!--                                </ul>-->
+    <!--                                <ul class="list-group list-group-horizontal">-->
+    <!--                                    <li class="list-group-item col-7">YOM</li>-->
+    <!--                                    <li class="list-group-item col-5">2022</li>-->
+    <!--                                </ul>-->
+    <!--                                <ul class="list-group list-group-horizontal">-->
+    <!--                                    <li class="list-group-item col-7">Fuel Type</li>-->
+    <!--                                    <li class="list-group-item col-5">Petrol</li>-->
+    <!--                                </ul>-->
+    <!--                                <ul class="list-group list-group-horizontal">-->
+    <!--                                    <li class="list-group-item col-7">Transmission</li>-->
+    <!--                                    <li class="list-group-item col-5">6 Speed</li>-->
+    <!--                                </ul>-->
+    <!--                                <ul class="list-group list-group-horizontal">-->
+    <!--                                    <li class="list-group-item col-7">Mileage</li>-->
+    <!--                                    <li class="list-group-item col-5">18.5 kmpl approx</li>-->
+    <!--                                </ul>-->
+    <!--                                <ul class="list-group list-group-horizontal">-->
+    <!--                                    <li class="list-group-item col-7">Passenger Count</li>-->
+    <!--                                    <li class="list-group-item col-5">5</li>-->
+    <!--                                </ul>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;rate price details list-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--                <ul class="list-group list-group-horizontal fw-bold mt-2">-->
+    <!--                    <li class="list-group-item list-group-item-primary col-9">Daily Rate (Rs.)</li>-->
+    <!--                    <li class="list-group-item list-group-item-primary col-3">3,800</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal fw-bold">-->
+    <!--                    <li class="list-group-item list-group-item-primary col-9">Daily KM</li>-->
+    <!--                    <li class="list-group-item list-group-item-primary col-3">100</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal fw-bold">-->
+    <!--                    <li class="list-group-item list-group-item-primary col-9">Monthly Rate (Rs.)</li>-->
+    <!--                    <li class="list-group-item list-group-item-primary col-3">90, 200</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal fw-bold">-->
+    <!--                    <li class="list-group-item list-group-item-primary col-9">Monthly KM</li>-->
+    <!--                    <li class="list-group-item list-group-item-primary col-3">2,400</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal fw-bold">-->
+    <!--                    <li class="list-group-item list-group-item-primary col-9">Price Per Extra KM (Rs.)</li>-->
+    <!--                    <li class="list-group-item list-group-item-primary col-3">35</li>-->
+    <!--                </ul>-->
+    <!--                &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;available for rent-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--                <ul class="list-group list-group-horizontal fw-bold mt-2">-->
+    <!--                    <li class="list-group-item list-group-item-success col-9">Available for Rent</li>-->
+    <!--                    <li class="list-group-item list-group-item-success col-3">20&nbsp;&nbsp;&nbsp;Cars</li>-->
+    <!--                </ul>-->
+    <!--                &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;rent button-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--                <button type="button" class="btn col-10 fs-5 btn-outline-success d-grid mx-auto fw-bold mt-4">Rent-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="col">-->
+    <!--        <div class="card">-->
+    <!--            <div class="card-header fw-semibold fst-italic">General Cars</div>-->
+    <!--            &lt;!&ndash;            <img src="assets/images/13-min-32.jpg" class="card-img-top" alt="...">&ndash;&gt;-->
+    <!--            <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel">-->
+    <!--                <div class="carousel-inner">-->
+    <!--                    <div class="carousel-item active">-->
+    <!--                        <img src="assets/images/13-min-32.jpg" class="d-block w-100" alt="car_image"-->
+    <!--                             style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                    <div class="carousel-item">-->
+    <!--                        <img src="assets/images/75702.png" class="d-block w-100" alt="car_image" style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                    <div class="carousel-item">-->
+    <!--                        <img src="assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="car_image"-->
+    <!--                             style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2"-->
+    <!--                        data-bs-slide="prev">-->
+    <!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+    <!--                    <span class="visually-hidden">Previous</span>-->
+    <!--                </button>-->
+    <!--                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2"-->
+    <!--                        data-bs-slide="next">-->
+    <!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+    <!--                    <span class="visually-hidden">Next</span>-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--            <div class="card-body">-->
+    <!--                <h5 class="card-title fs-3">Dihatsu Mira 2015</h5>-->
+    <!--                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to-->
+    <!--                    additional-->
+    <!--                    content. This content is a little bit longer.</p>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Make</li>-->
+    <!--                    <li class="list-group-item col-4">Dihatsu</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">YOM</li>-->
+    <!--                    <li class="list-group-item col-4">2015</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Fuel Type</li>-->
+    <!--                    <li class="list-group-item col-4">Petrol</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Transmission</li>-->
+    <!--                    <li class="list-group-item col-4">6 Speed</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Mileage</li>-->
+    <!--                    <li class="list-group-item col-4">15kmpl approx</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Passenger Count</li>-->
+    <!--                    <li class="list-group-item col-4">4</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal fw-bold">-->
+    <!--                    <li class="list-group-item list-group-item-primary col-8">Available for Rent</li>-->
+    <!--                    <li class="list-group-item list-group-item-primary col-4">20</li>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="col">-->
+    <!--        <div class="card">-->
+    <!--            <div class="card-header fw-semibold fst-italic">General Cars</div>-->
+    <!--            &lt;!&ndash;            <img src="assets/images/13-min-32.jpg" class="card-img-top" alt="...">&ndash;&gt;-->
+    <!--            <div id="carouselExampleControls3" class="carousel slide" data-bs-ride="carousel">-->
+    <!--                <div class="carousel-inner">-->
+    <!--                    <div class="carousel-item active">-->
+    <!--                        <img src="assets/images/13-min-32.jpg" class="d-block w-100" alt="car_image"-->
+    <!--                             style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                    <div class="carousel-item">-->
+    <!--                        <img src="assets/images/75702.png" class="d-block w-100" alt="car_image" style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                    <div class="carousel-item">-->
+    <!--                        <img src="assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="car_image"-->
+    <!--                             style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls3"-->
+    <!--                        data-bs-slide="prev">-->
+    <!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+    <!--                    <span class="visually-hidden">Previous</span>-->
+    <!--                </button>-->
+    <!--                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls3"-->
+    <!--                        data-bs-slide="next">-->
+    <!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+    <!--                    <span class="visually-hidden">Next</span>-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--            <div class="card-body">-->
+    <!--                <h5 class="card-title fs-3">Dihatsu Mira 2015</h5>-->
+    <!--                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to-->
+    <!--                    additional-->
+    <!--                    content. This content is a little bit longer.</p>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Make</li>-->
+    <!--                    <li class="list-group-item col-4">Dihatsu</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">YOM</li>-->
+    <!--                    <li class="list-group-item col-4">2015</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Fuel Type</li>-->
+    <!--                    <li class="list-group-item col-4">Petrol</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Transmission</li>-->
+    <!--                    <li class="list-group-item col-4">6 Speed</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Mileage</li>-->
+    <!--                    <li class="list-group-item col-4">15kmpl approx</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Passenger Count</li>-->
+    <!--                    <li class="list-group-item col-4">4</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal fw-bold">-->
+    <!--                    <li class="list-group-item list-group-item-primary col-8">Available for Rent</li>-->
+    <!--                    <li class="list-group-item list-group-item-primary col-4">20</li>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="col">-->
+    <!--        <div class="card">-->
+    <!--            <div class="card-header fw-semibold fst-italic">General Cars</div>-->
+    <!--            &lt;!&ndash;            <img src="assets/images/13-min-32.jpg" class="card-img-top" alt="...">&ndash;&gt;-->
+    <!--            <div id="carouselExampleControls4" class="carousel slide" data-bs-ride="carousel">-->
+    <!--                <div class="carousel-inner">-->
+    <!--                    <div class="carousel-item active">-->
+    <!--                        <img src="assets/images/13-min-32.jpg" class="d-block w-100" alt="car_image"-->
+    <!--                             style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                    <div class="carousel-item">-->
+    <!--                        <img src="assets/images/75702.png" class="d-block w-100" alt="car_image" style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                    <div class="carousel-item">-->
+    <!--                        <img src="assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="car_image"-->
+    <!--                             style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls4"-->
+    <!--                        data-bs-slide="prev">-->
+    <!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+    <!--                    <span class="visually-hidden">Previous</span>-->
+    <!--                </button>-->
+    <!--                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls4"-->
+    <!--                        data-bs-slide="next">-->
+    <!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+    <!--                    <span class="visually-hidden">Next</span>-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--            <div class="card-body">-->
+    <!--                <h5 class="card-title fs-3">Dihatsu Mira 2015</h5>-->
+    <!--                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to-->
+    <!--                    additional-->
+    <!--                    content. This content is a little bit longer.</p>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Make</li>-->
+    <!--                    <li class="list-group-item col-4">Dihatsu</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">YOM</li>-->
+    <!--                    <li class="list-group-item col-4">2015</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Fuel Type</li>-->
+    <!--                    <li class="list-group-item col-4">Petrol</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Transmission</li>-->
+    <!--                    <li class="list-group-item col-4">6 Speed</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Mileage</li>-->
+    <!--                    <li class="list-group-item col-4">15kmpl approx</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Passenger Count</li>-->
+    <!--                    <li class="list-group-item col-4">4</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal fw-bold">-->
+    <!--                    <li class="list-group-item list-group-item-primary col-8">Available for Rent</li>-->
+    <!--                    <li class="list-group-item list-group-item-primary col-4">20</li>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="col">-->
+    <!--        <div class="card">-->
+    <!--            <div class="card-header fw-semibold fst-italic">General Cars</div>-->
+    <!--            &lt;!&ndash;            <img src="assets/images/13-min-32.jpg" class="card-img-top" alt="...">&ndash;&gt;-->
+    <!--            <div id="carouselExampleControls5" class="carousel slide" data-bs-ride="carousel">-->
+    <!--                <div class="carousel-inner">-->
+    <!--                    <div class="carousel-item active">-->
+    <!--                        <img src="assets/images/13-min-32.jpg" class="d-block w-100" alt="car_image"-->
+    <!--                             style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                    <div class="carousel-item">-->
+    <!--                        <img src="assets/images/75702.png" class="d-block w-100" alt="car_image" style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                    <div class="carousel-item">-->
+    <!--                        <img src="assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100" alt="car_image"-->
+    <!--                             style="height: 40vh;">-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls5"-->
+    <!--                        data-bs-slide="prev">-->
+    <!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+    <!--                    <span class="visually-hidden">Previous</span>-->
+    <!--                </button>-->
+    <!--                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls5"-->
+    <!--                        data-bs-slide="next">-->
+    <!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+    <!--                    <span class="visually-hidden">Next</span>-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--            <div class="card-body">-->
+    <!--                <h5 class="card-title fs-3">Dihatsu Mira 2015</h5>-->
+    <!--                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to-->
+    <!--                    additional-->
+    <!--                    content. This content is a little bit longer.</p>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Make</li>-->
+    <!--                    <li class="list-group-item col-4">Dihatsu</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">YOM</li>-->
+    <!--                    <li class="list-group-item col-4">2015</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Fuel Type</li>-->
+    <!--                    <li class="list-group-item col-4">Petrol</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Transmission</li>-->
+    <!--                    <li class="list-group-item col-4">6 Speed</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Mileage</li>-->
+    <!--                    <li class="list-group-item col-4">15kmpl approx</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal">-->
+    <!--                    <li class="list-group-item col-8">Passenger Count</li>-->
+    <!--                    <li class="list-group-item col-4">4</li>-->
+    <!--                </ul>-->
+    <!--                <ul class="list-group list-group-horizontal fw-bold">-->
+    <!--                    <li class="list-group-item list-group-item-primary col-8">Available for Rent</li>-->
+    <!--                    <li class="list-group-item list-group-item-primary col-4">20</li>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 </div>
-
 
 
 <!---------pagination----------->

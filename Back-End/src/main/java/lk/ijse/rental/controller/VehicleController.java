@@ -24,4 +24,10 @@ public class VehicleController {
         ArrayList<VehicleDTO> allVehicles = service.loadAllVehicles();
         return new ResponseUtil("200", "All Vehicles Loaded", allVehicles);
     }
+
+    @GetMapping
+    public ResponseUtil findAllByFilterSelection(String type, String make, int passenger_count, String fuel_type, String transmission) {
+        ArrayList<VehicleDTO> allVehicles = service.findAllByFilters(type,make,passenger_count,fuel_type,transmission);
+        return new ResponseUtil("200", "Matching Vehicles Loaded", allVehicles);
+    }
 }
