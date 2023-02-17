@@ -23,4 +23,9 @@ public class VehicleDTO {
     private String description;  //paragraph on the card
     private boolean reserved;  //is reserved or not
     private boolean images;  // does it hv images uploaded or not
+    private double daily_rate;
+    private double km_daily;
+    private double monthly_rate;
+    private double km_monthly;
+    private double extra_km_rate;
 }
