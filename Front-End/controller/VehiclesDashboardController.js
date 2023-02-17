@@ -148,9 +148,9 @@ function loadAllVehicles() {
                                     <li class="list-group-item list-group-item-success col-9">Available for Rent</li>
                                     <li class="list-group-item list-group-item-success col-3">20&nbsp;&nbsp;&nbsp;Cars</li>
                                 </ul>
-                                <button type="button"
-                                        class="btn col-10 fs-5 btn-outline-success d-grid mx-auto fw-bold mt-4">Rent
-                                </button>
+                                <a href="PlaceRent.html" class="row m-0 mt-4 text-decoration-none">
+                                   <button class="btn col-4 fs-5 btn-outline-success d-grid fw-bold m-0 mx-auto w-100">Rent</button>
+                                </a>
                             </div>
                         </div>
                     </div>`;

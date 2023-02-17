@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface VehicleRepo extends JpaRepository<Vehicle, String> {
-    List<Vehicle> findVehiclesByTypeAndMakeAndPassenger_countAndFuel_TypeAndTransmission(String type, String make,
-                                                                                 int passengers, String fuel_type, String transmission);
+//    List<Vehicle> findVehiclesByTypeAndMakeAndPassenger_countAndFuel_TypeAndTransmission(String type, String make,
+//                                                                                 int passengers, String fuel_type, String transmission);
 }
