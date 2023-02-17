@@ -22,10 +22,14 @@
 <!----------navbar---------->
 <nav class="navbar navbar-dark bg-dark sticky-top border-4">
     <div class="container-fluid">
-        <a class="navbar-brand fst-italic ms-3" href="index.html">Easy Car Rental Pvt. Ltd.</a>
-        <button class="navbar-toggler me-1" type="button" data-bs-toggle="offcanvas"
+        <a class="navbar-brand fst-italic ms-3 col-9 me-5" href="index.html">Easy Car Rental Pvt. Ltd.</a>
+        <a href="PlaceRent.html" class="col-1 ms-5">
+            <button id="btnToRentACar" class="btn btn-outline-success fw-bold mx-auto w-100" type="button">Rent a Car
+            </button>
+        </a>
+        <button class="navbar-toggler me-1 col-1" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar"
-                aria-controls="offcanvasDarkNavbar">
+                aria-controls="offcanvasDarkNavbar" style="width: 4vw">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
