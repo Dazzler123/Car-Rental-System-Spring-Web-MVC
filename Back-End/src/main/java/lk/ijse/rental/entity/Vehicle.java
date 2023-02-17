@@ -28,4 +28,9 @@ public class Vehicle {
     private String description;
     private boolean reserved;
     private boolean images;
+    private double daily_rate;
+    private double km_daily;
+    private double monthly_rate;
+    private double km_monthly;
+    private double extra_km_rate;
 }
