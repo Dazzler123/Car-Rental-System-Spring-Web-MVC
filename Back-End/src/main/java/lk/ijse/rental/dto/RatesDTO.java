@@ -10,6 +10,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class RatesDTO {
+    private String vehicle_id; //vehicle registration no
     private String model;  //toyota corolla 2015
     private String type; //general, premium, luxury
     private double daily_rate;

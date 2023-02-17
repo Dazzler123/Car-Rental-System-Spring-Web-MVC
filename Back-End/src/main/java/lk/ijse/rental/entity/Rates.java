@@ -15,6 +15,7 @@ import javax.persistence.Id;
 @Entity
 public class Rates {
     @Id
+    private String vehicle_id;
     private String model;
     private String type;
     private double daily_rate;
