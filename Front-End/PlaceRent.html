@@ -75,8 +75,268 @@
     </div>
 </nav>
 
-<!------divider line------>
-<div class="col-12 mt-4" style="border: 0.1px solid gray; width: 95vw; left: 0; right: 0; margin: auto"></div>
+<!---------- input forms ------------->
+<div class="container-fluid row m-0 mx-auto w-100 mt-3">
+    <form class="row col-12 m-0 w-100 mx-auto">
+        <!----username & password----->
+        <div class="row g-3 mt-3 ms-3">
+            <label class="form-label fst-italic fs-6 fw-light ms-2 mb-1">Enter your Username and Password to
+                verify</label>
+            <div class="col-3">
+                <input id="txtCustomerUsername" type="text" class="form-control" placeholder="Username">
+            </div>
+            <div class="col-3">
+                <input id="pwdCustomerPassword" type="password" class="form-control"
+                       placeholder="Password">
+            </div>
+            <!--verify btn-->
+            <div class="col-1">
+                <button id="btnSaveCustomer" type="button" class="btn btn-primary col-12 m-0 w-100 mx-auto">Verify
+                </button>
+            </div>
+            <!--customer name & nic-->
+            <div class="col-4 m-0 mx-auto mt-2">
+                <label class="form-label fst-italic fs-6 fw-bold col-12 text-primary">Customer Name Here!</label>
+                <label class="form-label fst-italic fs-6 fw-bold col-12 text-primary">Customer NIC here!</label>
+            </div>
+            <!------verification status label----->
+            <label class="form-label fst-italic fs-6 fw-normal col-12 text-success m-0">Verification Successful or not
+                here.</label>
+        </div>
+
+        <!------divider line------>
+        <hr class="col-12 mt-5" style="width:95%;text-align:left;margin-left:1.5vw">
+
+        <!-----select a car dropdown----->
+        <div class="col-6 mt-4 ms-4">
+            <label class="form-label fst-italic fs-5 fw-light ms-2 mb-3">Select a Car</label>
+            <select id="cbxCustomerGender" class="form-select" aria-label="Default select example">
+                <option selected class="fw-light fst-italic">Select Car</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Other</option>
+            </select>
+        </div>
+
+        <!-----------selected car container----------->
+        <div id="cars_container" class="col-5 row mt-4 ms-5 ps-3">
+            <!--            <div class="col">-->
+            <!--                <div class="card">-->
+            <!--                    &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;car type-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--                    <div class="card-header fw-semibold fst-italic">General Cars</div>-->
+            <!--                    &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;image carousel&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--                    <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel">-->
+            <!--                        <div class="carousel-inner">-->
+            <!--                            <div class="carousel-item active">-->
+            <!--                                <img src="assets/images/13-min-32.jpg" class="d-block w-100" alt="..."-->
+            <!--                                     style="height: 40vh;">-->
+            <!--                            </div>-->
+            <!--                            <div class="carousel-item">-->
+            <!--                                <img src="assets/images/75702.png" class="d-block w-100" alt="..."-->
+            <!--                                     style="height: 40vh;">-->
+            <!--                            </div>-->
+            <!--                            <div class="carousel-item">-->
+            <!--                                <img src="assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100"-->
+            <!--                                     alt="..."-->
+            <!--                                     style="height: 40vh;">-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1"-->
+            <!--                                data-bs-slide="prev">-->
+            <!--                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+            <!--                            <span class="visually-hidden">Previous</span>-->
+            <!--                        </button>-->
+            <!--                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1"-->
+            <!--                                data-bs-slide="next">-->
+            <!--                            <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+            <!--                            <span class="visually-hidden">Next</span>-->
+            <!--                        </button>-->
+            <!--                    </div>-->
+            <!--                    <div class="card-body">-->
+            <!--                        &lt;!&ndash;&#45;&#45;&#45;&#45;head title&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--                        <h5 class="card-title fs-3">Mercedes Benz CLA 200 2022</h5>-->
+            <!--                        &lt;!&ndash;-&#45;&#45;&#45;&#45;description-&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--                        <p class="card-text fst-italic">General type car recommended for day-to-day use. General type-->
+            <!--                            car-->
+            <!--                            recommended for day-to-day use.</p>-->
+            <!--                        &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;specifications accordion-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--                        <div class="accordion mt-3" id="accordionExample">-->
+            <!--                            <div class="accordion-item">-->
+            <!--                                <h2 class="accordion-header" id="headingTwo">-->
+            <!--                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"-->
+            <!--                                            data-bs-target="#collapseTwo" aria-expanded="false"-->
+            <!--                                            aria-controls="collapseTwo">-->
+            <!--                                        Specifications-->
+            <!--                                    </button>-->
+            <!--                                </h2>-->
+            <!--                                &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;specifications&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"-->
+            <!--                                     data-bs-parent="#accordionExample">-->
+            <!--                                    <div class="accordion-body text-secondary">-->
+            <!--                                        <ul class="list-group list-group-horizontal fw-bold">-->
+            <!--                                            <li class="list-group-item col-7">Make</li>-->
+            <!--                                            <li class="list-group-item col-5">Mercedes Benz</li>-->
+            <!--                                        </ul>-->
+            <!--                                        <ul class="list-group list-group-horizontal">-->
+            <!--                                            <li class="list-group-item col-7">YOM</li>-->
+            <!--                                            <li class="list-group-item col-5">2022</li>-->
+            <!--                                        </ul>-->
+            <!--                                        <ul class="list-group list-group-horizontal">-->
+            <!--                                            <li class="list-group-item col-7">Fuel Type</li>-->
+            <!--                                            <li class="list-group-item col-5">Petrol</li>-->
+            <!--                                        </ul>-->
+            <!--                                        <ul class="list-group list-group-horizontal">-->
+            <!--                                            <li class="list-group-item col-7">Transmission</li>-->
+            <!--                                            <li class="list-group-item col-5">6 Speed</li>-->
+            <!--                                        </ul>-->
+            <!--                                        <ul class="list-group list-group-horizontal">-->
+            <!--                                            <li class="list-group-item col-7">Mileage</li>-->
+            <!--                                            <li class="list-group-item col-5">18.5 kmpl approx</li>-->
+            <!--                                        </ul>-->
+            <!--                                        <ul class="list-group list-group-horizontal">-->
+            <!--                                            <li class="list-group-item col-7">Passenger Count</li>-->
+            <!--                                            <li class="list-group-item col-5">5</li>-->
+            <!--                                        </ul>-->
+            <!--                                    </div>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                        &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;rate price details list-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--                        <ul class="list-group list-group-horizontal fw-bold mt-2">-->
+            <!--                            <li class="list-group-item list-group-item-primary col-9">Daily Rate (Rs.)</li>-->
+            <!--                            <li class="list-group-item list-group-item-primary col-3">3,800</li>-->
+            <!--                        </ul>-->
+            <!--                        <ul class="list-group list-group-horizontal fw-bold">-->
+            <!--                            <li class="list-group-item list-group-item-primary col-9">Daily KM</li>-->
+            <!--                            <li class="list-group-item list-group-item-primary col-3">100</li>-->
+            <!--                        </ul>-->
+            <!--                        <ul class="list-group list-group-horizontal fw-bold">-->
+            <!--                            <li class="list-group-item list-group-item-primary col-9">Monthly Rate (Rs.)</li>-->
+            <!--                            <li class="list-group-item list-group-item-primary col-3">90, 200</li>-->
+            <!--                        </ul>-->
+            <!--                        <ul class="list-group list-group-horizontal fw-bold">-->
+            <!--                            <li class="list-group-item list-group-item-primary col-9">Monthly KM</li>-->
+            <!--                            <li class="list-group-item list-group-item-primary col-3">2,400</li>-->
+            <!--                        </ul>-->
+            <!--                        <ul class="list-group list-group-horizontal fw-bold">-->
+            <!--                            <li class="list-group-item list-group-item-primary col-9">Price Per Extra KM (Rs.)</li>-->
+            <!--                            <li class="list-group-item list-group-item-primary col-3">35</li>-->
+            <!--                        </ul>-->
+            <!--                        &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;available for rent-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--                        <ul class="list-group list-group-horizontal fw-bold mt-2">-->
+            <!--                            <li class="list-group-item list-group-item-success col-9">Available for Rent</li>-->
+            <!--                            <li class="list-group-item list-group-item-success col-3">20&nbsp;&nbsp;&nbsp;Cars</li>-->
+            <!--                        </ul>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+        </div>
+
+        <!-----rent duration (date)------>
+        <div class="col-12 row m-0 mt-5 ms-4 mb-3">
+            <label class="form-label fst-italic fs-5 fw-light m-0 ms-1 p-0 mb-3 col-12">Select Rent Duration -
+                Date</label>
+            <label class="form-label fst-italic fw-normal col-1 m-0 pt-1">From</label>
+            <!--from this date-->
+            <div class="col-3 m-0">
+                <input type="date" class="form-control col-3">
+            </div>
+            <label class="form-label fst-italic fs-6 fw-normal col-1 m-0 pt-1">to</label>
+            <!--to this date-->
+            <div class="col-3 m-0">
+                <input type="date" class="form-control col-3">
+            </div>
+        </div>
+
+        <!-----pickup date-time & return date-time------>
+        <div class="col-12 row m-0 mt-5 ms-3">
+            <div class="m-0 col-12">
+                <label class="form-label fst-italic fs-5 fw-light m-0 p-0 mb-3 col-5">Select Pick-up Date & Time</label>
+                <label class="form-label fst-italic fs-5 fw-light m-0 p-0 mb-3 col-5">Select Return Date & Time</label>
+            </div>
+            <!--input date-->
+            <div class="m-0 col-10 row">
+                <div class="col-3 mx-auto m-0 ms-0 p-0">
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-3 mx-auto m-0 ms-0 p-0">
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <!--input time-->
+            <div class="m-0 col-10 row mt-2">
+                <div class="col-3 mx-auto m-0 ms-0 p-0">
+                    <input type="time" class="form-control">
+                </div>
+                <div class="col-3 mx-auto m-0 ms-0 p-0">
+                    <input type="time" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <!--reserve driver or not-->
+        <div class="m-0 col-11 row mt-5 ms-5">
+            <label class="form-label fst-italic fs-5 fw-light m-0 p-0 mb-3 col-12">Do you want a Driver?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    No
+                </label>
+            </div>
+            <label class="form-label fst-italic fs-6 fw-light col-12 text-secondary m-0 ms-0 ps-0 mt-2">Note: An
+                additional cost of
+                Rs.1000 will be charged daily when you reserve a driver.</label>
+        </div>
+
+        <!------calculate total btn----->
+        <div class="d-grid col-12 row mt-5 m-0 p-0">
+            <button type="button" class="btn btn-warning col-3 m-0">Calculate Total Amount</button>
+            <label class="form-label fst-italic fs-5 fw-light m-0 p-0 mb-3 col-12">me btn eka right corner ekt yawnna
+                -----></label>
+        </div>
+
+        <!------bank slip image file upload input----->
+        <div class="col-12 row ms-4 mt-3 mb-5">
+            <label class="form-label fst-italic fs-5 fw-light m-0 p-0 mb-3 col-12 ms-1">Attach Bank Payment Slip</label>
+            <label class="form-label fw-light col-10">Inorder to rent the car, you have to pay the Loss Damage Waiver
+                payment before renting the car. The Amount will be
+                returned to you after the car is returned and a brief inspection will be done to the car and if the car
+                is
+                damaged or harmed, an appropriate amount will be deducted from the Loss Damage Waiver
+                payment and the rest will be returned to you.
+                If the vehicle is unharmed the Loss Damage Waiver will be returned in full. Check our "About Us" section
+                for
+                bank details. Please don't hesitate to contact us for any inquiries.</label>
+            <div class="col-6 mt-3">
+                <label class="form-label fw-bold text-dark col-2">Amount (LKR)&nbsp;:</label>
+                <label class="form-label fw-bold text-dark col-2">&nbsp;&nbsp;13000.00</label>
+                <label class="form-label fw-light text-secondary fst-italic col-12">(General Cars : 10000.00 LKR&nbsp;&nbsp;|
+                    &nbsp;Premium Cars : 15000.00 LKR &nbsp;|&nbsp; Luxury Cars : 20000.00 LKR)</label>
+                <label class="form-label fw-light col-12 mt-4">Upload bank payment slip Image</label>
+                <input class="form-control" type="file" id="imgBankPaymentSlip">
+            </div>
+        </div>
+
+
+        <!---------place rent btn------->
+        <div class="col-11 row mt-5 m-0 p-0 ms-5">
+            <button type="button" class="btn btn-lg btn-success col-3 m-0">Place Rent</button>
+        </div>
+        <label class="form-label fw-bold col-10 m-0 p-0 ms-5 mt-3">Your rental request will be sent to our manager for
+            additional verifications.&nbsp;Please expect for an response on "Rental Request" section, the response will
+            be
+            sent to you within 24hrs from now.</label>
+        <label class="form-label fw-light col-10 m-0 p-0 ms-5 mt-3">Please Don't hesitate to contact us for any inquiries.
+            Thank You! Have a nice day!</label>
+    </form>
+</div>
+
 
 <!------------about us footer--------->
 <footer class="position-relative bg-dark row m-0 mt-5" style="height: 50vh">
