@@ -4,10 +4,7 @@ import lk.ijse.rental.dto.VehicleDTO;
 import lk.ijse.rental.service.VehicleService;
 import lk.ijse.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -26,8 +23,8 @@ public class VehicleController {
     }
 
     @GetMapping
-    public ResponseUtil findAllByFilterSelection(String type, String make, int passenger_count, String fuel_type, String transmission) {
-        ArrayList<VehicleDTO> allVehicles = service.findAllByFilters(type,make,passenger_count,fuel_type,transmission);
+    public ResponseUtil findAllByFilterSelection(String type, String make, int passengers, String fuelType, String transmission) {
+        ArrayList<VehicleDTO> allVehicles = service.findAllByFilters(type, make, passengers, fuelType, transmission);
         return new ResponseUtil("200", "Matching Vehicles Loaded", allVehicles);
     }
 }

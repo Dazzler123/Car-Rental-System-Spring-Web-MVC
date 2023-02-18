@@ -28,12 +28,11 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public ArrayList<VehicleDTO> findAllByFilters(String type, String make, int passenger_count, String fuel_type, String transmission) {
-//        return mapper.map(
-//                repo.findByTypeAndMakeAndPassenger_countAndFuel_typeAndTransmission(type, make, passenger_count,
-//                        fuel_type, transmission), new TypeToken<ArrayList<VehicleDTO>>() {
-//                }.getType());
-
-        return new ArrayList<>();
+    public ArrayList<VehicleDTO> findAllByFilters(String type, String make, int passengers, String fuelType, String transmission) {
+        return mapper.map(
+                repo.findVehiclesByTypeAndMakeAndPassengersAndFuelTypeAndTransmission(
+                        type, make, passengers, fuelType, transmission),
+                new TypeToken<ArrayList<VehicleDTO>>() {
+                }.getType());
     }
 }

@@ -24,11 +24,11 @@ class CustomerRepoTest {
 
     @Test
     public void testOne() {
-//        List<Vehicle> byTypeAndMakeAndTransmission =
-//                repo.findVehiclesByTypeAndMakeAndPassenger_countAndFuel_TypeAndTransmission("General Car",
-//                "Dihatsu",4,"Petrol","5 Speed");
-//
-//        System.out.println(byTypeAndMakeAndTransmission);
+        List<Vehicle> byTypeAndMakeAndTransmission =
+                repo.findVehiclesByTypeAndMakeAndPassengersAndFuelTypeAndTransmission("Premium Car",
+                "Mercedes Benz",5,"Diesel","5 Speed Dual Clutch");
+
+        System.out.println(byTypeAndMakeAndTransmission);
 
 
     }

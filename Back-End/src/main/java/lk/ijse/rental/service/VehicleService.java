@@ -7,6 +7,6 @@ import java.util.ArrayList;
 public interface VehicleService {
     public ArrayList<VehicleDTO> loadAllVehicles();
 
-    public ArrayList<VehicleDTO> findAllByFilters(String type, String make, int passenger_count, String fuel_type,
+    public ArrayList<VehicleDTO> findAllByFilters(String type, String make, int passengers, String fuelType,
                                                   String transmission);
 }
