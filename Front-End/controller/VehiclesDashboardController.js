@@ -17,14 +17,13 @@
 // //     bgimg.style.backgroundImage = `url('img/${titlearray[i]}.jpg')`;
 // // }
 
-
-// backend url
-let baseURL = "http://localhost:8080/Back_End_war_exploded/";
-
 // loader
 $(window).on('load', function () {
     $("#loader_Container").fadeOut(700);
 });
+
+// backend url
+let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 
 //load all vehicles at the startup
 loadAllVehicles();
@@ -321,12 +320,13 @@ $('#btnSearchFilter').click(function () {
 
 //reset filter combo boxes
 $('#btnResetFilter').click(function () {
-    $('#cbxFilterByCarType').val('option:selected');
-    $('#cbxFilterByCarMake option:selected').text();
-    $('#cbxFilterByCarPssngrCount option:selected').text();
-    $('#cbxFilterByCarFuelType option:selected').text();
-    $('#cbxFilterByCarTransmission option:selected').text();
-
-    //load all vehicles
-    loadAllVehicles();
+    // $('#cbxFilterByCarType').val('option:selected');
+    // $('#cbxFilterByCarMake option:selected').text();
+    // $('#cbxFilterByCarPssngrCount option:selected').text();
+    // $('#cbxFilterByCarFuelType option:selected').text();
+    // $('#cbxFilterByCarTransmission option:selected').text();
+    //
+    // //load all vehicles
+    // loadAllVehicles();
+    location.reload();
 });
