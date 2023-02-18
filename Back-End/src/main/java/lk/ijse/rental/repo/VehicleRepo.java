@@ -8,4 +8,6 @@ import java.util.List;
 public interface VehicleRepo extends JpaRepository<Vehicle, String> {
     List<Vehicle> findVehiclesByTypeAndMakeAndPassengersAndFuelTypeAndTransmission(String type, String make,
                                                                                  int passengers, String fuelType, String transmission);
+
+    Vehicle findVehicleByModel(String model);
 }

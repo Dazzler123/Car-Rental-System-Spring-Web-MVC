@@ -23,9 +23,15 @@ public class VehicleController {
     }
 
     @GetMapping(path = "/filter")
-    public ResponseUtil findAllByFilterSelection(String type, String make, int passengers, String fuelType, String transmission) {
+    public ResponseUtil searchVehiclesByFilterSelection(String type, String make, int passengers, String fuelType, String transmission) {
         ArrayList<VehicleDTO> allVehicles = service.findAllByFilters(type, make, passengers, fuelType, transmission);
         System.out.println(allVehicles);
         return new ResponseUtil("200", "Matching Vehicles Loaded", allVehicles);
+    }
+
+    @GetMapping(path = "/byModel")
+    public ResponseUtil searchVehicleByModel(String model) {
+        VehicleDTO vehicle = service.findByVehicleModel(model);
+        return new ResponseUtil("200","Vehicle found.",vehicle);
     }
 }

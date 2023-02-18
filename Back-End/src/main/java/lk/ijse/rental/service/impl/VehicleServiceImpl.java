@@ -41,4 +41,9 @@ public class VehicleServiceImpl implements VehicleService {
                     }.getType());
         }
     }
+
+    @Override
+    public VehicleDTO findByVehicleModel(String model) {
+        return mapper.map(repo.findVehicleByModel(model), VehicleDTO.class);
+    }
 }
