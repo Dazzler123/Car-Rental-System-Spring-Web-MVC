@@ -29,10 +29,16 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public ArrayList<VehicleDTO> findAllByFilters(String type, String make, int passengers, String fuelType, String transmission) {
-        return mapper.map(
-                repo.findVehiclesByTypeAndMakeAndPassengersAndFuelTypeAndTransmission(
-                        type, make, passengers, fuelType, transmission),
-                new TypeToken<ArrayList<VehicleDTO>>() {
-                }.getType());
+        if (repo.findVehiclesByTypeAndMakeAndPassengersAndFuelTypeAndTransmission(type, make, passengers, fuelType, transmission) == null) {
+            System.out.println("error");
+            throw new RuntimeException("No Matching Vehicles found!");
+        } else {
+            System.out.println("good");
+            return mapper.map(
+                    repo.findVehiclesByTypeAndMakeAndPassengersAndFuelTypeAndTransmission(
+                            type, make, passengers, fuelType, transmission),
+                    new TypeToken<ArrayList<VehicleDTO>>() {
+                    }.getType());
+        }
     }
 }

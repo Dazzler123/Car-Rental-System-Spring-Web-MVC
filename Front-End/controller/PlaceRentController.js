@@ -13,7 +13,7 @@ let custId = "";
 let custName = "";
 
 
-//verify username & password
+//verify customer (username & password)
 $('#btnVerifyCustomer').click(function () {
     // get un pw
     let username = $('#txtCustomerUsername').val();

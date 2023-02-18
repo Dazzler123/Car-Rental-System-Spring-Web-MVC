@@ -22,9 +22,10 @@ public class VehicleController {
         return new ResponseUtil("200", "All Vehicles Loaded", allVehicles);
     }
 
-    @GetMapping
+    @GetMapping(path = "/filter")
     public ResponseUtil findAllByFilterSelection(String type, String make, int passengers, String fuelType, String transmission) {
         ArrayList<VehicleDTO> allVehicles = service.findAllByFilters(type, make, passengers, fuelType, transmission);
+        System.out.println(allVehicles);
         return new ResponseUtil("200", "Matching Vehicles Loaded", allVehicles);
     }
 }
