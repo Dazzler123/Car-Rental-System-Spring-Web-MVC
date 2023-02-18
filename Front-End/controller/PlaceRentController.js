@@ -6,6 +6,9 @@ $(window).on('load', function () {
 // backend url
 let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 
+//load all vehicle models at startup
+loadAllVehicleModelNames();
+
 
 //verified customer id & name
 let custId = "";
@@ -43,6 +46,46 @@ $('#btnVerifyCustomer').click(function () {
             alert(JSON.parse(error.responseText).message);
             //show status
             $('#lblVerificationStatus').text("Verification Failed.");
+        }
+    });
+});
+
+//load all vehicles to the combo box
+function loadAllVehicleModelNames() {
+    $.ajax({
+        url: baseURL + "vehicle/loadAll",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            for (let vehicle of resp.data) {
+                var option = '<option>'+ vehicle.model + '</option>';
+                //append to the combo box
+                $('#cbxSelectVehicle').append(option);
+            }
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+}
+
+//load car card of the selected vehicle
+$('#cbxSelectVehicle').change(function () {
+    $.ajax({
+        url: baseURL + "vehicle/loadAll",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            for (let vehicle of resp.data) {
+                var option = '<option>'+ vehicle.model + '</option>';
+                //append to the combo box
+                $('#cbxSelectVehicle').append(option);
+            }
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
         }
     });
 });
