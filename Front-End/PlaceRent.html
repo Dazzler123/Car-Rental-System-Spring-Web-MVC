@@ -91,17 +91,16 @@
             </div>
             <!--verify btn-->
             <div class="col-1">
-                <button id="btnSaveCustomer" type="button" class="btn btn-primary col-12 m-0 w-100 mx-auto">Verify
+                <button id="btnVerifyCustomer" type="button" class="btn btn-primary col-12 m-0 w-100 mx-auto">Verify
                 </button>
             </div>
             <!--customer name & nic-->
             <div class="col-4 m-0 mx-auto mt-2">
-                <label class="form-label fst-italic fs-6 fw-bold col-12 text-primary">Customer Name Here!</label>
-                <label class="form-label fst-italic fs-6 fw-bold col-12 text-primary">Customer NIC here!</label>
+                <label id="lblCustName" class="form-label fst-italic fs-6 fw-bold col-12 text-primary"></label>
+                <label id="lblCustNIC" class="form-label fst-italic fs-6 fw-bold col-12 text-primary"></label>
             </div>
             <!------verification status label----->
-            <label class="form-label fst-italic fs-6 fw-normal col-12 text-success m-0">Verification Successful or not
-                here.</label>
+            <label id="lblVerificationStatus" class="form-label fst-italic fs-6 fw-normal col-12 m-0 mt-1 text-success"></label>
         </div>
 
         <!------divider line------>
@@ -348,5 +347,6 @@
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="controller/PLaceRentController.js"></script>
 </body>
 </html>

@@ -340,13 +340,13 @@ $('#btnResetFilter').click(function () {
 //         url: baseURL + "rates?id=" + id + "",
 //         method: "get",
 //         dataType: "json",
-//         success: function (data) {
-//             console.log(data)
-//             // rates.daily_rate = data.daily_rate;
-//             // rates.km_daily = data.km_daily;
-//             // rates.monthly_rate = data.monthly_rate;
-//             // rates.km_monthly = data.km_monthly;
-//             // rates.extra_km_rate = data.extra_km_rate;
+//         success: function (resp) {
+//             console.log(resp)
+//             // rates.daily_rate = resp.daily_rate;
+//             // rates.km_daily = resp.km_daily;
+//             // rates.monthly_rate = resp.monthly_rate;
+//             // rates.km_monthly = resp.km_monthly;
+//             // rates.extra_km_rate = resp.extra_km_rate;
 //         },
 //         error: function (error) {
 //             alert(JSON.parse(error.responseText).message);

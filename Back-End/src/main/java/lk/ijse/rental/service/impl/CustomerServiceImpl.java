@@ -29,4 +29,13 @@ public class CustomerServiceImpl implements CustomerService {
             repo.save(customer);
         }
     }
+
+    @Override
+    public CustomerDTO verifyCustomer(String username, String password) {
+        if (repo.findCustomerByUsernameAndPassword(username, password) == null) {
+            throw new RuntimeException("No Customer found with matching Username and Password!");
+        }
+        Customer customer = repo.findCustomerByUsernameAndPassword(username, password);
+        return mapper.map(customer, CustomerDTO.class);
+    }
 }

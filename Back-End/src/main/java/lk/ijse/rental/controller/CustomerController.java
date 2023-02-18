@@ -71,7 +71,7 @@ public class CustomerController {
 //        }
 //    }
 
-//    Formalized end-point to upload files using Spring
+    //    Formalized end-point to upload files using Spring
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile) {
         try {
@@ -84,7 +84,7 @@ public class CustomerController {
             //save the path of the uploaded image in the temporary database
             allImages.add("uploads/" + myFile.getOriginalFilename());
 
-            return  ResponseEntity.ok(HttpStatus.OK);
+            return ResponseEntity.ok(HttpStatus.OK);
         } catch (URISyntaxException e) {
             e.printStackTrace();
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -105,5 +105,10 @@ public class CustomerController {
 
         System.out.println(dto.toString());
         return "Customer Saved Successfully.";
+    }
+
+    @GetMapping(path = "/verify")
+    public ResponseUtil verifyCustomer(String username, String password) {
+        return new ResponseUtil("200", "Customer Exists.", service.verifyCustomer(username, password));
     }
 }
