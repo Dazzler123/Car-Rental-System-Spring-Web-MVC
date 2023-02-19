@@ -15,8 +15,6 @@ import javax.persistence.*;
 public class Rent {
     @Id
     private String id;
-    private String date;
-    private String time;
 
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = Customer.class)
     @JoinColumn(name = "nic")
@@ -25,4 +23,7 @@ public class Rent {
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = Vehicle.class)
     @JoinColumn(name = "registrationNo")
     private String registrationNo;
+
+    private String date;
+    private String time;
 }

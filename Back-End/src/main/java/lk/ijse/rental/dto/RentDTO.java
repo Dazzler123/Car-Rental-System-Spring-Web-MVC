@@ -11,8 +11,8 @@ import lombok.ToString;
 @ToString
 public class RentDTO {
     private String id;
-    private String date;
-    private String time;
     private String nic; //customer id
     private String registrationNo;  //vehicle id
+    private String date;
+    private String time;
 }
