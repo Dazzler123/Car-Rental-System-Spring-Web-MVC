@@ -22,7 +22,7 @@ public class Rent {
 
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = Vehicle.class)
     @JoinColumn(name = "registrationNo")
-    private String registrationNo;
+    private Vehicle registrationNo;
 
     private String date;
     private String time;
