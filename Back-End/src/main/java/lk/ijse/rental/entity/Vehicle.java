@@ -7,6 +7,9 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,4 +36,7 @@ public class Vehicle {
     private double monthlyRate;
     private double kmMonthly;
     private double extraKmRate;
+
+    @OneToMany(mappedBy = "registrationNo", targetEntity = Rent.class)
+    private List<Rent> rentList = new ArrayList<>();
 }
