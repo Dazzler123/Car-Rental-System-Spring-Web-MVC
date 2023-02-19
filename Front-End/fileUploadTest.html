@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload Test</title>
+    <meta content="width=device-width initial-scale=1 maximum-scale=1 minimum-scale=1 user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/images/75702.png" rel="icon">
+</head>
+<body>
+<header class="container-fluid bg-primary p-2">
+    <h2 class="text-white">Image Upload And View With Spring</h2>
+</header>
+<section class="container mt-4">
+    <div class="row justify-content-around">
+        <div class="col-4">
+            <form>
+                <label for="file">Profile Picture</label>
+                <input id="file" name="myFile" type="file" class="form-control">
+                <button type="button" id="btnUpload" class="btn btn-danger mt-3">Upload File</button>
+            </form>
+        </div>
+        <div class="col-5">
+            <div id="display" class="border border-1, w-100" style="height: 300px"></div>
+            <button type="button" id="btnLoad" class="btn btn-success mt-3">Load Image</button>
+            <hr>
+            <table class="table table-bordered table-hover">
+                <thead class="bg-info text-white">
+                <tr>
+                    <th>Images</th>
+                </tr>
+                </thead>
+                <tbody id="table">
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script>
+    let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+
+    loadTheLastUploadedImage();
+
+    $("#btnUpload").click(function () {
+        var data = new FormData();
+        let file = $("#file")[0].files[0];
+        let fileName = $("#file")[0].files[0].name;
+        data.append("myFile", file, fileName);
+
+        $.ajax({
+            url: baseUrl + "api/v1/upload",
+            method: 'post',
+            async: true,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (resp) {
+                alert("Successfully Uploaded");
+                loadTheLastUploadedImage();
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+
+    $("#btnLoad").click(function () {
+        loadTheLastUploadedImage();
+    });
+
+    function loadTheLastUploadedImage() {
+        $("#table").empty();
+        $.ajax({
+            url: baseUrl + "api/v1/upload",
+            method: 'get',
+            dataType: 'json',
+            success: function (resp) {
+                let url = resp[resp.length - 1];
+
+                $("#display").css({
+                    "background": `url(${baseUrl + url})`,
+                    "background-size": "cover",
+                    "height": "300px"
+                });
+                for (let i in resp) {
+                    let row = `<tr><td><img src="${baseUrl + resp[i]}" width="100px"></td></tr>`;
+                    $("#table").append(row);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+</script>
+</body>
+</html>
