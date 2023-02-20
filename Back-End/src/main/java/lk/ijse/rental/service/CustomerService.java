@@ -10,4 +10,6 @@ public interface CustomerService {
     public CustomerDTO searchCustomer(String nic);
 
     public void updateCustomer(CustomerDTO dto);
+
+    public void deleteCustomer(String nic);
 }

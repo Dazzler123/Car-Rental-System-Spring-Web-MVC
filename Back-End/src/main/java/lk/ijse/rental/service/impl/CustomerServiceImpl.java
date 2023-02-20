@@ -57,4 +57,13 @@ public class CustomerServiceImpl implements CustomerService {
             repo.save(customer);
         }
     }
+
+    @Override
+    public void deleteCustomer(String nic) {
+        if(!repo.existsById(nic)) {
+            throw new RuntimeException("No Customer found with matching NIC.");
+        } else {
+            repo.deleteById(nic);
+        }
+    }
 }

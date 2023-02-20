@@ -122,4 +122,10 @@ public class CustomerController {
         service.updateCustomer(dto);
         return "Customer details updated successfully.";
     }
+
+    @DeleteMapping(params = "nic")
+    public String deleteCustomer(String nic) {
+        service.deleteCustomer(nic);
+        return "Customer deleted successfully.";
+    }
 }

@@ -70,7 +70,6 @@ function setTextFieldData(custNic,custEmail,custGender,custDlNo,custAddress,cust
 
 //update customer
 $('#btnUpdateCustomer').click(function () {
-
     //save updates
     $.ajax({
         url: baseURL + "customer",
@@ -104,7 +103,7 @@ $('#btnUpdateCustomer').click(function () {
 //delete customer
 $('#btnDeleteCustomer').click(function () {
     //get nic
-    var nic = $('#lblCustNIC').val();
+    var nic = $('#lblCustNic').val();
 
     $.ajax({
         url: baseURL + "customer?nic=" + nic + "",
@@ -112,6 +111,7 @@ $('#btnDeleteCustomer').click(function () {
         dataType: "json",
         success: function (resp) {
             alert(JSON.parse(resp.responseText).message);
+            alert("Customer deleted successfully.");
 
             //refresh table
             $('#tblCustomers').empty();
