@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void saveCustomer(CustomerDTO dto) {
-        if(repo.existsById(dto.getNic())) {
+        if (repo.existsById(dto.getNic())) {
             throw new RuntimeException("Customer Already Exists");
         } else {
             Customer customer = mapper.map(dto, Customer.class);
@@ -37,5 +37,14 @@ public class CustomerServiceImpl implements CustomerService {
         }
         Customer customer = repo.findCustomerByUsernameAndPassword(username, password);
         return mapper.map(customer, CustomerDTO.class);
+    }
+
+    @Override
+    public CustomerDTO searchCustomer(String nic) {
+        if (!repo.existsById(nic)) {
+            throw new RuntimeException("No Customer found with matching NIC.");
+        } else {
+            return mapper.map(repo.findCustomerByNic(nic), CustomerDTO.class);
+        }
     }
 }

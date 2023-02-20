@@ -111,4 +111,9 @@ public class CustomerController {
     public ResponseUtil verifyCustomer(String username, String password) {
         return new ResponseUtil("200", "Customer Exists.", service.verifyCustomer(username, password));
     }
+
+    @GetMapping(path = "/search")
+    public ResponseUtil searchCustomerById(String nic) {
+        return new ResponseUtil("200", "Customer Found with matching NIC", service.searchCustomer(nic));
+    }
 }

@@ -13,6 +13,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import javax.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @WebAppConfiguration
@@ -35,9 +36,11 @@ class CustomerRepoTest {
 //
 //        System.out.println(byTypeAndMakeAndTransmission);
 
-        Customer dazzler7tec = repo2.findCustomerByUsernameAndPassword("dazzler7tec", "45459093");
-        System.out.println(dazzler7tec);
+//        Customer dazzler7tec = repo2.findCustomerByUsernameAndPassword("dazzler7tec", "45459093");
+//        System.out.println(dazzler7tec);
 
+//        Customer customer = repo2.findCustomerByNic("200334000948");
+//        System.out.println(customer);
 
     }
 
