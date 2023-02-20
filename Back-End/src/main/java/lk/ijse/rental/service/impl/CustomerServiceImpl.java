@@ -47,4 +47,14 @@ public class CustomerServiceImpl implements CustomerService {
             return mapper.map(repo.findCustomerByNic(nic), CustomerDTO.class);
         }
     }
+
+    @Override
+    public void updateCustomer(CustomerDTO dto) {
+        if(!repo.existsById(dto.getNic())) {
+            throw new RuntimeException("No Customer found with matching NIC.");
+        } else {
+            Customer customer = mapper.map(dto, Customer.class);
+            repo.save(customer);
+        }
+    }
 }

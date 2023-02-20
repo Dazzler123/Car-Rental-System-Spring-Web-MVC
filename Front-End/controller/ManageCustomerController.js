@@ -58,6 +58,7 @@ function getRowDataToFields() {
 
 function setTextFieldData(custNic,custEmail,custGender,custDlNo,custAddress,custContactNo,custName) {
     $('#lblCustNic').val(custNic);
+    $('#txtCustomerNIC').val(custNic);
     $('#txtCustomerName').val(custName);
     $('#txtCustomerAddress').val(custAddress);
     $('#txtCustomerDLNo').val(custDlNo);
@@ -72,9 +73,9 @@ $('#btnUpdateCustomer').click(function () {
 
     //save updates
     $.ajax({
-        url: baseURL + "customer/update",
+        url: baseURL + "customer",
         method: "put",
-        dataType: "json",
+        dataType: "application/json",
         data: {
             "nic":$('#lblCustNic').val(),
             "dl_no":$('#txtCustomerDLNo').val(),
@@ -82,7 +83,7 @@ $('#btnUpdateCustomer').click(function () {
             "address":$('#txtCustomerAddress').val(),
             "contact_no":$('#txtCustomerContactNo').val(),
             "email":$('#txtCustomerEmail').val(),
-            "gender":$('#cbxCustomerGender option:selected').text()
+            "gender":$('#cbxCustomerGender option:selected').text(),
         },
         success: function (resp) {
             alert(JSON.parse(resp.responseText).message);

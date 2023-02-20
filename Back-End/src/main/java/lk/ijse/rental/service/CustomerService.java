@@ -8,4 +8,6 @@ public interface CustomerService {
     public CustomerDTO verifyCustomer(String username, String password);
 
     public CustomerDTO searchCustomer(String nic);
+
+    public void updateCustomer(CustomerDTO dto);
 }

@@ -21,4 +21,14 @@ public class CustomerDTO {
     private String gender;
     private String username;
     private String password;
+
+    public CustomerDTO(String nic, String dl_no, String name, String address, String contact_no, String email, String gender) {
+        this.nic = nic;
+        this.dl_no = dl_no;
+        this.name = name;
+        this.address = address;
+        this.contact_no = contact_no;
+        this.email = email;
+        this.gender = gender;
+    }
 }

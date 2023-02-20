@@ -116,4 +116,10 @@ public class CustomerController {
     public ResponseUtil searchCustomerById(String nic) {
         return new ResponseUtil("200", "Customer Found with matching NIC", service.searchCustomer(nic));
     }
+
+    @PutMapping
+    public String updateCustomer(@RequestBody CustomerDTO dto){
+        service.updateCustomer(dto);
+        return "Customer details updated successfully.";
+    }
 }
