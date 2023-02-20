@@ -94,7 +94,8 @@
             <td>0762093858</td>
             <td>dasinduhewagamage@gmail.com</td>
             <td>Male</td>
-        </tr><tr>
+        </tr>
+        <tr>
             <td>200334000948</td>
             <td>234490934324</td>
             <td>Dasindu Hewagamage</td>
@@ -117,8 +118,99 @@
 </div>
 
 
-<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
-<input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
+<!-- customer details form -->
+<form class="mt-5 me-0 mx-auto">
+    <!-- customer nic-->
+    <input class="col-2 mb-3 ms-2 ms-5" type="text" value="Customer NIC (Readonly)"
+           aria-label="Disabled input example" disabled readonly>
+
+    <!--images with input fields-->
+    <div class="row g-3 col-10 mb-3 mx-auto">
+        <div class="text-center col-6">
+            <div class="g-col-5">
+                <figure class="figure">
+                    <img src="assets/images/13-min-32.jpg" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption">nic_image.jpeg</figcaption>
+                </figure>
+                <!--upload nic image file-->
+                <div class="col-12">
+                    <!--                    <label class="form-label fw-light">National Identity Card Image</label>-->
+                    <input class="form-control" type="file" id="nicImageFile">
+                </div>
+            </div>
+        </div>
+        <div class="text-center col-6">
+            <div class="g-col-5">
+                <figure class="figure">
+                    <img src="assets/images/13-min-32.jpg" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption">dl_image.jpeg</figcaption>
+                </figure>
+                <!--upload dl image file-->
+                <div class="col-12">
+                    <!--                    <label class="form-label fw-light">Driving License Image</label>-->
+                    <input class="form-control" type="file" id="dlImageFile">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-------------name & address------------->
+    <div class="row g-3 col-12 mb-4 mt-5 mx-auto">
+        <div class="col-6">
+            <label class="form-label">Full Name</label>
+            <input id="txtCustomerName" type="text" class="form-control fw-light" placeholder="D B Hewagamage"
+                   aria-label="">
+            <div class="form-text fst-italic">Please enter full name with initials.</div>
+        </div>
+        <div class="col-6">
+            <label class="form-label">Address</label>
+            <input id="txtCustomerAddress" type="text" class="form-control form-control fw-light"
+                   placeholder="23/1, Galle Road, Panadura" aria-label="">
+        </div>
+    </div>
+
+    <!----------nic, email & contact no----------->
+    <div class="row g-3 mb-3 col-12 mx-auto">
+        <div class="col">
+            <label class="form-label">National Identity Card Number</label>
+            <input id="txtCustomerNIC" type="text" class="form-control fw-light" placeholder="923478293492V"
+                   aria-label="">
+        </div>
+        <div class="col">
+            <label class="form-label">Email address</label>
+            <input id="txtCustomerEmail" type="text" class="form-control form-control fw-light"
+                   placeholder="pragmaticdeveloper@gmail.com" aria-label="">
+        </div>
+        <div class="col">
+            <label class="form-label">Contact Number</label>
+            <input id="txtCustomerContactNo" type="text" class="form-control form-control fw-light"
+                   placeholder="0773434343"
+                   aria-label="">
+        </div>
+    </div>
+    <!-------------dl no & gender------------>
+    <div class="row g-3 mb-5 col-12 mx-auto">
+        <div class="col-4">
+            <label class="form-label">Driving License Number</label>
+            <input id="txtCustomerDLNo" type="text" class="form-control fw-light" placeholder="9234782934920"
+                   aria-label="">
+        </div>
+        <div class="col-4 mt-5">
+            <select id="cbxCustomerGender" class="form-select" aria-label="Default select example">
+                <option selected>Select Gender</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Other</option>
+            </select>
+        </div>
+    </div>
+
+    <!-----------update, delete customer details----------->
+    <div class="row d-grid d-md-flex mt-4 mx-auto mb-5 col-12">
+        <button type="button" class="btn btn-warning btn-lg col-4 me-5">Update Details</button>
+        <button type="button" class="btn btn-danger btn-lg col-4">Delete Customer</button>
+    </div>
+</form>
 
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
