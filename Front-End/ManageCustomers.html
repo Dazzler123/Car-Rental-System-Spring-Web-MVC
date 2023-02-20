@@ -12,7 +12,69 @@
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/images/75702.png" rel="icon">
 </head>
-<body>
+<body class="container-fluid m-0 p-0 mx-auto row">
+<!-------------loader------------->
+<div id="loader_Container">
+    <div></div>
+</div>
 
+<!----------navbar---------->
+<nav class="navbar navbar-dark bg-dark sticky-top border-4">
+    <div class="container-fluid">
+        <a class="navbar-brand fst-italic ms-3 col-9 mb-1 mt-1" href="index.html">Easy Car Rental Pvt. Ltd.</a>
+    </div>
+</nav>
+
+<!----------------heading---------------->
+<h1 class="col-12 text-center mt-5 mb-5 fw-semibold fs-2 border-5">Manage Customers</h1>
+
+
+<table id="tblCust" class="table table-bordered table-hover caption-top">
+    <caption>All Customers</caption>
+    <thead class="table-primary">
+    <tr>
+        <th scope="col">NIC</th>
+        <th scope="col">DL No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Contact No.</th>
+        <th scope="col">Email</th>
+        <th scope="col">Gender</th>
+    </tr>
+    </thead>
+    <tbody id="tblCustomers" class="table-group-divider">
+    <tr>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <td>@fat</td>
+        <td>@fat</td>
+        <td>@fat</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <td>Larry the Bird</td>
+        <td>Larry the Bird</td>
+        <td>@twitter</td>
+        <td>@twitter</td>
+        <td>@twitter</td>
+        <td>@twitter</td>
+        <td>@twitter</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery-3.6.1.min.js"></script>
 </body>
 </html>
