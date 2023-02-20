@@ -12,7 +12,7 @@
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/images/75702.png" rel="icon">
 </head>
-<body class="container-fluid m-0 p-0 mx-auto row">
+<body class="container-fluid m-0 p-0 mx-auto row justify-content-end">
 <!-------------loader------------->
 <div id="loader_Container">
     <div></div>
@@ -29,49 +29,96 @@
 <h1 class="col-12 text-center mt-5 mb-5 fw-semibold fs-2 border-5">Manage Customers</h1>
 
 
-<table id="tblCust" class="table table-bordered table-hover caption-top">
-    <caption>All Customers</caption>
-    <thead class="table-primary">
-    <tr>
-        <th scope="col">NIC</th>
-        <th scope="col">DL No.</th>
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">Contact No.</th>
-        <th scope="col">Email</th>
-        <th scope="col">Gender</th>
-    </tr>
-    </thead>
-    <tbody id="tblCustomers" class="table-group-divider">
-    <tr>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>@fat</td>
-        <td>@fat</td>
-        <td>@fat</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <td>Larry the Bird</td>
-        <td>Larry the Bird</td>
-        <td>@twitter</td>
-        <td>@twitter</td>
-        <td>@twitter</td>
-        <td>@twitter</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
-</table>
+<!----------search customer-------->
+<form class="row g-3 col-5 me-0 pe-0">
+    <div class="col-auto">
+        <label class="fst-italic fw-light mt-2 me-3">Search by Customer NIC</label>
+    </div>
+    <div class="col-auto">
+        <input type="search" class="form-control" placeholder="Enter Customer NIC">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Search</button>
+    </div>
+</form>
+
+
+<!------------customer table----------->
+<div class="col-11 m-0 p-0 mx-auto">
+    <table class="table table-bordered table-hover caption-top">
+        <caption class="ms-3 mb-2">All Customers Table - Click the entry to edit details</caption>
+        <thead class="table-primary">
+        <tr>
+            <th scope="col">NIC</th>
+            <th scope="col">DL No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Contact No.</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+        </tr>
+        </thead>
+        <tbody id="tblCustomers" class="table-group-divider">
+        <tr>
+            <td>200334000948</td>
+            <td>234490934324</td>
+            <td>Dasindu Hewagamage</td>
+            <td>7/30, Chamara Uyana, Wathurugama Road, Henarathgoda, Mudungoda.</td>
+            <td>0762093858</td>
+            <td>dasinduhewagamage@gmail.com</td>
+            <td>Male</td>
+        </tr>
+        <tr>
+            <td>200334000948</td>
+            <td>234490934324</td>
+            <td>Dasindu Hewagamage</td>
+            <td>7/30, Chamara Uyana, Wathurugama Road, Henarathgoda, Mudungoda.</td>
+            <td>0762093858</td>
+            <td>dasinduhewagamage@gmail.com</td>
+            <td>Male</td>
+        </tr>
+        <tr>
+            <td>200334000948</td>
+            <td>234490934324</td>
+            <td>Dasindu Hewagamage</td>
+            <td>7/30, Chamara Uyana, Wathurugama Road, Henarathgoda, Mudungoda.</td>
+            <td>0762093858</td>
+            <td>dasinduhewagamage@gmail.com</td>
+            <td>Male</td>
+        </tr>
+        <tr>
+            <td>200334000948</td>
+            <td>234490934324</td>
+            <td>Dasindu Hewagamage</td>
+            <td>7/30, Chamara Uyana, Wathurugama Road, Henarathgoda, Mudungoda.</td>
+            <td>0762093858</td>
+            <td>dasinduhewagamage@gmail.com</td>
+            <td>Male</td>
+        </tr><tr>
+            <td>200334000948</td>
+            <td>234490934324</td>
+            <td>Dasindu Hewagamage</td>
+            <td>7/30, Chamara Uyana, Wathurugama Road, Henarathgoda, Mudungoda.</td>
+            <td>0762093858</td>
+            <td>dasinduhewagamage@gmail.com</td>
+            <td>Male</td>
+        </tr>
+        <tr>
+            <td>200334000948</td>
+            <td>234490934324</td>
+            <td>Dasindu Hewagamage</td>
+            <td>7/30, Chamara Uyana, Wathurugama Road, Henarathgoda, Mudungoda.</td>
+            <td>0762093858</td>
+            <td>dasinduhewagamage@gmail.com</td>
+            <td>Male</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+<input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
 
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
