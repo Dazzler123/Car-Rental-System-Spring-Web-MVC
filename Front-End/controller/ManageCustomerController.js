@@ -99,3 +99,28 @@ $('#btnUpdateCustomer').click(function () {
         }
     });
 });
+
+
+//delete customer
+$('#btnDeleteCustomer').click(function () {
+    //get nic
+    var nic = $('#lblCustNIC').val();
+
+    $.ajax({
+        url: baseURL + "customer?nic=" + nic + "",
+        method: "delete",
+        dataType: "json",
+        success: function (resp) {
+            alert(JSON.parse(resp.responseText).message);
+
+            //refresh table
+            $('#tblCustomers').empty();
+
+            // clear textfields
+            setTextFieldData(null,null,null,null,null,null,null);
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+});
