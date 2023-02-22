@@ -235,12 +235,12 @@
             <label class="form-label fst-italic fw-normal col-1 m-0 pt-1">From</label>
             <!--from this date-->
             <div class="col-3 m-0">
-                <input type="date" class="form-control col-3">
+                <input id="dtePikrRentFrom" type="date" class="form-control col-3">
             </div>
             <label class="form-label fst-italic fs-6 fw-normal col-1 m-0 pt-1">to</label>
             <!--to this date-->
             <div class="col-3 m-0">
-                <input type="date" class="form-control col-3">
+                <input id="dtePikrRentTo" type="date" class="form-control col-3">
             </div>
         </div>
 
@@ -253,19 +253,19 @@
             <!--input date-->
             <div class="m-0 col-10 row">
                 <div class="col-3 mx-auto m-0 ms-0 p-0">
-                    <input type="date" class="form-control">
+                    <input id="dtePikrPickup" type="date" class="form-control">
                 </div>
                 <div class="col-3 mx-auto m-0 ms-0 p-0">
-                    <input type="date" class="form-control">
+                    <input id="dtePikrReturn" type="date" class="form-control">
                 </div>
             </div>
             <!--input time-->
             <div class="m-0 col-10 row mt-2">
                 <div class="col-3 mx-auto m-0 ms-0 p-0">
-                    <input type="time" class="form-control">
+                    <input id="timePikrPickup" type="time" class="form-control">
                 </div>
                 <div class="col-3 mx-auto m-0 ms-0 p-0">
-                    <input type="time" class="form-control">
+                    <input id="timePikrReturn" type="time" class="form-control">
                 </div>
             </div>
         </div>
@@ -274,14 +274,14 @@
         <div class="m-0 col-11 row mt-5 ms-5">
             <label class="form-label fst-italic fs-5 fw-light m-0 p-0 mb-3 col-12">Do you want a Driver?</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
+                <input id="driverTrue" class="form-check-input" type="radio" name="flexRadioDefault" checked>
+                <label class="form-check-label" for="driverTrue">
                     Yes
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
+                <input id="driverFalse" class="form-check-input" type="radio" name="flexRadioDefault">
+                <label class="form-check-label" for="driverFalse">
                     No
                 </label>
             </div>
@@ -322,7 +322,7 @@
 
         <!---------place rent btn------->
         <div class="col-11 row mt-5 m-0 p-0 ms-5">
-            <button type="button" class="btn btn-lg btn-success col-3 m-0">Place Rent</button>
+            <button id="btnPlaceRent" type="button" class="btn btn-lg btn-success col-3 m-0">Place Rent</button>
         </div>
         <label class="form-label fw-bold col-10 m-0 p-0 ms-5 mt-3">Your rental request will be sent to our manager for
             additional verifications.&nbsp;Please expect for an response on "Rental Request" section, the response will

@@ -204,3 +204,10 @@ $('#cbxSelectVehicle').change(function () {
         }
     });
 });
+
+
+//place rent (save rent)
+$('#btnPlaceRent').click(function () {
+    // get data
+
+});
