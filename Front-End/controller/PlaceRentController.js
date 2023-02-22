@@ -13,6 +13,7 @@ loadAllVehicleModelNames();
 //verified customer id & name
 let custId = "";
 let custName = "";
+let vehicleId = ""
 
 
 //verify customer (username & password)
@@ -41,6 +42,10 @@ $('#btnVerifyCustomer').click(function () {
 
             //show status
             $('#lblVerificationStatus').text("Verification Successful.");
+
+            //disable input fields
+            $('#txtCustomerUsername').attr('disabled', true);
+            $('#pwdCustomerPassword').attr('disabled', true);
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
@@ -198,6 +203,12 @@ $('#cbxSelectVehicle').change(function () {
                             </div>
                         </div>
                     </div>`;
+
+            // record registration no
+            vehicleId = vehicle.data.registrationNo;
+
+            //disable dropdown
+            $('#cbxSelectVehicle').attr('disabled', true);
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
@@ -208,6 +219,29 @@ $('#cbxSelectVehicle').change(function () {
 
 //place rent (save rent)
 $('#btnPlaceRent').click(function () {
-    // get data
+    var date = new Date();
+
+    // wrap data (rent)
+    var rent = {
+        "id": "R001",
+        "nic": custId,
+        "registrationNo": vehicleId,
+        "date": date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
+        "time": date.getHours() + ":" + date.getMinutes()
+    };
+
+    //wrap data (rent_details)
+    var rentDetails = {
+        "id": "001",
+        "driver": "D001",
+        "pickUpDate": $('#dtePikrPickup').val(),
+        "pickUpTime": $('#timePikrPickup').val(),
+        "bankImg": true,
+        "damageWaiver": 0.0,
+        "returnDate": $('#dtePikrReturn').val(),
+        "returnTime": $('#timePikrReturn').val(),
+        "rentDuration": "4 Days"
+    }
+
 
 });
