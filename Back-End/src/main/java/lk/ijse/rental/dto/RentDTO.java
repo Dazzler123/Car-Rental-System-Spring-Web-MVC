@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -15,4 +17,6 @@ public class RentDTO {
     private String registrationNo;  //vehicle id
     private String date;
     private String time;
+
+    private ArrayList<RentDetailsDTO> rentDetails;
 }
