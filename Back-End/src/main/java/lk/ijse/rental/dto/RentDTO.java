@@ -12,11 +12,18 @@ import java.util.ArrayList;
 @Data
 @ToString
 public class RentDTO {
-    private String id;
+    private int rentId;
     private String nic; //customer id
     private String registrationNo;  //vehicle id
     private String date;
     private String time;
 
     private ArrayList<RentDetailsDTO> rentDetails;
+
+//    public RentDTO(String nic, String registrationNo, String date, String time) {
+//        this.nic = nic;
+//        this.registrationNo = registrationNo;
+//        this.date = date;
+//        this.time = time;
+//    }
 }

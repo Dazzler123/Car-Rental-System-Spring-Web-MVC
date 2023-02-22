@@ -14,7 +14,8 @@ import javax.persistence.*;
 @Entity
 public class Rent_Details {
     @Id
-    private String id;
+    @GeneratedValue
+    private int id;
     private String pickUpDate;
     private String pickUpTime;
     private boolean bankImg;

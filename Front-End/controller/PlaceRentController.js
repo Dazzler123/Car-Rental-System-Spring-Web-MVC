@@ -221,27 +221,75 @@ $('#cbxSelectVehicle').change(function () {
 $('#btnPlaceRent').click(function () {
     var date = new Date();
 
+    // let orderId = 1;
+    // let driverId = "D001";
+    // let pikUpD = $('#dtePikrPickup').val();
+    // let pikUpT = $('#timePikrPickup').val();
+    // let bnkImg = true;
+    // let dmgWaiwer = 0.0;
+    // let retD = $('#dtePikrReturn').val();
+    // let retT = $('#timePikrReturn').val();
+    // let rentDura = "4 Days";
+    //
+    // //wrap data (rent_details)
+    // let rentDetail = {
+    //     id: orderId,
+    //     driver: driverId,
+    //     pickUpDate: pikUpD,
+    //     pickUpTime: pikUpT,
+    //     bankImg: bnkImg,
+    //     damageWaiver: dmgWaiwer,
+    //     returnDate: retD,
+    //     returnTime: retT,
+    //     rentDuration: rentDura
+    // };
+
+    let rID = 1;
+    let custNIC = custId;
+    let regisNo = vehicleId;
+    let dateD = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    let timeT = date.getHours() + ":" + date.getMinutes();
+
     // wrap data (rent)
-    var rent = {
-        "id": "R001",
-        "nic": custId,
-        "registrationNo": vehicleId,
-        "date": date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
-        "time": date.getHours() + ":" + date.getMinutes()
+    let rent = {
+        rentId: rID,
+        nic: custNIC,
+        registrationNo: regisNo,
+        date: dateD,
+        time: timeT,
+        // rentDetails: rentDetail
     };
 
-    //wrap data (rent_details)
-    var rentDetails = {
-        "id": "001",
-        "driver": "D001",
-        "pickUpDate": $('#dtePikrPickup').val(),
-        "pickUpTime": $('#timePikrPickup').val(),
-        "bankImg": true,
-        "damageWaiver": 0.0,
-        "returnDate": $('#dtePikrReturn').val(),
-        "returnTime": $('#timePikrReturn').val(),
-        "rentDuration": "4 Days"
-    }
-
-
+    //send save request
+    $.ajax({
+        url: baseURL + "rent/save",
+        method: "post",
+        data: JSON.stringify(rent),
+        dataType: "json",
+        success: function (res) {
+            alert(res.message);
+            console.log("Rent saved.")
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+    // saveRent();
 });
+
+// function saveRent() {
+//     let placeOrder = $('#placeRentForm').serialize();
+//
+//     $.ajax({
+//         url: baseURL + "rent/save",
+//         method: "post",
+//         data: placeOrder,
+//         dataType: "json",
+//         success: function (res) {
+//             alert(res.message);
+//         }, error: function (error) {
+//             var errorMessage = JSON.parse(error.responseText);
+//             alert(errorMessage.message);
+//         }
+//     });
+// }

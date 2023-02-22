@@ -15,7 +15,9 @@ import java.util.List;
 @Entity
 public class Rent {
     @Id
-    private String rentId;
+//    @Column(name = "rentId")
+    @GeneratedValue
+    private int rentId;
 
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = Customer.class)
     @JoinColumn(name = "nic")
@@ -30,4 +32,11 @@ public class Rent {
 
     @OneToMany(mappedBy = "rents", cascade = CascadeType.ALL, targetEntity = Rent_Details.class)
     private List<Rent_Details> rentDetails;
+
+//    public Rent(Customer nic, Vehicle registrationNo, String date, String time) {
+//        this.nic = nic;
+//        this.registrationNo = registrationNo;
+//        this.date = date;
+//        this.time = time;
+//    }
 }

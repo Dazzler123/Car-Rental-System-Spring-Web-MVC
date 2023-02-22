@@ -10,13 +10,12 @@ import lombok.ToString;
 @Data
 @ToString
 public class RentDetailsDTO {
-    private String id;
+    private int id;
     private String driver;  //driver nic or null
     private String pickUpDate;
     private String pickUpTime;
     private boolean bankImg;
-    private double damageWaiver;  //saves 0 when placing the rent and after returning the car, if an damage was noticed
-                                  //that amount charged will be updated here
+    private double damageWaiver;
     private String returnDate;
     private String returnTime;
     private String rentDuration;  //how many days rented
