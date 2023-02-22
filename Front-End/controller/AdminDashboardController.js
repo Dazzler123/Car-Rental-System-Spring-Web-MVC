@@ -10,10 +10,10 @@ let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 dashboardSummary();
 
 
+
 function dashboardSummary() {
     let availableCars = 0;
     let reservedCars = 0;
-    let customers = 0;
 
     //request for all vehicles
     $.ajax({
