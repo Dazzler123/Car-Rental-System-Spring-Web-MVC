@@ -5,8 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,11 +18,17 @@ public class Rent_Details {
     private String pickUpDate;
     private String pickUpTime;
     private boolean bankImg;
-    private double damageWaiver;  //saves 0 when placing the rent and after returning the car, if an damage was noticed
-    //that amount charged will be updated here
+    private double damageWaiver;
     private String returnDate;
     private String returnTime;
-    private String rentDuration;  //how many days rented
+    private String rentDuration;
 
-    private String driver;  //driver nic
+    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Vehicle.class)
+    @JoinColumn(name = "nic")
+    private Driver nic;
+
+    @ManyToOne
+    @JoinColumn(name = "oid",referencedColumnName = "oid")
+    private Rent rents;
+
 }

@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,4 +28,7 @@ public class Rent {
 
     private String date;
     private String time;
+
+    @OneToMany(mappedBy = "rents", cascade = CascadeType.ALL, targetEntity = Rent_Details.class)
+    private List<Rent_Details> rentDetails;
 }
