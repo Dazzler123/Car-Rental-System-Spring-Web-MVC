@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class RentDetailsDTO {
     private String id;
-    private String driver;  //driver nic
+    private String driver;  //driver nic or null
     private String pickUpDate;
     private String pickUpTime;
     private boolean bankImg;
