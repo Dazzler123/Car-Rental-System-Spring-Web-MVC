@@ -23,12 +23,11 @@ public class Rent_Details {
     private String returnTime;
     private String rentDuration;
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Vehicle.class)
+    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Driver.class)
     @JoinColumn(name = "nic")
     private Driver nic;
 
-    @ManyToOne
-    @JoinColumn(name = "oid",referencedColumnName = "oid")
+    @ManyToOne(targetEntity = Rent.class)
+    @JoinColumn(name = "rentId",referencedColumnName = "rentId")
     private Rent rents;
-
 }

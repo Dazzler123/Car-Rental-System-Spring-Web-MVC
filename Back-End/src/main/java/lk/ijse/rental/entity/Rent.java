@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -16,7 +15,7 @@ import java.util.List;
 @Entity
 public class Rent {
     @Id
-    private String id;
+    private String rentId;
 
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = Customer.class)
     @JoinColumn(name = "nic")
