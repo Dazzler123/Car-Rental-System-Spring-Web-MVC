@@ -112,13 +112,19 @@ public class CustomerController {
         return new ResponseUtil("200", "Customer Exists.", service.verifyCustomer(username, password));
     }
 
+    @GetMapping(path = "/loadAll")
+    public ResponseUtil loadAllCustomers() {
+        ArrayList<CustomerDTO> customers = service.loadAll();
+        return new ResponseUtil("200", "All Customer Loaded.", customers);
+    }
+
     @GetMapping(path = "/search")
     public ResponseUtil searchCustomerById(String nic) {
         return new ResponseUtil("200", "Customer Found with matching NIC", service.searchCustomer(nic));
     }
 
     @PutMapping
-    public String updateCustomer(@RequestBody CustomerDTO dto){
+    public String updateCustomer(@RequestBody CustomerDTO dto) {
         service.updateCustomer(dto);
         return "Customer details updated successfully.";
     }

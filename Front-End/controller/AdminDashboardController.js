@@ -21,9 +21,7 @@ function dashboardSummary() {
         method: "get",
         dataType: "json",
         success: function (resp) {
-            console.log(resp)
             for (var vehicle of resp.data) {
-                console.log(vehicle.reserved);
                 // if the car is reserved
                 if (vehicle.reserved) {
                     reservedCars = reservedCars + 1;
@@ -31,7 +29,6 @@ function dashboardSummary() {
                     availableCars = availableCars + 1;
                 }
             }
-
             //set data
             $('#lblAvailableCars').text(availableCars);
             $('#lblReservedCars').text(reservedCars);
@@ -43,24 +40,12 @@ function dashboardSummary() {
 
     //request for all customers
     $.ajax({
-        url: baseURL + "customers/loadAll",
+        url: baseURL + "customer/loadAll",
         method: "get",
         dataType: "json",
         success: function (resp) {
-            console.log(resp)
-            for (var vehicle of resp.data) {
-                console.log(vehicle.reserved);
-                // if the car is reserved
-                if (vehicle.reserved) {
-                    reservedCars = reservedCars + 1;
-                } else {
-                    availableCars = availableCars + 1;
-                }
-            }
-
             //set data
-            $('#lblAvailableCars').text(availableCars);
-            $('#lblReservedCars').text(reservedCars);
+            $('#lblTotCustomers').text(resp.data.length);
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);

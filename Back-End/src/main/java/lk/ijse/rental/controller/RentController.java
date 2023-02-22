@@ -13,7 +13,7 @@ public class RentController {
     @Autowired
     RentService service;
 
-    @PostMapping("/save")
+    @PostMapping(path = "/save")
     public String placeRent(RentDTO dto) {
         return service.saveRent(dto);
     }

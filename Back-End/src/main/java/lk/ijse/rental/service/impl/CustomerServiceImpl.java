@@ -1,14 +1,17 @@
 package lk.ijse.rental.service.impl;
 
 import lk.ijse.rental.dto.CustomerDTO;
+import lk.ijse.rental.dto.VehicleDTO;
 import lk.ijse.rental.entity.Customer;
 import lk.ijse.rental.repo.CustomerRepo;
 import lk.ijse.rental.service.CustomerService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 
 @Service
 @Transactional
@@ -19,6 +22,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     ModelMapper mapper;
+
+    @Override
+    public ArrayList<CustomerDTO> loadAll() {
+        return mapper.map(repo.findAll(), new TypeToken<ArrayList<CustomerDTO>>() {
+        }.getType());
+    }
 
     @Override
     public void saveCustomer(CustomerDTO dto) {
@@ -50,7 +59,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(CustomerDTO dto) {
-        if(!repo.existsById(dto.getNic())) {
+        if (!repo.existsById(dto.getNic())) {
             throw new RuntimeException("No Customer found with matching NIC.");
         } else {
             Customer customer = mapper.map(dto, Customer.class);
@@ -60,7 +69,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deleteCustomer(String nic) {
-        if(!repo.existsById(nic)) {
+        if (!repo.existsById(nic)) {
             throw new RuntimeException("No Customer found with matching NIC.");
         } else {
             repo.deleteById(nic);
