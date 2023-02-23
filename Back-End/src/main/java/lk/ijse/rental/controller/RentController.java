@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("rent")
 @CrossOrigin
 public class RentController {
-
     @Autowired
     RentService service;
 
     @PostMapping(path = "/save")
-    public String placeRent(RentDTO dto) {
+    public String placeRent(@RequestBody RentDTO dto) {
+        System.out.println(dto);
         return service.saveRent(dto);
     }
 }

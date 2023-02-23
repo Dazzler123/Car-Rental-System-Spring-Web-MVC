@@ -21,6 +21,7 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public String saveRent(RentDTO rent) {
+        System.out.println(rent);
         Rent map = mapper.map(rent, Rent.class);
         repo.save(map);
 

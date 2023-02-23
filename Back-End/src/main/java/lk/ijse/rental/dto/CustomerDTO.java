@@ -16,8 +16,6 @@ public class CustomerDTO {
     private String address;
     private String contact_no;
     private String email;
-    private boolean nic_img;
-    private boolean dl_img;
     private String gender;
     private String username;
     private String password;

@@ -1,6 +1,9 @@
 // backend url
 let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 
+//file reader obj
+const reader = new FileReader();
+
 // loader
 $(window).on('load', function () {
     $("#loader_Container").fadeOut(700);
@@ -19,8 +22,6 @@ $('#btnSaveCustomer').click(function () {
             "address": $('#txtCustomerAddress').val(),
             "contact_no": $('#txtCustomerContactNo').val(),
             "email": $('#txtCustomerEmail').val(),
-            "nic_img": true,
-            "dl_img": true,
             "gender": $('#cbxCustomerGender option:selected').text(),
             "username": $('#txtCustomerUsername').val(),
             "password": $('#pwdCustomerPassword').val()
@@ -33,4 +34,22 @@ $('#btnSaveCustomer').click(function () {
             alert(JSON.parse(error.responseText).message);
         }
     });
+
+
+    //====== save nic/dl image on local storage (web) ========
+    const nicDlImageFile = document.getElementById('nicDlImageFile');
+
+    //save image
+    // nicDlImageFile.addEventListener('change', () => {
+        // Get file from input element
+        const imgFile = nicDlImageFile.files[0];
+        reader.readAsDataURL(imgFile);
+
+        reader.addEventListener('load', () => {
+            const url = reader.result
+            // add image to localStorage
+            localStorage.setItem($('#txtCustomerNIC').val(), url);
+            // reader.abort();
+        });
+    // });
 });

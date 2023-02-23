@@ -221,30 +221,29 @@ $('#cbxSelectVehicle').change(function () {
 $('#btnPlaceRent').click(function () {
     var date = new Date();
 
-    let orderId = 1;
+    // let orderId = 1;
     let driverId = "D001";
     let pikUpD = $('#dtePikrPickup').val();
     let pikUpT = $('#timePikrPickup').val();
-    let bnkImg = true;
-    let dmgWaiwer = 0.0;
+    let bnkImg = "SampathBankSlip.jpg";
+    let dmgWaiwer = 1000;
     let retD = $('#dtePikrReturn').val();
     let retT = $('#timePikrReturn').val();
     let rentDura = "4 Days";
 
-    // //wrap data (rent_details)
+    //wrap data (rent_details)
     // let rentDetail = {
-    //     id: orderId,
-    //     driver: driverId,
-    //     pickUpDate: pikUpD,
-    //     pickUpTime: pikUpT,
-    //     bankImg: bnkImg,
-    //     damageWaiver: dmgWaiwer,
-    //     returnDate: retD,
-    //     returnTime: retT,
-    //     rentDuration: rentDura
+    //     "driver": driverId,
+    //     "pickUpDate": pikUpD,
+    //     "pickUpTime": pikUpT,
+    //     "bankImg": bnkImg,
+    //     "damageWaiver": dmgWaiwer,
+    //     "returnDate": retD,
+    //     "returnTime": retT,
+    //     "rentDuration": rentDura
     // };
 
-    let rID = 1;
+    // let rID = 1;
     let custNIC = custId;
     let regisNo = vehicleId;
     let dateD = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
@@ -252,22 +251,22 @@ $('#btnPlaceRent').click(function () {
 
     // wrap data (rent)
     let rent = {
-        rentId: rID,
-        nic: custNIC,
-        registrationNo: regisNo,
-        date: dateD,
-        time: timeT,
-        rentDetails: rentDetail = {
-            id: orderId,
-            driver: driverId,
-            pickUpDate: pikUpD,
-            pickUpTime: pikUpT,
-            bankImg: bnkImg,
-            damageWaiver: dmgWaiwer,
-            returnDate: retD,
-            returnTime: retT,
-            rentDuration: rentDura
-        }
+        "rentId": 1,
+        "nic": custNIC,
+        "registrationNo": regisNo,
+        "date": "dateD",
+        "time": "timeT",
+        "rentDetails": [{
+            "id": 3,
+            "nic": driverId,
+            "pickUpDate": "pikUpD",
+            "pickUpTime": "pikUpT",
+            "bankImg": "bnkImg",
+            "damageWaiver": dmgWaiwer,
+            "returnDate": "retD",
+            "returnTime": "retT",
+            "rentDuration": "rentDura"
+        }]
     };
 
     //send save request

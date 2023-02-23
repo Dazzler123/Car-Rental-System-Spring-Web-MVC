@@ -22,7 +22,6 @@ public class VehicleDTO {
     private int passengers;
     private String description;  //paragraph on the card
     private boolean reserved;  //is reserved or not
-    private boolean images;  // does it hv images uploaded or not
     private double dailyRate;
     private double kmDaily;
     private double monthlyRate;

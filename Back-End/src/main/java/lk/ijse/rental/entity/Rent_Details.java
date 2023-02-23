@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,21 +15,20 @@ import javax.persistence.*;
 @Entity
 public class Rent_Details {
     @Id
-    @GeneratedValue
     private int id;
     private String pickUpDate;
     private String pickUpTime;
-    private boolean bankImg;
-    private double damageWaiver;
+    private String bankImg;
+    private BigDecimal damageWaiver;
     private String returnDate;
     private String returnTime;
     private String rentDuration;
 
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = Driver.class)
-    @JoinColumn(name = "nic")
+    @JoinColumn(name = "nic", updatable = false)
     private Driver nic;
 
-    @ManyToOne(targetEntity = Rent.class)
-    @JoinColumn(name = "rentId",referencedColumnName = "rentId")
-    private Rent rents;
+//    @ManyToOne(targetEntity = Rent.class)
+//    @JoinColumn(name = "rentId",referencedColumnName = "rentId")
+//    private Rent rents;
 }

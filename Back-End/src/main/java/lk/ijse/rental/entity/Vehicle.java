@@ -30,7 +30,6 @@ public class Vehicle {
     private int passengers;
     private String description;
     private boolean reserved;
-    private boolean images;
     private double dailyRate;
     private double kmDaily;
     private double monthlyRate;
