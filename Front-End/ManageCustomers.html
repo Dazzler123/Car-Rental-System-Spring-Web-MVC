@@ -21,7 +21,7 @@
 <!----------navbar---------->
 <nav class="navbar navbar-dark bg-dark sticky-top border-4">
     <div class="container-fluid">
-        <a class="navbar-brand fst-italic ms-3 col-9 mb-1 mt-1" href="index.html">Easy Car Rental Pvt. Ltd.</a>
+        <a class="navbar-brand fst-italic ms-3 col-9 mb-1 mt-1" href="AdminDashboard.html">Easy Car Rental Pvt. Ltd.</a>
     </div>
 </nav>
 
@@ -46,7 +46,7 @@
 <!------------customer table----------->
 <div class="col-11 m-0 p-0 mx-auto">
     <table class="table table-bordered table-hover caption-top">
-        <caption class="ms-3 mb-2">All Customers Table - Click the entry to edit details</caption>
+        <caption class="ms-3 mb-2">All Customers Table - Click the entry to view details separately</caption>
         <thead class="table-primary">
         <tr>
             <th scope="col">NIC</th>
@@ -79,11 +79,6 @@
                     <img src="assets/images/13-min-32.jpg" class="figure-img img-fluid rounded" alt="...">
                     <figcaption class="figure-caption">nic_image.jpeg</figcaption>
                 </figure>
-                <!--upload nic image file-->
-                <div class="col-12">
-                    <!--                    <label class="form-label fw-light">National Identity Card Image</label>-->
-                    <input class="form-control" type="file" id="nicImageFile">
-                </div>
             </div>
         </div>
         <div class="text-center col-6">
@@ -92,11 +87,6 @@
                     <img src="assets/images/13-min-32.jpg" class="figure-img img-fluid rounded" alt="...">
                     <figcaption class="figure-caption">dl_image.jpeg</figcaption>
                 </figure>
-                <!--upload dl image file-->
-                <div class="col-12">
-                    <!--                    <label class="form-label fw-light">Driving License Image</label>-->
-                    <input class="form-control" type="file" id="dlImageFile">
-                </div>
             </div>
         </div>
     </div>
@@ -105,14 +95,11 @@
     <div class="row g-3 col-12 mb-4 mt-5 mx-auto">
         <div class="col-6">
             <label class="form-label">Full Name</label>
-            <input id="txtCustomerName" type="text" class="form-control fw-light" placeholder="D B Hewagamage"
-                   aria-label="">
-            <div class="form-text fst-italic">Please enter full name with initials.</div>
+            <input id="txtCustomerName" type="text" class="form-control fw-light" disabled>
         </div>
         <div class="col-6">
             <label class="form-label">Address</label>
-            <input id="txtCustomerAddress" type="text" class="form-control form-control fw-light"
-                   placeholder="23/1, Galle Road, Panadura" aria-label="">
+            <input id="txtCustomerAddress" type="text" class="form-control form-control fw-light" disabled>
         </div>
     </div>
 
@@ -120,42 +107,34 @@
     <div class="row g-3 mb-3 col-12 mx-auto">
         <div class="col">
             <label class="form-label">National Identity Card Number</label>
-            <input id="txtCustomerNIC" type="text" class="form-control fw-light" placeholder="923478293492V"
-                   aria-label="">
+            <input id="txtCustomerNIC" type="text" class="form-control fw-light" disabled>
         </div>
         <div class="col">
             <label class="form-label">Email address</label>
-            <input id="txtCustomerEmail" type="text" class="form-control form-control fw-light"
-                   placeholder="pragmaticdeveloper@gmail.com" aria-label="">
+            <input id="txtCustomerEmail" type="text" class="form-control form-control fw-light" disabled>
         </div>
         <div class="col">
             <label class="form-label">Contact Number</label>
-            <input id="txtCustomerContactNo" type="text" class="form-control form-control fw-light"
-                   placeholder="0773434343"
-                   aria-label="">
+            <input id="txtCustomerContactNo" type="text" class="form-control form-control fw-light" disabled>
         </div>
     </div>
     <!-------------dl no & gender------------>
     <div class="row g-3 mb-5 col-12 mx-auto">
         <div class="col-4">
             <label class="form-label">Driving License Number</label>
-            <input id="txtCustomerDLNo" type="text" class="form-control fw-light" placeholder="9234782934920"
-                   aria-label="">
+            <input id="txtCustomerDLNo" type="text" class="form-control fw-light" disabled>
         </div>
         <div class="col-4 mt-5">
-            <select id="cbxCustomerGender" class="form-select" aria-label="Default select example">
+            <select id="cbxCustomerGender" class="form-select" aria-label="Default select example" disabled>
                 <option selected>Select Gender</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Other</option>
             </select>
         </div>
     </div>
 
     <!-----------update, delete customer details----------->
     <div class="row d-grid d-md-flex mt-4 mx-auto mb-5 col-12">
-        <button id="btnUpdateCustomer" type="button" class="btn btn-warning btn-lg col-4 me-5">Update Details</button>
-        <button id="btnDeleteCustomer" type="button" class="btn btn-danger btn-lg col-4">Delete Customer</button>
+        <button id="btnDeleteCustomer" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Delete Customer
+        </button>
     </div>
 </form>
 

@@ -69,35 +69,35 @@ function setTextFieldData(custNic,custEmail,custGender,custDlNo,custAddress,cust
 
 
 //update customer
-$('#btnUpdateCustomer').click(function () {
-    //save updates
-    $.ajax({
-        url: baseURL + "customer",
-        method: "put",
-        dataType: "application/json",
-        data: {
-            "nic":$('#lblCustNic').val(),
-            "dl_no":$('#txtCustomerDLNo').val(),
-            "name":$('#txtCustomerName').val(),
-            "address":$('#txtCustomerAddress').val(),
-            "contact_no":$('#txtCustomerContactNo').val(),
-            "email":$('#txtCustomerEmail').val(),
-            "gender":$('#cbxCustomerGender option:selected').text(),
-        },
-        success: function (resp) {
-            alert(JSON.parse(resp.responseText).message);
-
-            //refresh table
-            $('#tblCustomers').empty();
-
-            // clear textfields
-            setTextFieldData(null,null,null,null,null,null,null);
-        },
-        error: function (error) {
-            alert(JSON.parse(error.responseText).message);
-        }
-    });
-});
+// $('#btnUpdateCustomer').click(function () {
+//     //save updates
+//     $.ajax({
+//         url: baseURL + "customer",
+//         method: "put",
+//         dataType: "application/json",
+//         data: {
+//             "nic":$('#lblCustNic').val(),
+//             "dl_no":$('#txtCustomerDLNo').val(),
+//             "name":$('#txtCustomerName').val(),
+//             "address":$('#txtCustomerAddress').val(),
+//             "contact_no":$('#txtCustomerContactNo').val(),
+//             "email":$('#txtCustomerEmail').val(),
+//             "gender":$('#cbxCustomerGender option:selected').text(),
+//         },
+//         success: function (resp) {
+//             alert(JSON.parse(resp.responseText).message);
+//
+//             //refresh table
+//             $('#tblCustomers').empty();
+//
+//             // clear textfields
+//             setTextFieldData(null,null,null,null,null,null,null);
+//         },
+//         error: function (error) {
+//             alert(JSON.parse(error.responseText).message);
+//         }
+//     });
+// });
 
 
 //delete customer
