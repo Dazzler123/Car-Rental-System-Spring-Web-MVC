@@ -7,16 +7,20 @@ $(window).on('load', function () {
 let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 
 
+//customer nic
+let nic = "";
+
+
 //search customer by nic
 $('#btnSearchCustomer').click(function () {
     //refresh table
     $('#tblCustomers').empty();
 
     // clear textfields
-    setTextFieldData(null,null,null,null,null,null,null);
+    setTextFieldData(null, null, null, null, null, null, null);
 
     //get nic
-    var nic = $('#txtSearchCustomerNIC').val();
+    nic = $('#txtSearchCustomerNIC').val();
 
     $.ajax({
         url: baseURL + "customer/search?nic=" + nic + "",
@@ -37,8 +41,19 @@ $('#btnSearchCustomer').click(function () {
             alert(JSON.parse(error.responseText).message);
         }
     });
-});
+})
 
+
+//set nic-dl image
+function loadNicDlImage() {
+    // Get data URL from localStorage
+    const url = localStorage.getItem(nic);
+
+    //set image
+    const img = document.querySelector("#nicDlImage");
+    img.src = url;
+    img.setAttribute("height","400px");
+}
 
 //get table row data
 function getRowDataToFields() {
@@ -52,11 +67,15 @@ function getRowDataToFields() {
         var custGender = $(this).children(":eq(6)").text();
 
         // set text
-        setTextFieldData(custNic,custEmail,custGender,custDlNo,custAddress,custContactNo,custName);
+        setTextFieldData(custNic, custEmail, custGender, custDlNo, custAddress, custContactNo, custName);
+
+        //set image
+        loadNicDlImage();
     });
 }
 
-function setTextFieldData(custNic,custEmail,custGender,custDlNo,custAddress,custContactNo,custName) {
+
+function setTextFieldData(custNic, custEmail, custGender, custDlNo, custAddress, custContactNo, custName) {
     $('#lblCustNic').val(custNic);
     $('#txtCustomerNIC').val(custNic);
     $('#txtCustomerName').val(custName);
@@ -102,9 +121,7 @@ function setTextFieldData(custNic,custEmail,custGender,custDlNo,custAddress,cust
 
 //delete customer
 $('#btnDeleteCustomer').click(function () {
-    //get nic
-    var nic = $('#lblCustNic').val();
-
+    //delete from db
     $.ajax({
         url: baseURL + "customer?nic=" + nic + "",
         method: "delete",
@@ -117,10 +134,16 @@ $('#btnDeleteCustomer').click(function () {
             $('#tblCustomers').empty();
 
             // clear textfields
-            setTextFieldData(null,null,null,null,null,null,null);
+            setTextFieldData(null, null, null, null, null, null, null);
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
         }
     });
+
+    //delete nic-dl image from localStorage
+    localStorage.removeItem(nic);
+
+    //reset nic
+    nic = "";
 });
