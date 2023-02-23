@@ -168,11 +168,11 @@ function updateTextInput(input) {
 
 //search filters and load vehicles
 $('#btnSearchFilter').click(function () {
-    var type = $('#cbxFilterByCarType option:selected').text();
-    var make = $('#cbxFilterByCarMake option:selected').text();
-    var passengers = parseInt($('#cbxFilterByCarPssngrCount option:selected').text());
-    var fuelType = $('#cbxFilterByCarFuelType option:selected').text();
-    var transmission = $('#cbxFilterByCarTransmission option:selected').text();
+    var type1 = $('#cbxFilterByCarType option:selected').text();
+    var make1 = $('#cbxFilterByCarMake option:selected').text();
+    var passengers1 = parseInt($('#cbxFilterByCarPssngrCount option:selected').text());
+    var fuelType1 = $('#cbxFilterByCarFuelType option:selected').text();
+    var transmission1 = $('#cbxFilterByCarTransmission option:selected').text();
 
     //select container
     var dynamic = document.querySelector('#cars_container');
@@ -185,11 +185,11 @@ $('#btnSearchFilter').click(function () {
         url: baseURL + "vehicle/filter" + "",
         method: "get",
         data: {
-            "type": type,
-            "make": make,
-            "passengers": passengers,
-            "fuelType": fuelType,
-            "transmission": transmission
+            type: type1,
+            make: make1,
+            passengers: parseInt(passengers1),
+            fuelType: fuelType1,
+            transmission: transmission1
         },
         dataType: "json",
         success: function (resp) {
