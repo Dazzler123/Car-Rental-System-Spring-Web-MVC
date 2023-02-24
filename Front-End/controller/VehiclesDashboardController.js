@@ -43,11 +43,16 @@ function loadAllVehicles() {
         dataType: "json",
         success: function (resp) {
             console.log(resp);
+
+            //remove duplicated car models
+            let cars = removeDuplicateCarModels(resp.data);
+            console.log(cars);
+
             //generate cars for each vehicle
-            for (let vehicle of resp.data) {
+            for (let vehicle of cars) {
                 //append card to the existing cards list
                 dynamic.innerHTML = document.querySelector('#cars_container').innerHTML + `<div class="col">
-                        <div class="card">
+                        <div id="card${id}" class="card">
                             <div class="card-header fw-semibold fst-italic">${vehicle.type}</div>
                             <div id="carouselExampleControls${id}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
@@ -160,6 +165,18 @@ function loadAllVehicles() {
         }
     });
 }
+
+//delete duplicated car models from the response
+function removeDuplicateCarModels(allVehicles) {
+    // By identifier
+    const cars = allVehicles.filter(function (item, index) {
+        return index === allVehicles.findIndex(function (obj) {
+            return item.model === obj.model;
+        })
+    })
+    return cars;
+}
+
 
 //set selected range value to the label
 function updateTextInput(input) {
@@ -330,3 +347,4 @@ $('#btnResetFilter').click(function () {
     // loadAllVehicles();
     location.reload();
 });
+
