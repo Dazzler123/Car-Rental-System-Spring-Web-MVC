@@ -42,7 +42,7 @@ class CustomerRepoTest {
 //        Customer customer = repo2.findCustomerByNic("200334000948");
 //        System.out.println(customer);
 //
-//        Long suzuki_wagon_r_hybrid = repo.countByModelAndReserved("Suzuki Wagon R Hybrid", true);
+//        Long suzuki_wagon_r_hybrid = repo.countByModelAndReserved("Mercedes Benz CLA 200 AMG", false);
 //        System.out.println(suzuki_wagon_r_hybrid);
 
     }

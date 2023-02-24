@@ -46,15 +46,18 @@ function loadAllVehicles() {
 
             //remove duplicated car models
             let cars = removeDuplicateCarModels(resp.data);
-            console.log(cars);
 
             //generate cars for each vehicle
             for (let vehicle of cars) {
                 //get available vehicle count from this model
-                availableCount(vehicle.model);
+                var count = availableCount(vehicle.model);
 
-                //append card to the existing cards list
-                dynamic.innerHTML = document.querySelector('#cars_container').innerHTML + `<div class="col">
+                //if not available don't display this car
+                if (count === 0) {
+                    continue;  //skip state
+                }
+                    //append card to the existing cards list
+                    dynamic.innerHTML = document.querySelector('#cars_container').innerHTML + `<div class="col">
                         <div id="card${id}" class="card">
                             <div class="card-header fw-semibold fst-italic">${vehicle.type}</div>
                             <div id="carouselExampleControls${id}" class="carousel slide" data-bs-ride="carousel">
@@ -153,7 +156,7 @@ function loadAllVehicles() {
                                 </ul>
                                 <ul class="list-group list-group-horizontal fw-bold mt-2">
                                     <li class="list-group-item list-group-item-success col-9">Available for Rent</li>
-                                    <li class="list-group-item list-group-item-success col-3">20&nbsp;&nbsp;&nbsp;Cars</li>
+                                    <li class="list-group-item list-group-item-success col-3">${count}</li>
                                 </ul>
                                 <a href="PlaceRent.html" class="row m-0 mt-4 text-decoration-none">
                                    <button class="btn col-4 fs-5 btn-outline-success d-grid fw-bold m-0 mx-auto w-100">Rent</button>
@@ -170,25 +173,28 @@ function loadAllVehicles() {
 }
 
 
-//get available vehicle count
+//get available vehicle count (not reserved)
 function availableCount(modelName) {
+    var count = 0;
+
     //request for count
     $.ajax({
         url: baseURL + "vehicle/available",
         method: "get",
+        async: false,
         data: {
             "model": modelName,
-            "reserved": true,
+            "reserved": false,
         },
         dataType: "json",
         success: function (resp) {
-            console.log(resp);
-
+            count = parseInt(resp);
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
         }
     });
+    return count;
 }
 
 //delete duplicated car models from the response

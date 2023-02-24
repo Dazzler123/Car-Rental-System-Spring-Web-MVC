@@ -46,4 +46,9 @@ public class VehicleServiceImpl implements VehicleService {
     public VehicleDTO findByVehicleModel(String model) {
         return mapper.map(repo.findVehicleByModel(model), VehicleDTO.class);
     }
+
+    @Override
+    public Long countAvailableOfModel(String model, boolean reserved) {
+        return repo.countByModelAndReserved(model, reserved);
+    }
 }

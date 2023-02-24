@@ -34,4 +34,9 @@ public class VehicleController {
         VehicleDTO vehicle = service.findByVehicleModel(model);
         return new ResponseUtil("200","Vehicle found.",vehicle);
     }
+
+    @GetMapping(path = "/available")
+    public Long getAvailableCount(String model, boolean reserved) {
+        return service.countAvailableOfModel(model, reserved);
+    }
 }

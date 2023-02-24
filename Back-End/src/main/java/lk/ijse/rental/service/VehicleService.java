@@ -11,4 +11,6 @@ public interface VehicleService {
                                                   String transmission);
 
     public VehicleDTO findByVehicleModel(String model);
+
+    public Long countAvailableOfModel(String model, boolean reserved);
 }
