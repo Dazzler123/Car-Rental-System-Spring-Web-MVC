@@ -56,8 +56,9 @@ function loadAllVehicles() {
                 if (count === 0) {
                     continue;  //skip state
                 }
-                    //append card to the existing cards list
-                    dynamic.innerHTML = document.querySelector('#cars_container').innerHTML + `<div class="col">
+
+                //append card to the existing cards list
+                dynamic.innerHTML = document.querySelector('#cars_container').innerHTML + `<div class="col">
                         <div id="card${id}" class="card">
                             <div class="card-header fw-semibold fst-italic">${vehicle.type}</div>
                             <div id="carouselExampleControls${id}" class="carousel slide" data-bs-ride="carousel">
@@ -196,6 +197,7 @@ function availableCount(modelName) {
     });
     return count;
 }
+
 
 //delete duplicated car models from the response
 function removeDuplicateCarModels(allVehicles) {
