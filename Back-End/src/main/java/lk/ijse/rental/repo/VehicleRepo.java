@@ -10,4 +10,6 @@ public interface VehicleRepo extends JpaRepository<Vehicle, String> {
                                                                                  int passengers, String fuelType, String transmission);
 
     Vehicle findVehicleByModel(String model);
+
+    Long countByModelAndReserved(String model, boolean reserved);
 }
