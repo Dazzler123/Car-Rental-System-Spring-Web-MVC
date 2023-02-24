@@ -57,6 +57,11 @@ function loadAllVehicles() {
                     continue;  //skip state
                 }
 
+                // Get images from localStorage
+                const frontImage = localStorage.getItem(vehicle.model+"1");
+                const rearImage = localStorage.getItem(vehicle.model+"2");
+                const interiorImage = localStorage.getItem(vehicle.model+"3");
+
                 //append card to the existing cards list
                 dynamic.innerHTML = document.querySelector('#cars_container').innerHTML + `<div class="col">
                         <div id="card${id}" class="card">
@@ -64,15 +69,15 @@ function loadAllVehicles() {
                             <div id="carouselExampleControls${id}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="../assets/images/13-min-32.jpg" class="d-block w-100" alt="..."
+                                        <img src="${frontImage}" class="d-block w-100" alt="..."
                                              style="height: 40vh;">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="../assets/images/75702.png" class="d-block w-100" alt="..."
+                                        <img src="${rearImage}" class="d-block w-100" alt="..."
                                              style="height: 40vh;">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="../assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100"
+                                        <img src="${interiorImage}" class="d-block w-100"
                                              alt="..."
                                              style="height: 40vh;">
                                     </div>
@@ -245,8 +250,24 @@ $('#btnSearchFilter').click(function () {
         success: function (resp) {
             console.log(resp);
 
+            //remove duplicated car models
+            let cars = removeDuplicateCarModels(resp.data);
+
             //generate cars for each vehicle
-            for (let vehicle of resp.data) {
+            for (let vehicle of cars) {
+                //get available vehicle count from this model
+                var count = availableCount(vehicle.model);
+
+                //if not available, don't display this car
+                if (count === 0) {
+                    continue;  //skip state
+                }
+
+                // Get images from localStorage
+                const frontImage = localStorage.getItem(vehicle.model+"1");
+                const rearImage = localStorage.getItem(vehicle.model+"2");
+                const interiorImage = localStorage.getItem(vehicle.model+"3");
+
                 //append card to the existing cards list
                 dynamic.innerHTML = document.querySelector('#cars_container').innerHTML + `<div class="col">
                         <div class="card">
@@ -254,15 +275,15 @@ $('#btnSearchFilter').click(function () {
                             <div id="carouselExampleControls${id}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="../assets/images/13-min-32.jpg" class="d-block w-100" alt="..."
+                                        <img src="${frontImage}" class="d-block w-100" alt="..."
                                              style="height: 40vh;">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="../assets/images/75702.png" class="d-block w-100" alt="..."
+                                        <img src="${rearImage}" class="d-block w-100" alt="..."
                                              style="height: 40vh;">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="../assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100"
+                                        <img src="${interiorImage}" class="d-block w-100"
                                              alt="..."
                                              style="height: 40vh;">
                                     </div>
@@ -347,7 +368,7 @@ $('#btnSearchFilter').click(function () {
                                 </ul>
                                 <ul class="list-group list-group-horizontal fw-bold mt-2">
                                     <li class="list-group-item list-group-item-success col-9">Available for Rent</li>
-                                    <li class="list-group-item list-group-item-success col-3">20&nbsp;&nbsp;&nbsp;Cars</li>
+                                    <li class="list-group-item list-group-item-success col-3">${count}</li>
                                 </ul>
                                 <a href="PlaceRent.html" class="row m-0 mt-4 text-decoration-none">
                                    <button class="btn col-4 fs-5 btn-outline-success d-grid fw-bold m-0 mx-auto w-100">Rent</button>
