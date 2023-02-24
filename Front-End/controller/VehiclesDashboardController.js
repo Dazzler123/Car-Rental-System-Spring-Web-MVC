@@ -50,6 +50,9 @@ function loadAllVehicles() {
 
             //generate cars for each vehicle
             for (let vehicle of cars) {
+                //get available vehicle count from this model
+                availableCount(vehicle.model);
+
                 //append card to the existing cards list
                 dynamic.innerHTML = document.querySelector('#cars_container').innerHTML + `<div class="col">
                         <div id="card${id}" class="card">
@@ -166,15 +169,36 @@ function loadAllVehicles() {
     });
 }
 
+
+//get available vehicle count
+function availableCount(modelName) {
+    //request for count
+    $.ajax({
+        url: baseURL + "vehicle/available",
+        method: "get",
+        data: {
+            "model": modelName,
+            "reserved": true,
+        },
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+}
+
 //delete duplicated car models from the response
 function removeDuplicateCarModels(allVehicles) {
     // By identifier
-    const cars = allVehicles.filter(function (item, index) {
+    return allVehicles.filter(function (item, index) {
         return index === allVehicles.findIndex(function (obj) {
             return item.model === obj.model;
         })
-    })
-    return cars;
+    });
 }
 
 
@@ -182,6 +206,7 @@ function removeDuplicateCarModels(allVehicles) {
 function updateTextInput(input) {
     $('#lblPriceRange').value = input;
 }
+
 
 //search filters and load vehicles
 $('#btnSearchFilter').click(function () {
@@ -202,11 +227,11 @@ $('#btnSearchFilter').click(function () {
         url: baseURL + "vehicle/filter" + "",
         method: "get",
         data: {
-            type: type1,
-            make: make1,
-            passengers: parseInt(passengers1),
-            fuelType: fuelType1,
-            transmission: transmission1
+            "type": type1,
+            "make": make1,
+            "passengers": passengers1,
+            "fuelType": fuelType1,
+            "transmission": transmission1
         },
         dataType: "json",
         success: function (resp) {
