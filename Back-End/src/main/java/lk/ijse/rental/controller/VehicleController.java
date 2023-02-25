@@ -57,4 +57,10 @@ public class VehicleController {
         System.out.println("inside controller");
         return new ResponseUtil("200", "Vehicle details updated successfully.", service.updateVehicle(dto));
     }
+
+    @DeleteMapping(params = "registrationNo")
+    public String deleteVehicleDetails(String registrationNo) {
+        service.deleteVehicle(registrationNo);
+        return "Vehicle deleted successfully.";
+    }
 }

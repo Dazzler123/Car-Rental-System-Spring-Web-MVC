@@ -84,4 +84,13 @@ public class VehicleServiceImpl implements VehicleService {
             return "Vehicle Updated Successfully.";
         }
     }
+
+    @Override
+    public void deleteVehicle(String registrationNo) {
+        if(!repo.existsById(registrationNo)) {
+            throw new RuntimeException("Vehicle not found.");
+        } else {
+            repo.deleteById(registrationNo);
+        }
+    }
 }

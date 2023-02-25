@@ -322,3 +322,25 @@ $('#btnUpdateVehicle').click(function () {
         // reader.abort();
     });
 });
+
+
+$('#btnDeleteVehicle').click(function () {
+    //delete vehicle
+    $.ajax({
+        url: baseURL + "vehicle?registrationNo=" + regisNo + "",
+        method: "delete",
+        dataType: "json",
+        success: function (res) {
+            alert(res.message);
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+
+    //===== delete images from the localStorage =====
+    localStorage.removeItem(vehicleModel + 1);
+    // localStorage.removeItem(vehicleModel+2);
+    // localStorage.removeItem(vehicleModel+3);
+});
+

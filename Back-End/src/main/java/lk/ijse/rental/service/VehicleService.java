@@ -20,4 +20,6 @@ public interface VehicleService {
     public String saveVehicle(VehicleDTO dto);
 
     public String updateVehicle(VehicleDTO dto);
+
+    public void deleteVehicle(String registrationNo);
 }
