@@ -13,9 +13,130 @@
     <link href="assets/images/75702.png" rel="icon">
 </head>
 <body class="container-fluid m-0 p-0 mx-auto row justify-content-end">
+<!-------------loader------------->
+<div id="loader_Container">
+    <div></div>
+</div>
+
+<!----------navbar---------->
+<nav class="navbar navbar-dark bg-dark sticky-top border-4">
+    <div class="container-fluid">
+        <a class="navbar-brand fst-italic ms-3 col-9 mb-1 mt-1" href="AdminDashboard.html">Easy Car Rental Pvt. Ltd.</a>
+    </div>
+</nav>
+
+<!----------------heading---------------->
+<h1 class="col-12 text-center mt-5 mb-5 fw-semibold fs-2 border-5">Manage Vehicles</h1>
 
 
+<!----------search vehicle-------->
+<form class="row g-3 col-12 me-0 pe-0 justify-content-around">
+    <div class="col-auto">
+        <label class="fst -italic fw-light mt-2 me-2">Search Vehicles by rented date</label>
+    </div>
+    <div class="col-auto">
+        <input id="dteVehicleRented" type="date" class="form-control" placeholder="Select date">
+    </div>
+    <div class="col-auto">
+        <label class="fst-italic fw-light mt-2 me-2">Search Vehicles by Registration No.</label>
+    </div>
+    <div class="col-auto">
+        <input id="txtSearchRegistrationNo" type="search" class="form-control" placeholder="Enter Registration No.">
+    </div>
+    <div class="col-auto">
+        <button id="btnSearchVehicle" type="button" class="btn btn-primary mb-3">Search</button>
+    </div>
+</form>
 
+<button id="btnAvailableVehicles" type="button" class="btn btn-primary mb-3 col-3">Available Vehicles</button>
+
+
+<!------------customer table----------->
+<div class="col-11 m-0 p-0 mx-auto">
+    <table class="table table-bordered table-hover caption-top">
+        <caption class="ms-3 mb-2">All Customers Table - Click the entry to view details separately</caption>
+        <thead class="table-primary">
+        <tr>
+            <th scope="col">NIC</th>
+            <th scope="col">DL No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Contact No.</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+        </tr>
+        </thead>
+        <tbody id="tblCustomers" class="table-group-divider">
+
+        </tbody>
+    </table>
+</div>
+
+
+<!-- customer details form -->
+<form class="mt-5 me-0 mx-auto">
+    <!-- customer nic-->
+    <input id="lblCustNic" class="col-2 mb-3 ms-2 ms-5" type="text"
+           aria-label="Disabled input example" readonly>
+
+    <!--images with input fields-->
+    <div class="row g-3 col-10 mb-3 mx-auto justify-content-center">
+        <div class="text-center col-6">
+            <div class="g-col-5">
+                <figure id="figImg" class="figure">
+                    <img id="nicDlImage" class="rounded" alt="">
+                    <figcaption class="figure-caption fst-italic mt-1">Proof Document (NIC/DL image)</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <!-------------name & address------------->
+    <div class="row g-3 col-12 mb-4 mt-5 mx-auto">
+        <div class="col-6">
+            <label class="form-label">Full Name</label>
+            <input id="txtCustomerName" type="text" class="form-control fw-light" disabled>
+        </div>
+        <div class="col-6">
+            <label class="form-label">Address</label>
+            <input id="txtCustomerAddress" type="text" class="form-control form-control fw-light" disabled>
+        </div>
+    </div>
+
+    <!----------nic, email & contact no----------->
+    <div class="row g-3 mb-3 col-12 mx-auto">
+        <div class="col">
+            <label class="form-label">National Identity Card Number</label>
+            <input id="txtCustomerNIC" type="text" class="form-control fw-light" disabled>
+        </div>
+        <div class="col">
+            <label class="form-label">Email address</label>
+            <input id="txtCustomerEmail" type="text" class="form-control form-control fw-light" disabled>
+        </div>
+        <div class="col">
+            <label class="form-label">Contact Number</label>
+            <input id="txtCustomerContactNo" type="text" class="form-control form-control fw-light" disabled>
+        </div>
+    </div>
+    <!-------------dl no & gender------------>
+    <div class="row g-3 mb-5 col-12 mx-auto">
+        <div class="col-4">
+            <label class="form-label">Driving License Number</label>
+            <input id="txtCustomerDLNo" type="text" class="form-control fw-light" disabled>
+        </div>
+        <div class="col-4 mt-5">
+            <select id="cbxCustomerGender" class="form-select" aria-label="Default select example" disabled>
+                <option selected>Select Gender</option>
+            </select>
+        </div>
+    </div>
+
+    <!-----------update, delete customer details----------->
+    <div class="row d-grid d-md-flex mt-4 mx-auto mb-5 col-12">
+        <button id="btnDeleteCustomer" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Delete Customer
+        </button>
+    </div>
+</form>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery-3.6.1.min.js"></script>
 </body>
