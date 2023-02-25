@@ -8,6 +8,7 @@ let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 
 //vehicle registration no.
 let regisNo = "";
+let vehicleModel = "";
 
 
 //search vehicles by registration no.
@@ -23,7 +24,9 @@ $('#btnSearchVehicle').click(function () {
     // clear textfields
     setTextFieldData(null, null, null, null, null, null, null,
         null, null, null, null, null, null,
-        null, null, null);
+        null, null, null, null);
+
+    vehicleModel = "";
 
     // get registration no.
     regisNo = $('#txtSearchRegistrationNo').val();
@@ -39,7 +42,7 @@ $('#btnSearchVehicle').click(function () {
 
             //get reserved status
             if (c.reserved) {
-                isReserved = "YES"
+                var isReserved = "YES"
             } else {
                 isReserved = "NO"
             }
@@ -121,6 +124,9 @@ function getRowDataToFields() {
 
         //load images of the car
         loadImages(model);
+
+        //record model name
+        vehicleModel = model;
     });
 }
 
@@ -128,12 +134,28 @@ function getRowDataToFields() {
 function setTextFieldData(regisNo, make, model, yom, type, color, fuelType, passengers,
                           transmission, mileage, dailyRate, monthlyRate, extraKmRate, kmDaily, kmMonthly,
                           description, reserved) {
-    // $('#lblCustNic').val(custNic);
-    // $('#txtCustomerNIC').val(custNic);
-    // $('#txtCustomerName').val(custName);
-    // $('#txtCustomerAddress').val(custAddress);
-    // $('#txtCustomerDLNo').val(custDlNo);
-    // $('#txtCustomerEmail').val(custEmail);
-    // $('#txtCustomerContactNo').val(custContactNo);
-    // $('#cbxCustomerGender option:selected').text(custGender);
+    var resStatus;
+    if (reserved == "YES") {
+        resStatus = "Reserved";
+    } else {
+        resStatus = "Available"
+    }
+
+    $('#lblRegisNo').val(regisNo);
+    $('#lblReservedStatus').val(resStatus);
+    $('#txtMake').val(make);
+    $('#txtModel').val(model);
+    $('#txtYOM').val(yom);
+    $('#txtType').val(type);
+    $('#clrPicker').val(color);
+    $('#cbxFuelType').append(fuelType);
+    $('#txtPassengers').val(passengers);
+    $('#txtTransmission').val(transmission);
+    $('#txtMileage').val(mileage);
+    $('#txtDailyRate').val(dailyRate);
+    $('#txtMonthlyRate').val(monthlyRate);
+    $('#txtExtraKmRate').val(extraKmRate);
+    $('#txtDailyKm').val(kmDaily);
+    $('#txtMonthlyKm').val(kmMonthly);
+    $('#txtDescription').val(description);
 }

@@ -87,11 +87,11 @@
 <form class="mt-5 me-0 mx-auto">
 
     <!--registration no-->
-    <input id="lblRegisNo" class="col-2 mb-3 ms-2 ms-5 fw-bold font-monospace" type="text"
+    <input id="lblRegisNo" class="col-1 ms-5 fw-bold font-monospace text-center" type="text"
            aria-label="Disabled input example" readonly>
     <!--reserved status-->
-    <input id="lblReservedStatus" class="col-1 mb-3 ms-2 ms-5 fw-bold fst-italic text-center" type="text"
-           aria-label="Disabled input example">
+    <input id="lblReservedStatus" class="col-1 ms-4 fw-bolder fst-italic text-center" type="text"
+           aria-label="Disabled input example" readonly>
 
     <!--car images with input fields-->
     <div class="row g-2 col-10 mb-3 mx-auto">
@@ -143,10 +143,6 @@
     <!-------------name & address------------->
     <div class="row g-3 col-12 mb-4 mt-5 mx-auto">
         <div class="col-6">
-            <label class="form-label">Registration Number</label>
-            <input id="txtRegistrationNo" type="text" class="form-control fw-light">
-        </div>
-        <div class="col-6">
             <label class="form-label">Make</label>
             <input id="txtMake" type="text" class="form-control form-control fw-light">
         </div>
@@ -171,15 +167,19 @@
     <div class="row g-3 mb-5 col-12 mx-auto">
         <div class="col-4">
             <label class="form-label">Color</label>
-            <input id="txtColor" type="text" class="form-control fw-light">
+            <input id="clrPicker" type="color" class="form-control fw-light">
         </div>
     </div>
 
     <!-------------name & address------------->
     <div class="row g-3 col-12 mb-4 mt-5 mx-auto">
         <div class="col-6">
-            <label class="form-label">Fuel Type</label>
-            <input id="txtFuelType" type="text" class="form-control fw-light">
+            <select id="cbxFuelType" class="form-select" aria-label="Default select example">
+                <option selected class="fst-italic">Fuel Type</option>
+                <option value="1">Petrol</option>
+                <option value="2">Diesel</option>
+                <option value="3">Electric</option>
+            </select>
         </div>
         <div class="col-6">
             <label class="form-label">Passengers</label>
