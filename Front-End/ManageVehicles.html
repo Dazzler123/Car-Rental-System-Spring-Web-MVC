@@ -51,90 +51,148 @@
 <button id="btnAvailableVehicles" type="button" class="btn btn-primary mb-3 col-3">Available Vehicles</button>
 
 
-<!------------customer table----------->
+<!------------vehicles table----------->
 <div class="col-11 m-0 p-0 mx-auto">
     <table class="table table-bordered table-hover caption-top">
-        <caption class="ms-3 mb-2">All Customers Table - Click the entry to view details separately</caption>
+        <caption class="ms-3 mb-2">All Vehicles Table - Click the entry to expand details separately</caption>
         <thead class="table-primary">
         <tr>
-            <th scope="col">NIC</th>
-            <th scope="col">DL No.</th>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">Contact No.</th>
-            <th scope="col">Email</th>
-            <th scope="col">Gender</th>
+            <th scope="col">Regis. No.</th>
+            <th scope="col">Make</th>
+            <th scope="col">Model</th>
+            <th scope="col">YOM</th>
+            <th scope="col">Type</th>
+            <th scope="col">Color</th>
+            <th scope="col">Fuel Type</th>
+            <th scope="col">Passengers</th>
+            <th scope="col">Transmission</th>
+            <th scope="col">Mileage</th>
+            <th scope="col">Daily Rt.</th>
+            <th scope="col">Monthly Rt.</th>
+            <th scope="col">Extra Km Rt.</th>
+            <th scope="col">Km Daily</th>
+            <th scope="col">Km Monthly</th>
+            <th scope="col">Description</th>
+            <th scope="col">Reserved</th>
         </tr>
         </thead>
-        <tbody id="tblCustomers" class="table-group-divider">
+        <tbody id="tblVehicles" class="table-group-divider">
 
         </tbody>
     </table>
 </div>
 
 
-<!-- customer details form -->
+<!-- vehicle details form -->
 <form class="mt-5 me-0 mx-auto">
-    <!-- customer nic-->
-    <input id="lblCustNic" class="col-2 mb-3 ms-2 ms-5" type="text"
-           aria-label="Disabled input example" readonly>
 
-    <!--images with input fields-->
-    <div class="row g-3 col-10 mb-3 mx-auto justify-content-center">
-        <div class="text-center col-6">
-            <div class="g-col-5">
-                <figure id="figImg" class="figure">
-                    <img id="nicDlImage" class="rounded" alt="">
-                    <figcaption class="figure-caption fst-italic mt-1">Proof Document (NIC/DL image)</figcaption>
-                </figure>
-            </div>
-        </div>
+    <div class="row d-grid d-md-flex mt-4 mx-auto mb-5 col-12">
+        <button id="btnAddToMaintenance" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Add To Maintenance
+        </button>
+        <button id="btnAddToDefective" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Mark Defective
+        </button>
     </div>
 
     <!-------------name & address------------->
     <div class="row g-3 col-12 mb-4 mt-5 mx-auto">
         <div class="col-6">
-            <label class="form-label">Full Name</label>
-            <input id="txtCustomerName" type="text" class="form-control fw-light" disabled>
+            <label class="form-label">Registration Number</label>
+            <input id="txtRegistrationNo" type="text" class="form-control fw-light">
         </div>
         <div class="col-6">
-            <label class="form-label">Address</label>
-            <input id="txtCustomerAddress" type="text" class="form-control form-control fw-light" disabled>
+            <label class="form-label">Make</label>
+            <input id="txtMake" type="text" class="form-control form-control fw-light">
         </div>
     </div>
 
     <!----------nic, email & contact no----------->
     <div class="row g-3 mb-3 col-12 mx-auto">
         <div class="col">
-            <label class="form-label">National Identity Card Number</label>
-            <input id="txtCustomerNIC" type="text" class="form-control fw-light" disabled>
+            <label class="form-label">Model</label>
+            <input id="txtModel" type="text" class="form-control fw-light">
         </div>
         <div class="col">
-            <label class="form-label">Email address</label>
-            <input id="txtCustomerEmail" type="text" class="form-control form-control fw-light" disabled>
+            <label class="form-label">YOM</label>
+            <input id="txtYOM" type="text" class="form-control form-control fw-light">
         </div>
         <div class="col">
-            <label class="form-label">Contact Number</label>
-            <input id="txtCustomerContactNo" type="text" class="form-control form-control fw-light" disabled>
+            <label class="form-label">Type</label>
+            <input id="txtType" type="text" class="form-control form-control fw-light">
         </div>
     </div>
     <!-------------dl no & gender------------>
     <div class="row g-3 mb-5 col-12 mx-auto">
         <div class="col-4">
-            <label class="form-label">Driving License Number</label>
-            <input id="txtCustomerDLNo" type="text" class="form-control fw-light" disabled>
-        </div>
-        <div class="col-4 mt-5">
-            <select id="cbxCustomerGender" class="form-select" aria-label="Default select example" disabled>
-                <option selected>Select Gender</option>
-            </select>
+            <label class="form-label">Color</label>
+            <input id="txtColor" type="text" class="form-control fw-light">
         </div>
     </div>
 
+    <!-------------name & address------------->
+    <div class="row g-3 col-12 mb-4 mt-5 mx-auto">
+        <div class="col-6">
+            <label class="form-label">Fuel Type</label>
+            <input id="txtFuelType" type="text" class="form-control fw-light">
+        </div>
+        <div class="col-6">
+            <label class="form-label">Passengers</label>
+            <input id="txtPassengers" type="text" class="form-control form-control fw-light">
+        </div>
+    </div>
+
+    <!----------nic, email & contact no----------->
+    <div class="row g-3 mb-3 col-12 mx-auto">
+        <div class="col">
+            <label class="form-label">Transmission</label>
+            <input id="txtTransmission" type="text" class="form-control fw-light">
+        </div>
+        <div class="col">
+            <label class="form-label">Mileage</label>
+            <input id="txtMileage" type="text" class="form-control form-control fw-light">
+        </div>
+        <div class="col">
+            <label class="form-label">Daily Rate</label>
+            <input id="txtDailyRate" type="text" class="form-control form-control fw-light">
+        </div>
+    </div>
+    <!-------------dl no & gender------------>
+    <div class="row g-3 mb-5 col-12 mx-auto">
+        <div class="col-4">
+            <label class="form-label">Monthly Rate</label>
+            <input id="txtMonthlyRate" type="text" class="form-control fw-light">
+        </div>
+    </div>
+
+    <!-------------name & address------------->
+    <div class="row g-3 col-12 mb-4 mt-5 mx-auto">
+        <div class="col-6">
+            <label class="form-label">Extra Km Rate</label>
+            <input id="txtExtraKmRate" type="text" class="form-control fw-light">
+        </div>
+        <div class="col-6">
+            <label class="form-label">Daily Km</label>
+            <input id="txtDailyKm" type="text" class="form-control form-control fw-light">
+        </div>
+    </div>
+
+    <!----------nic, email & contact no----------->
+    <div class="row g-3 mb-3 col-12 mx-auto">
+        <div class="col">
+            <label class="form-label">Monthly Km</label>
+            <input id="txtMonthlyKm" type="text" class="form-control fw-light">
+        </div>
+        <div class="col">
+            <label class="form-label">Description</label>
+            <input id="txtDescription" type="text" class="form-control form-control fw-light">
+        </div>
+    </div>
     <!-----------update, delete customer details----------->
     <div class="row d-grid d-md-flex mt-4 mx-auto mb-5 col-12">
-        <button id="btnDeleteCustomer" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Delete Customer
+        <button id="btnSaveVehicle" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Save Vehicle
         </button>
+        <button id="btnUpdateVehicle" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Update Vehicle
+        </button>
+        <button id="btnDeleteVehicle" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Delete Vehicle</button>
     </div>
 </form>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
