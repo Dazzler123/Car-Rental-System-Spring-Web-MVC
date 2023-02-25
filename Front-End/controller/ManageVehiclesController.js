@@ -76,6 +76,7 @@ $('#btnSearchVehicle').click(function () {
     });
 });
 
+
 //set vehicle images
 function loadImages(model) {
     const frImg = document.querySelector("#frontViewImage");
@@ -159,3 +160,57 @@ function setTextFieldData(regisNo, make, model, yom, type, color, fuelType, pass
     $('#txtMonthlyKm').val(kmMonthly);
     $('#txtDescription').val(description);
 }
+
+
+$('#btnSaveVehicle').click(function () {
+    // get data
+    var regisNo = $('#lblRegisNo').val();
+    var vehiMake = $('#txtMake').val();
+    var vehiModel = $('#txtModel').val();
+    var vehiYOM = $('#txtYOM').val();
+    var vehiType = $('#txtType').val();
+    var vehiColor = $('#clrPicker').val();
+    var vehiFuelType = $('#cbxFuelType option:selected').text();
+    var vehiPassengers = $('#txtPassengers').val();
+    var vehiTransmission = $('#txtTransmission').val();
+    var vehiMileage = $('#txtMileage').val();
+    var vehiDailyRate = $('#txtDailyRate').val();
+    var vehiMonthlyRate = $('#txtMonthlyRate').val();
+    var vehiExtraKmRate = $('#txtExtraKmRate').val();
+    var vehiDailyKm = $('#txtDailyKm').val();
+    var vehiMonthlyKm = $('#txtMonthlyKm').val();
+    var vehiDescription = $('#txtDescription').val();
+
+    //save
+    $.ajax({
+        url: baseURL + "vehicle",
+        method: "post",
+        data: {
+            "registrationNo": regisNo,
+            "make": vehiMake,
+            "model": vehiModel,
+            "yom": vehiYOM,
+            "type": vehiType,
+            "fuelType": vehiFuelType,
+            "color": vehiColor,
+            "transmission": vehiTransmission,
+            "mileage": vehiMileage,
+            "passengers": vehiPassengers,
+            "description": vehiDescription,
+            "reserved": false,
+            "dailyRate": vehiDailyRate,
+            "kmDaily": vehiDailyKm,
+            "monthlyRate": vehiMonthlyRate,
+            "kmMonthly": vehiMonthlyKm,
+            "extraKmRate": vehiExtraKmRate,
+        },
+        dataType: "json",
+        success: function (res) {
+            alert(res.message);
+            console.log("Saved Successfully.")
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+});
