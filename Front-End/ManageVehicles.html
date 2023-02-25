@@ -32,7 +32,7 @@
 <!----------search vehicle-------->
 <form class="row g-3 col-12 me-0 pe-0 justify-content-around">
     <div class="col-auto">
-        <label class="fst -italic fw-light mt-2 me-2">Search Vehicles by rented date</label>
+        <label class="fst-italic fw-light mt-2 me-2">Search Vehicles by rented date</label>
     </div>
     <div class="col-auto">
         <input id="dteVehicleRented" type="date" class="form-control" placeholder="Select date">
@@ -51,7 +51,7 @@
 <button id="btnAvailableVehicles" type="button" class="btn btn-primary mb-3 col-3">Available Vehicles</button>
 
 
-<!------------vehicles table----------->
+<!------------vehicles table-------------->
 <div class="col-11 m-0 p-0 mx-auto">
     <table class="table table-bordered table-hover caption-top">
         <caption class="ms-3 mb-2">All Vehicles Table - Click the entry to expand details separately</caption>
@@ -83,14 +83,66 @@
 </div>
 
 
-<!-- vehicle details form -->
+<!----------- vehicle details form --------------->
 <form class="mt-5 me-0 mx-auto">
+
+    <!--car images with input fields-->
+    <div class="row g-2 col-10 mb-3 mx-auto">
+        <!-----front view image------>
+        <div class="text-center col-4">
+            <div class="g-col-5">
+                <figure class="figure">
+                    <img src="assets/images/13-min-32.jpg" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption fst-italic">Front View</figcaption>
+                </figure>
+                <div class="col-12">
+                    <input class="form-control" type="file" id="frontViewImgFile">
+                </div>
+            </div>
+        </div>
+        <!-----rear view image------>
+        <div class="text-center col-4">
+            <div class="g-col-5">
+                <figure class="figure">
+                    <img src="assets/images/13-min-32.jpg" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption fst-italic">Rear View</figcaption>
+                </figure>
+                <div class="col-12">
+                    <input class="form-control" type="file" id="rearViewImgFile">
+                </div>
+            </div>
+        </div>
+        <!-----interior view image------>
+        <div class="text-center col-4">
+            <div class="g-col-5">
+                <figure class="figure">
+                    <img src="assets/images/13-min-32.jpg" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption fst-italic">Interior View</figcaption>
+                </figure>
+                <div class="col-12">
+                    <input class="form-control" type="file" id="interiorViewImgFile">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row d-grid d-md-flex mt-4 mx-auto mb-5 col-12">
         <button id="btnAddToMaintenance" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Add To Maintenance
         </button>
         <button id="btnAddToDefective" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Mark Defective
         </button>
+    </div>
+
+    <!--images with input fields-->
+    <div class="row g-3 col-10 mb-3 mx-auto justify-content-center">
+        <div class="text-center col-6">
+            <div class="g-col-5">
+                <figure id="figImg" class="figure">
+                    <img id="nicDlImage" class="rounded" alt="">
+                    <figcaption class="figure-caption fst-italic mt-1">Proof Document (NIC/DL image)</figcaption>
+                </figure>
+            </div>
+        </div>
     </div>
 
     <!-------------name & address------------->
