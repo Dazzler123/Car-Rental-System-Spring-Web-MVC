@@ -16,4 +16,6 @@ public interface VehicleService {
     public Long countAvailableOfModel(String model, boolean reserved);
 
     public VehicleDTO searchVehicle(String registrationNo);
+
+    public String saveVehicle(VehicleDTO dto);
 }

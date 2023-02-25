@@ -164,7 +164,7 @@ function setTextFieldData(regisNo, make, model, yom, type, color, fuelType, pass
 
 $('#btnSaveVehicle').click(function () {
     // get data
-    var regisNo = $('#lblRegisNo').val();
+    var regisNo = $('#txtRegistrationNo').val();
     var vehiMake = $('#txtMake').val();
     var vehiModel = $('#txtModel').val();
     var vehiYOM = $('#txtYOM').val();
@@ -207,7 +207,6 @@ $('#btnSaveVehicle').click(function () {
         dataType: "json",
         success: function (res) {
             alert(res.message);
-            console.log("Saved Successfully.")
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);

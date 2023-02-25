@@ -1,6 +1,7 @@
 package lk.ijse.rental.service.impl;
 
 import lk.ijse.rental.dto.VehicleDTO;
+import lk.ijse.rental.entity.Vehicle;
 import lk.ijse.rental.repo.VehicleRepo;
 import lk.ijse.rental.service.VehicleService;
 import lk.ijse.rental.util.ResponseUtil;
@@ -55,6 +56,21 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public VehicleDTO searchVehicle(String registrationNo) {
-        return mapper.map(repo.findById(registrationNo), VehicleDTO.class);
+        if(!repo.existsById(registrationNo)) {
+            throw new RuntimeException("No vehicle found with matching Registration Number.");
+        } else {
+            return mapper.map(repo.findById(registrationNo), VehicleDTO.class);
+        }
+    }
+
+    @Override
+    public String saveVehicle(VehicleDTO dto) {
+        if (repo.existsById(dto.getRegistrationNo())) {
+            throw new RuntimeException("Vehicle already exists!");
+        } else {
+            Vehicle vehicle = mapper.map(dto, Vehicle.class);
+            repo.save(vehicle);
+            return "Vehicle Saved Successfully.";
+        }
     }
 }
