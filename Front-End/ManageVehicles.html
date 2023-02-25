@@ -87,7 +87,7 @@
 <form class="mt-5 me-0 mx-auto">
 
     <!--registration no-->
-    <input id="lblRegisNo" class="col-2 mb-3 ms-2 ms-5" type="text"
+    <input id="lblRegisNo" class="col-2 mb-3 ms-2 ms-5 fw-bold font-monospace" type="text"
            aria-label="Disabled input example" readonly>
     <!--reserved status-->
     <input id="lblReservedStatus" class="col-1 mb-3 ms-2 ms-5 fw-bold fst-italic text-center" type="text"
@@ -99,7 +99,7 @@
         <div class="text-center col-4">
             <div class="g-col-5">
                 <figure class="figure">
-                    <img src="assets/images/13-min-32.jpg" class="figure-img img-fluid rounded" alt="...">
+                    <img id="frontViewImage" class="figure-img img-fluid rounded">
                     <figcaption class="figure-caption fst-italic">Front View</figcaption>
                 </figure>
                 <div class="col-12">
@@ -111,7 +111,7 @@
         <div class="text-center col-4">
             <div class="g-col-5">
                 <figure class="figure">
-                    <img src="assets/images/13-min-32.jpg" class="figure-img img-fluid rounded" alt="...">
+                    <img id="rearViewImage" class="figure-img img-fluid rounded">
                     <figcaption class="figure-caption fst-italic">Rear View</figcaption>
                 </figure>
                 <div class="col-12">
@@ -123,7 +123,7 @@
         <div class="text-center col-4">
             <div class="g-col-5">
                 <figure class="figure">
-                    <img src="assets/images/13-min-32.jpg" class="figure-img img-fluid rounded" alt="...">
+                    <img id="interiorViewImage" class="figure-img img-fluid rounded">
                     <figcaption class="figure-caption fst-italic">Interior View</figcaption>
                 </figure>
                 <div class="col-12">
@@ -138,18 +138,6 @@
         </button>
         <button id="btnAddToDefective" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Mark Defective
         </button>
-    </div>
-
-    <!--images with input fields-->
-    <div class="row g-3 col-10 mb-3 mx-auto justify-content-center">
-        <div class="text-center col-6">
-            <div class="g-col-5">
-                <figure id="figImg" class="figure">
-                    <img id="nicDlImage" class="rounded" alt="">
-                    <figcaption class="figure-caption fst-italic mt-1">Proof Document (NIC/DL image)</figcaption>
-                </figure>
-            </div>
-        </div>
     </div>
 
     <!-------------name & address------------->

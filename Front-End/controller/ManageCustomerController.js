@@ -16,6 +16,9 @@ $('#btnSearchCustomer').click(function () {
     //refresh table
     $('#tblCustomers').empty();
 
+    //remove images
+    document.querySelector("#nicDlImage").removeAttribute('src');
+
     // clear textfields
     setTextFieldData(null, null, null, null, null, null, null);
 
