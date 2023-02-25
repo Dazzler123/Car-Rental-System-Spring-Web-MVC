@@ -30,12 +30,14 @@
 
 
 <!----------search vehicle-------->
-<form class="row g-3 col-12 me-0 pe-0 justify-content-around">
+<form class="row g-3 col-11 me-0 pe-0 mx-auto">
     <div class="col-auto">
-        <label class="fst-italic fw-light mt-2 me-2">Search Vehicles by rented date</label>
+        <label class="fst-italic fw-light mt-2 me-1">Search Vehicles by rented date</label>
     </div>
     <div class="col-auto">
         <input id="dteVehicleRented" type="date" class="form-control" placeholder="Select date">
+    </div>
+    <div class="col-2 me-5 ms-5">
     </div>
     <div class="col-auto">
         <label class="fst-italic fw-light mt-2 me-2">Search Vehicles by Registration No.</label>
@@ -48,13 +50,14 @@
     </div>
 </form>
 
-<button id="btnAvailableVehicles" type="button" class="btn btn-primary mb-3 col-3">Available Vehicles</button>
-
 
 <!------------vehicles table-------------->
 <div class="col-11 m-0 p-0 mx-auto">
     <table class="table table-bordered table-hover caption-top">
-        <caption class="ms-3 mb-2">All Vehicles Table - Click the entry to expand details separately</caption>
+        <caption class="ms-3 mb-1">Click the entry to expand details separately</caption>
+        <button id="btnAvailableVehicles" type="button" class="btn btn-outline-primary mb-3 mt-5 col-3">Load All
+            Available Vehicles
+        </button>
         <thead class="table-primary">
         <tr>
             <th scope="col">Regis. No.</th>
@@ -77,7 +80,6 @@
         </tr>
         </thead>
         <tbody id="tblVehicles" class="table-group-divider">
-
         </tbody>
     </table>
 </div>
@@ -85,7 +87,6 @@
 
 <!----------- vehicle details form --------------->
 <form class="mt-5 me-0 mx-auto">
-
     <!--registration no-->
     <input id="lblRegisNo" class="col-1 ms-5 fw-bold font-monospace text-center" type="text"
            aria-label="Disabled input example" readonly>
@@ -94,7 +95,7 @@
            aria-label="Disabled input example" readonly>
 
     <!--car images with input fields-->
-    <div class="row g-2 col-10 mb-3 mx-auto">
+    <div class="row g-2 col-10 mb-3 mt-3 mx-auto">
         <!-----front view image------>
         <div class="text-center col-4">
             <div class="g-col-5">
@@ -133,51 +134,46 @@
         </div>
     </div>
 
-    <div class="row d-grid d-md-flex mt-4 mx-auto mb-5 col-12">
-        <button id="btnAddToMaintenance" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Add To Maintenance
-        </button>
-        <button id="btnAddToDefective" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Mark Defective
-        </button>
+    <!--maintenance & defective-->
+    <div class="col-11 row mx-auto mt-5 justify-content-end">
+        <div class="row d-grid d-md-flex mt-3 mb-3 col-3">
+            <button id="btnAddToMaintenance" type="button" class="btn btn-danger ms-3 mt-3">Add To Maintenance
+            </button>
+            <button id="btnAddToDefective" type="button" class="btn btn-danger ms-3 mt-3">Mark Defective
+            </button>
+        </div>
     </div>
 
-    <!-------------name & address------------->
-    <div class="row g-3 col-12 mb-4 mt-5 mx-auto">
-        <div class="col-6">
+    <!------divider line------>
+    <div class="col-9 mt-3" style="border: 0.1px solid gray; width: 90vw; left: 0; right: 0; margin: auto"></div>
+
+    <!-------------registration no, make & model------------->
+    <div class="row g-3 col-11 mb-4 mt-5 mx-auto">
+        <div class="col-4">
             <label class="form-label">Registration Number</label>
             <input id="txtRegistrationNo" type="text" class="form-control form-control fw-light">
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <label class="form-label">Make</label>
             <input id="txtMake" type="text" class="form-control form-control fw-light">
         </div>
-    </div>
-
-    <!----------nic, email & contact no----------->
-    <div class="row g-3 mb-3 col-12 mx-auto">
-        <div class="col">
+        <div class="col-4">
             <label class="form-label">Model</label>
             <input id="txtModel" type="text" class="form-control fw-light">
         </div>
-        <div class="col">
+    </div>
+
+    <!----------yom, type, fuelType & color----------->
+    <div class="row g-3 mb-3 col-11 mx-auto">
+        <div class="col-3">
             <label class="form-label">YOM</label>
             <input id="txtYOM" type="text" class="form-control form-control fw-light">
         </div>
-        <div class="col">
+        <div class="col-4">
             <label class="form-label">Type</label>
             <input id="txtType" type="text" class="form-control form-control fw-light">
         </div>
-    </div>
-    <!-------------dl no & gender------------>
-    <div class="row g-3 mb-5 col-12 mx-auto">
-        <div class="col-4">
-            <label class="form-label">Color</label>
-            <input id="clrPicker" type="color" class="form-control fw-light">
-        </div>
-    </div>
-
-    <!-------------name & address------------->
-    <div class="row g-3 col-12 mb-4 mt-5 mx-auto">
-        <div class="col-6">
+        <div class="col-3 mt-5">
             <select id="cbxFuelType" class="form-select" aria-label="Default select example">
                 <option selected class="fst-italic">Fuel Type</option>
                 <option value="1">Petrol</option>
@@ -185,14 +181,18 @@
                 <option value="3">Electric</option>
             </select>
         </div>
-        <div class="col-6">
-            <label class="form-label">Passengers</label>
-            <input id="txtPassengers" type="text" class="form-control form-control fw-light">
+        <div class="col-1 ms-1">
+            <label class="form-label">Color</label>
+            <input id="clrPicker" type="color" class="form-control fw-light">
         </div>
     </div>
 
-    <!----------nic, email & contact no----------->
-    <div class="row g-3 mb-3 col-12 mx-auto">
+    <!-------------passengerCount, transmission, mileage & dailyRate------------->
+    <div class="row g-3 col-11 mb-4 mt-1 mx-auto">
+        <div class="col-3">
+            <label class="form-label">Passengers</label>
+            <input id="txtPassengers" type="text" class="form-control form-control fw-light">
+        </div>
         <div class="col">
             <label class="form-label">Transmission</label>
             <input id="txtTransmission" type="text" class="form-control fw-light">
@@ -206,46 +206,43 @@
             <input id="txtDailyRate" type="text" class="form-control form-control fw-light">
         </div>
     </div>
-    <!-------------dl no & gender------------>
-    <div class="row g-3 mb-5 col-12 mx-auto">
-        <div class="col-4">
+
+    <!-------------monthlyRate, extraKmRate, dailyKm & monthlyKm------------>
+    <div class="row g-3 mt-1 col-11 mx-auto">
+        <div class="col">
             <label class="form-label">Monthly Rate</label>
             <input id="txtMonthlyRate" type="text" class="form-control fw-light">
         </div>
-    </div>
-
-    <!-------------name & address------------->
-    <div class="row g-3 col-12 mb-4 mt-5 mx-auto">
-        <div class="col-6">
+        <div class="col">
             <label class="form-label">Extra Km Rate</label>
             <input id="txtExtraKmRate" type="text" class="form-control fw-light">
         </div>
-        <div class="col-6">
+        <div class="col">
             <label class="form-label">Daily Km</label>
             <input id="txtDailyKm" type="text" class="form-control form-control fw-light">
         </div>
-    </div>
-
-    <!----------nic, email & contact no----------->
-    <div class="row g-3 mb-3 col-12 mx-auto">
         <div class="col">
             <label class="form-label">Monthly Km</label>
             <input id="txtMonthlyKm" type="text" class="form-control fw-light">
         </div>
+    </div>
+
+    <!----------description----------->
+    <div class="row g-3 mb-3 col-11 mx-auto mt-1 mb-5">
         <div class="col">
             <label class="form-label">Description</label>
-            <input id="txtDescription" type="text" class="form-control form-control fw-light">
+            <input id="txtDescription" type="text" class="form-control form-control fw-light h-100">
         </div>
     </div>
 </form>
 
-<!-----------update, delete customer details----------->
-<div class="row d-grid d-md-flex mt-4 mx-auto mb-5 col-12">
-    <button id="btnSaveVehicle" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Save Vehicle
+<!-----------update, delete vehicle details----------->
+<div class="row d-grid d-md-flex mt-5 mx-auto mb-5 col-11 ms-5">
+    <button id="btnSaveVehicle" type="button" class="btn btn-success btn-lg col ms-3 mt-3">Save Vehicle
     </button>
-    <button id="btnUpdateVehicle" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Update Vehicle
+    <button id="btnUpdateVehicle" type="button" class="btn btn-warning btn-lg col ms-3 mt-3">Update Vehicle
     </button>
-    <button id="btnDeleteVehicle" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Delete Vehicle</button>
+    <button id="btnDeleteVehicle" type="button" class="btn btn-danger btn-lg col ms-3 mt-3">Delete Vehicle</button>
 </div>
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
