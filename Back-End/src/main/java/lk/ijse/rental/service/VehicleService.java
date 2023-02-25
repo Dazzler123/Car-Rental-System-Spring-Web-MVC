@@ -1,6 +1,7 @@
 package lk.ijse.rental.service;
 
 import lk.ijse.rental.dto.VehicleDTO;
+import lk.ijse.rental.util.ResponseUtil;
 
 import java.util.ArrayList;
 
@@ -13,4 +14,6 @@ public interface VehicleService {
     public VehicleDTO findByVehicleModel(String model);
 
     public Long countAvailableOfModel(String model, boolean reserved);
+
+    public VehicleDTO searchVehicle(String registrationNo);
 }

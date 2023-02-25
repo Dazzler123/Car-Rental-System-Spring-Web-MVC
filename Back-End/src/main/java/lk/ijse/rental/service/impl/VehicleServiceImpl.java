@@ -3,6 +3,7 @@ package lk.ijse.rental.service.impl;
 import lk.ijse.rental.dto.VehicleDTO;
 import lk.ijse.rental.repo.VehicleRepo;
 import lk.ijse.rental.service.VehicleService;
+import lk.ijse.rental.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,10 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public Long countAvailableOfModel(String model, boolean reserved) {
         return repo.countByModelAndReserved(model, reserved);
+    }
+
+    @Override
+    public VehicleDTO searchVehicle(String registrationNo) {
+        return mapper.map(repo.findById(registrationNo), VehicleDTO.class);
     }
 }
