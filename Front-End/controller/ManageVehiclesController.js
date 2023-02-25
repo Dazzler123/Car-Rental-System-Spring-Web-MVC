@@ -29,7 +29,9 @@ $('#btnSearchVehicle').click(function () {
 
             //get reserved status
             if(c.reserved) {
-                isReserved = "Reserved"
+                isReserved = "YES"
+            } else {
+                isReserved = "NO"
             }
 
             var row = '<tr><td>' + c.registrationNo + '</td><td>' +
@@ -48,7 +50,7 @@ $('#btnSearchVehicle').click(function () {
                 c.kmDaily + '</td><td>' +
                 c.kmMonthly + '</td><td>' +
                 c.description + '</td><td>' +
-                c.reserved + '</td></tr>';
+                isReserved + '</td></tr>';
 
             //append to the table
             $('#tblVehicles').append(row);
