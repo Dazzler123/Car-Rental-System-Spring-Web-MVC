@@ -73,4 +73,15 @@ public class VehicleServiceImpl implements VehicleService {
             return "Vehicle Saved Successfully.";
         }
     }
+
+    @Override
+    public String updateVehicle(VehicleDTO dto) {
+        if(!repo.existsById(dto.getRegistrationNo())) {
+            throw new RuntimeException("Vehicle not found.");
+        } else {
+            Vehicle vehicle = mapper.map(dto, Vehicle.class);
+            repo.save(vehicle);
+            return "Vehicle Updated Successfully.";
+        }
+    }
 }

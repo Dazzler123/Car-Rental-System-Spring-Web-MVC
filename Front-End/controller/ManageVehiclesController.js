@@ -6,6 +6,9 @@ $(window).on('load', function () {
 // backend url
 let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 
+//file reader obj
+const reader = new FileReader();
+
 //vehicle registration no.
 let regisNo = "";
 let vehicleModel = "";
@@ -26,6 +29,8 @@ $('#btnSearchVehicle').click(function () {
         null, null, null, null, null, null,
         null, null, null, null);
 
+    let isReserved;
+
     vehicleModel = "";
 
     // get registration no.
@@ -42,7 +47,7 @@ $('#btnSearchVehicle').click(function () {
 
             //get reserved status
             if (c.reserved) {
-                var isReserved = "YES"
+                isReserved = "YES"
             } else {
                 isReserved = "NO"
             }
@@ -132,7 +137,7 @@ function getRowDataToFields() {
 }
 
 
-function setTextFieldData(regisNo, make, model, yom, type, color, fuelType, passengers,
+function setTextFieldData(regisNO, make, model, yom, type, color, fuelType, passengers,
                           transmission, mileage, dailyRate, monthlyRate, extraKmRate, kmDaily, kmMonthly,
                           description, reserved) {
     var resStatus;
@@ -142,8 +147,9 @@ function setTextFieldData(regisNo, make, model, yom, type, color, fuelType, pass
         resStatus = "Available"
     }
 
-    $('#lblRegisNo').val(regisNo);
+    $('#lblRegisNo').val(regisNO);
     $('#lblReservedStatus').val(resStatus);
+    $('#txtRegistrationNo').val(regisNO);
     $('#txtMake').val(make);
     $('#txtModel').val(model);
     $('#txtYOM').val(yom);
@@ -164,7 +170,7 @@ function setTextFieldData(regisNo, make, model, yom, type, color, fuelType, pass
 
 $('#btnSaveVehicle').click(function () {
     // get data
-    var regisNo = $('#txtRegistrationNo').val();
+    var regisNumber = $('#txtRegistrationNo').val();
     var vehiMake = $('#txtMake').val();
     var vehiModel = $('#txtModel').val();
     var vehiYOM = $('#txtYOM').val();
@@ -186,7 +192,7 @@ $('#btnSaveVehicle').click(function () {
         url: baseURL + "vehicle",
         method: "post",
         data: {
-            "registrationNo": regisNo,
+            "registrationNo": regisNumber,
             "make": vehiMake,
             "model": vehiModel,
             "yom": vehiYOM,
@@ -211,5 +217,108 @@ $('#btnSaveVehicle').click(function () {
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
         }
+    });
+
+    //save images on localStorage
+    const frontImage = document.getElementById('frontViewImgFile');
+    const rearImage = document.getElementById('rearViewImgFile');
+    const interiorImage = document.getElementById('interiorViewImgFile');
+
+    const imgFile1 = frontImage.files[0];
+    const imgFile2 = rearImage.files[0];
+    const imgFile3 = interiorImage.files[0];
+
+    reader.readAsDataURL(imgFile1);
+    // reader.readAsDataURL(imgFile2);
+    // reader.readAsDataURL(imgFile3);
+
+    reader.addEventListener('load', () => {
+        const url = reader.result
+        // add image to localStorage
+        localStorage.setItem($('#txtModel').val() + 1, url);
+        // reader.abort();
+    });
+});
+
+
+$('#btnUpdateVehicle').click(function () {
+    // get data
+    var vehiMake = $('#txtMake').val();
+    var vehiModel = $('#txtModel').val();
+    var vehiYOM = $('#txtYOM').val();
+    var vehiType = $('#txtType').val();
+    var vehiColor = $('#clrPicker').val();
+    var vehiFuelType = $('#cbxFuelType option:selected').text();
+    var vehiPassengers = $('#txtPassengers').val();
+    var vehiTransmission = $('#txtTransmission').val();
+    var vehiMileage = $('#txtMileage').val();
+    var vehiDailyRate = $('#txtDailyRate').val();
+    var vehiMonthlyRate = $('#txtMonthlyRate').val();
+    var vehiExtraKmRate = $('#txtExtraKmRate').val();
+    var vehiDailyKm = $('#txtDailyKm').val();
+    var vehiMonthlyKm = $('#txtMonthlyKm').val();
+    var vehiDescription = $('#txtDescription').val();
+
+
+    let vehicleObj = {
+            registrationNo: regisNo,
+            make: vehiMake,
+            model: vehiModel,
+            yom: vehiYOM,
+            type: vehiType,
+            fuelType: vehiFuelType,
+            color: vehiColor,
+            transmission: vehiTransmission,
+            mileage: vehiMileage,
+            passengers: vehiPassengers,
+            description: vehiDescription,
+            reserved: false,
+            dailyRate: vehiDailyRate,
+            kmDaily: vehiDailyKm,
+            monthlyRate: vehiMonthlyRate,
+            kmMonthly: vehiMonthlyKm,
+            extraKmRate: vehiExtraKmRate,
+        };
+
+    //save
+    $.ajax({
+        url: baseURL + "vehicle",
+        method: "put",
+        contentType: "application/json",
+        data: JSON.stringify(vehicleObj),
+        dataType: "json",
+        success: function (res) {
+            alert(res.message);
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+
+
+    //===== remove existing images from the localStorage =====
+    localStorage.removeItem(vehicleModel + 1);
+    // localStorage.removeItem(vehicleModel+2);
+    // localStorage.removeItem(vehicleModel+3);
+
+
+    //===== save updated images on localStorage =====
+    const frontImage = document.getElementById('frontViewImgFile');
+    const rearImage = document.getElementById('rearViewImgFile');
+    const interiorImage = document.getElementById('interiorViewImgFile');
+
+    const imgFile1 = frontImage.files[0];
+    const imgFile2 = rearImage.files[0];
+    const imgFile3 = interiorImage.files[0];
+
+    reader.readAsDataURL(imgFile1);
+    // reader.readAsDataURL(imgFile2);
+    // reader.readAsDataURL(imgFile3);
+
+    reader.addEventListener('load', () => {
+        const url = reader.result
+        // add image to localStorage
+        localStorage.setItem($('#txtModel').val() + 1, url);
+        // reader.abort();
     });
 });

@@ -49,6 +49,12 @@ public class VehicleController {
 
     @PostMapping
     public ResponseUtil addNewVehicle(VehicleDTO dto) {
-        return new ResponseUtil("200","Vehicle Saved Successfully.",service.saveVehicle(dto));
+        return new ResponseUtil("200", "Vehicle Saved Successfully.", service.saveVehicle(dto));
+    }
+
+    @PutMapping
+    public ResponseUtil updateVehicleDetails(@RequestBody VehicleDTO dto) {
+        System.out.println("inside controller");
+        return new ResponseUtil("200", "Vehicle details updated successfully.", service.updateVehicle(dto));
     }
 }

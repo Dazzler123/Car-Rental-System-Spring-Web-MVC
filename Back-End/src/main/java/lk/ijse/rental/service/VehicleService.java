@@ -18,4 +18,6 @@ public interface VehicleService {
     public VehicleDTO searchVehicle(String registrationNo);
 
     public String saveVehicle(VehicleDTO dto);
+
+    public String updateVehicle(VehicleDTO dto);
 }
