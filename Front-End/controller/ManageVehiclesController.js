@@ -82,6 +82,67 @@ $('#btnSearchVehicle').click(function () {
 });
 
 
+//load all available vehicles (not reserved)
+$('#btnAvailableVehicles').click(function () {
+    //refresh table
+    $('#tblVehicles').empty();
+
+    //clear images
+    document.querySelector("#frontViewImage").removeAttribute('src');
+    document.querySelector("#rearViewImage").removeAttribute('src');
+    document.querySelector("#interiorViewImage").removeAttribute('src');
+
+    // clear textfields
+    setTextFieldData(null, null, null, null, null, null, null,
+        null, null, null, null, null, null,
+        null, null, null, null);
+
+    vehicleModel = "";
+
+    //request
+    $.ajax({
+        url: baseURL + "vehicle/loadAll",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+
+            for (const vehicle of resp.data) {
+                //ommit reserved vehicles
+                if (vehicle.reserved) {
+                    continue;
+                } else {
+                    var row = '<tr><td>' + vehicle.registrationNo + '</td><td>' +
+                        vehicle.make + '</td><td>' +
+                        vehicle.model + '</td><td>' +
+                        vehicle.yom + '</td><td>' +
+                        vehicle.type + '</td><td>' +
+                        vehicle.color + '</td><td>' +
+                        vehicle.fuelType + '</td><td>' +
+                        vehicle.passengers + '</td><td>' +
+                        vehicle.transmission + '</td><td>' +
+                        vehicle.mileage + '</td><td>' +
+                        vehicle.dailyRate + '</td><td>' +
+                        vehicle.monthlyRate + '</td><td>' +
+                        vehicle.extraKmRate + '</td><td>' +
+                        vehicle.kmDaily + '</td><td>' +
+                        vehicle.kmMonthly + '</td><td>' +
+                        vehicle.description + '</td><td>NO</td></tr>';
+
+                    //append to the table
+                    $('#tblVehicles').append(row);
+
+                    getRowDataToFields();
+                }
+            }
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+});
+
+
 //set vehicle images
 function loadImages(model) {
     const frImg = document.querySelector("#frontViewImage");
@@ -106,7 +167,7 @@ function loadImages(model) {
 //get table row data
 function getRowDataToFields() {
     $('#tblVehicles > tr').click(function () {
-        var regisNo = $(this).children(":eq(0)").text();
+        var regisNum = $(this).children(":eq(0)").text();
         var make = $(this).children(":eq(1)").text();
         var model = $(this).children(":eq(2)").text();
         var yom = $(this).children(":eq(3)").text();
@@ -125,14 +186,15 @@ function getRowDataToFields() {
         var reserved = $(this).children(":eq(16)").text();
 
         // set text
-        setTextFieldData(regisNo, make, model, yom, type, color, fuelType, passengers,
+        setTextFieldData(regisNum, make, model, yom, type, color, fuelType, passengers,
             transmission, mileage, dailyRate, monthlyRate, extraKmRate, kmDaily, kmMonthly, description, reserved);
 
         //load images of the car
         loadImages(model);
 
-        //record model name
+        //record model name regisNum
         vehicleModel = model;
+        regisNo = regisNum;
     });
 }
 
