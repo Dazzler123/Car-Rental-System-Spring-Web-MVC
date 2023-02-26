@@ -128,7 +128,7 @@ $('#cbxSelectVehicle').change(function () {
     var dynamic = document.querySelector('#cars_container');
 
     $('#lblDamageWaiverAmt').text(null);
-    
+
     //generated id's for bootstrap controls
     let id = 0;
 
@@ -280,7 +280,7 @@ function setLossDamagePaymentValue(type) {
     //show damage waiver amount
     if (type == "General Car") {
         $('#lblDamageWaiverAmt').append("10000.00");
-    } else if(type == "Premium Car") {
+    } else if (type == "Premium Car") {
         $('#lblDamageWaiverAmt').append("15000.00")
     } else {
         $('#lblDamageWaiverAmt').append("20000.00")
@@ -304,8 +304,8 @@ $('#btnPlaceRent').click(function () {
     let pikUpT = $('#timePikrPickup').val();
     let retD = $('#dtePikrReturn').val();
     let retT = $('#timePikrReturn').val();
-    let bnkImg = custId+driverId+retD+retT+vehicleId;
-    let rentDura = "4 Days";
+    let bnkImg = custId + driverId + retD + retT + vehicleId;
+    let rentDura = getDateDifference($('#dtePikrRentFrom').val(), $('#dtePikrRentTo').val());
     let dateD = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     let timeT = date.getHours() + ":" + date.getMinutes();
 
@@ -325,7 +325,7 @@ $('#btnPlaceRent').click(function () {
             "bankImgKey": bnkImg,
             "returnDate": retD,
             "returnTime": retT,
-            "rentDuration": rentDura
+            "rentDuration": rentDura + " Days"
         },
         dataType: "json",
         success: function (res) {
@@ -365,4 +365,12 @@ function getNonOccupiedDriver() {
     });
     console.log(drv);
     return drv;
+}
+
+
+function getDateDifference(dateFrom, dateTo) {
+    const diffTime = Math.abs(dateFrom - dateTo);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    console.log(diffDays + " days");
+    return diffDays;
 }
