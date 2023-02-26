@@ -9,6 +9,9 @@ let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 //file reader obj
 const reader = new FileReader();
 
+var date = new Date();
+let today = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
 //vehicle registration no.
 let regisNo = "";
 let vehicleModel = "";
@@ -416,6 +419,25 @@ $('#btnDeleteVehicle').click(function () {
 
 
 $('#btnAddToMaintenance').click(function () {
+
+    //record as maintenance
+    $.ajax({
+        url: baseURL + "maintenance",
+        method: "post",
+        data: {
+            "vehicleId": regisNo,
+            "date": today
+        },
+        dataType: "json",
+        success: function (res) {
+            alert(res.message);
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    //set vehicle as reserved
 
 });
 
