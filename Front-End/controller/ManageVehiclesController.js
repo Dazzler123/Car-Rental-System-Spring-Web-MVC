@@ -281,6 +281,11 @@ $('#btnSaveVehicle').click(function () {
         }
     });
 
+    saveVehicleImages();
+});
+
+
+function saveVehicleImages() {
     //save images on localStorage
     const frontImage = document.getElementById('frontViewImgFile');
     const rearImage = document.getElementById('rearViewImgFile');
@@ -300,7 +305,7 @@ $('#btnSaveVehicle').click(function () {
         localStorage.setItem($('#txtModel').val() + 1, url);
         // reader.abort();
     });
-});
+}
 
 
 $('#btnUpdateVehicle').click(function () {
@@ -323,24 +328,24 @@ $('#btnUpdateVehicle').click(function () {
 
 
     let vehicleObj = {
-            registrationNo: regisNo,
-            make: vehiMake,
-            model: vehiModel,
-            yom: vehiYOM,
-            type: vehiType,
-            fuelType: vehiFuelType,
-            color: vehiColor,
-            transmission: vehiTransmission,
-            mileage: vehiMileage,
-            passengers: vehiPassengers,
-            description: vehiDescription,
-            reserved: false,
-            dailyRate: vehiDailyRate,
-            kmDaily: vehiDailyKm,
-            monthlyRate: vehiMonthlyRate,
-            kmMonthly: vehiMonthlyKm,
-            extraKmRate: vehiExtraKmRate,
-        };
+        registrationNo: regisNo,
+        make: vehiMake,
+        model: vehiModel,
+        yom: vehiYOM,
+        type: vehiType,
+        fuelType: vehiFuelType,
+        color: vehiColor,
+        transmission: vehiTransmission,
+        mileage: vehiMileage,
+        passengers: vehiPassengers,
+        description: vehiDescription,
+        reserved: false,
+        dailyRate: vehiDailyRate,
+        kmDaily: vehiDailyKm,
+        monthlyRate: vehiMonthlyRate,
+        kmMonthly: vehiMonthlyKm,
+        extraKmRate: vehiExtraKmRate,
+    };
 
     //save
     $.ajax({
