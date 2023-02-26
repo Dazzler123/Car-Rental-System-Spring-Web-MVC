@@ -206,9 +206,6 @@ $('#cbxSelectVehicle').change(function () {
 
             // record registration no
             vehicleId = vehicle.data.registrationNo;
-
-            //disable dropdown
-            $('#cbxSelectVehicle').attr('disabled', true);
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
@@ -217,67 +214,58 @@ $('#cbxSelectVehicle').change(function () {
 });
 
 
-//place rent (save rent)
+//save rent request (save request)
 $('#btnPlaceRent').click(function () {
     var date = new Date();
 
-    // let orderId = 1;
     let driverId = "D001";
     let pikUpD = $('#dtePikrPickup').val();
     let pikUpT = $('#timePikrPickup').val();
     let bnkImg = "SampathBankSlip.jpg";
-    let dmgWaiwer = 1000;
     let retD = $('#dtePikrReturn').val();
     let retT = $('#timePikrReturn').val();
     let rentDura = "4 Days";
+    let dateD = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    let timeT = date.getHours() + ":" + date.getMinutes();
 
-    //wrap data (rent_details)
-    // let rentDetail = {
-    //     "driver": driverId,
+    // wrap data (rent)
+    // let rent = {
+    //     "requestId": 1,
+    //     "customerNic": custId,
+    //     "registrationNo": vehicleId,
+    //     "driverNic": driverId,
+    //     "date": dateD,
+    //     "time": timeT,
     //     "pickUpDate": pikUpD,
     //     "pickUpTime": pikUpT,
-    //     "bankImg": bnkImg,
-    //     "damageWaiver": dmgWaiwer,
+    //     "bankImgKey": bnkImg,
     //     "returnDate": retD,
     //     "returnTime": retT,
     //     "rentDuration": rentDura
     // };
 
-    // let rID = 1;
-    let custNIC = custId;
-    let regisNo = vehicleId;
-    let dateD = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-    let timeT = date.getHours() + ":" + date.getMinutes();
-
-    // wrap data (rent)
-    let rent = {
-        "rentId": 1,
-        "nic": custNIC,
-        "registrationNo": regisNo,
-        "date": "dateD",
-        "time": "timeT",
-        "rentDetails": [{
-            "id": 3,
-            "nic": driverId,
-            "pickUpDate": "pikUpD",
-            "pickUpTime": "pikUpT",
-            "bankImg": "bnkImg",
-            "damageWaiver": dmgWaiwer,
-            "returnDate": "retD",
-            "returnTime": "retT",
-            "rentDuration": "rentDura"
-        }]
-    };
-
     //send save request
     $.ajax({
-        url: baseURL + "rent/save",
+        url: baseURL + "rentalRequest",
         method: "post",
-        data: JSON.stringify(rent),
+        data: {
+            "requestId": 1,
+            "customerNic": custId,
+            "registrationNo": vehicleId,
+            "driverNic": driverId,
+            "date": dateD,
+            "time": timeT,
+            "pickUpDate": pikUpD,
+            "pickUpTime": pikUpT,
+            "bankImgKey": bnkImg,
+            "returnDate": retD,
+            "returnTime": retT,
+            "rentDuration": rentDura
+        },
         dataType: "json",
         success: function (res) {
             alert(res.message);
-            console.log("Rent saved.")
+            console.log("Rental Request saved.")
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
