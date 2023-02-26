@@ -22,11 +22,12 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 
     @Override
     public void saveRequest(RentalRequestDTO dto) {
-        if(repo.existsById(String.valueOf(dto.getRequestId()))){
-            throw new RuntimeException("Rental request already exists!");
-        } else {
-            Rental_Request request = mapper.map(dto, Rental_Request.class);
-            repo.save(request);
-        }
+//        if(repo.existsById(String.valueOf(dto.getRequestId()))){
+//            throw new RuntimeException("Rental request already exists!");
+//        } else {
+//
+//        }
+        Rental_Request request = mapper.map(dto, Rental_Request.class);
+        repo.save(request);
     }
 }

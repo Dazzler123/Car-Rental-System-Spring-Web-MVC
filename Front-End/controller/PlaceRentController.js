@@ -272,7 +272,7 @@ $('#cbxSelectVehicle').change(function () {
 $('#btnPlaceRent').click(function () {
     var date = new Date();
 
-    let driverId = "D001";
+    let driverId;
     let pikUpD = $('#dtePikrPickup').val();
     let pikUpT = $('#timePikrPickup').val();
     let bnkImg = "SampathBankSlip.jpg";
@@ -282,28 +282,20 @@ $('#btnPlaceRent').click(function () {
     let dateD = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     let timeT = date.getHours() + ":" + date.getMinutes();
 
-    // wrap data (rent)
-    // let rent = {
-    //     "requestId": 1,
-    //     "customerNic": custId,
-    //     "registrationNo": vehicleId,
-    //     "driverNic": driverId,
-    //     "date": dateD,
-    //     "time": timeT,
-    //     "pickUpDate": pikUpD,
-    //     "pickUpTime": pikUpT,
-    //     "bankImgKey": bnkImg,
-    //     "returnDate": retD,
-    //     "returnTime": retT,
-    //     "rentDuration": rentDura
-    // };
+
+    // assign a non-occupied driver
+    if ($('#driverTrue').is(":checked")) {
+        driverId = getNonOccupiedDriver();
+    } else {
+        driverId = "SELF";
+    }
 
     //send save request
     $.ajax({
         url: baseURL + "rentalRequest",
         method: "post",
         data: {
-            "requestId": 1,
+            "requestId": 0,
             "customerNic": custId,
             "registrationNo": vehicleId,
             "driverNic": driverId,
@@ -318,11 +310,28 @@ $('#btnPlaceRent').click(function () {
         },
         dataType: "json",
         success: function (res) {
-            alert(res.message);
-            console.log("Rental Request saved.")
+            alert(res);
+            console.log("Rental Request saved.");
         },
         error: function (error) {
-            alert(JSON.parse(error.responseText).message);
+            alert(error.responseText.message);
         }
     });
 });
+
+
+//search for non-occupied drivers
+function getNonOccupiedDriver() {
+    $.ajax({
+        url: baseURL + "driver",
+        method: "get",
+        dataType: "json",
+        success: function (res) {
+            alert(res);
+            console.log("Rental Request saved.");
+        },
+        error: function (error) {
+            alert(error.responseText.message);
+        }
+    });
+}
