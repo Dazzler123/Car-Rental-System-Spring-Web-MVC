@@ -64,7 +64,11 @@ function loadAllVehicleModelNames() {
         dataType: "json",
         success: function (resp) {
             console.log(resp);
-            for (let vehicle of resp.data) {
+
+            //remove duplicated car model names
+            let cars = removeDuplicateCarModelNames(resp.data);
+
+            for (let vehicle of cars) {
                 var option = '<option>' + vehicle.model + '</option>';
                 //append to the combo box
                 $('#cbxSelectVehicle').append(option);
@@ -73,6 +77,41 @@ function loadAllVehicleModelNames() {
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
         }
+    });
+}
+
+//get available vehicle count (not reserved)
+function availableCount(modelName) {
+    var count = 0;
+
+    //request for count
+    $.ajax({
+        url: baseURL + "vehicle/available",
+        method: "get",
+        async: false,
+        data: {
+            "model": modelName,
+            "reserved": false,
+        },
+        dataType: "json",
+        success: function (resp) {
+            count = parseInt(resp);
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+    return count;
+}
+
+
+//delete duplicated car models from the response
+function removeDuplicateCarModelNames(allVehicles) {
+    // By identifier
+    return allVehicles.filter(function (item, index) {
+        return index === allVehicles.findIndex(function (obj) {
+            return item.model === obj.model;
+        })
     });
 }
 
@@ -100,6 +139,14 @@ $('#cbxSelectVehicle').change(function () {
         success: function (resp) {
             console.log(resp);
             for (const vehicle of resp.data) {
+                //get available vehicle count from this model
+                var count = availableCount(vehicle.model);
+
+                // Get images from localStorage
+                const frontImage = localStorage.getItem(vehicle.model+"1");
+                const rearImage = localStorage.getItem(vehicle.model+"2");
+                const interiorImage = localStorage.getItem(vehicle.model+"3");
+
                 //append card to the existing cards list
                 dynamic.innerHTML = `<div class="col">
                         <div class="card">
@@ -107,15 +154,15 @@ $('#cbxSelectVehicle').change(function () {
                             <div id="carouselExampleControls${id}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="../assets/images/13-min-32.jpg" class="d-block w-100" alt="..."
+                                        <img src="${frontImage}" class="d-block w-100" alt="..."
                                              style="height: 40vh;">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="../assets/images/75702.png" class="d-block w-100" alt="..."
+                                        <img src="${rearImage}" class="d-block w-100" alt="..."
                                              style="height: 40vh;">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="../assets/images/istockphoto-628453996-612x612.jpg" class="d-block w-100"
+                                        <img src="${interiorImage}" class="d-block w-100"
                                              alt="..."
                                              style="height: 40vh;">
                                     </div>
@@ -200,7 +247,7 @@ $('#cbxSelectVehicle').change(function () {
                                 </ul>
                                 <ul class="list-group list-group-horizontal fw-bold mt-2">
                                     <li class="list-group-item list-group-item-success col-9">Available for Rent</li>
-                                    <li class="list-group-item list-group-item-success col-3">20&nbsp;&nbsp;&nbsp;Cars</li>
+                                    <li class="list-group-item list-group-item-success col-3">${count}</li>
                                 </ul>
                             </div>
                         </div>
@@ -208,6 +255,9 @@ $('#cbxSelectVehicle').change(function () {
 
                 // record registration no
                 vehicleId = vehicle.registrationNo;
+
+                //just record the first available car and break the loop
+                break;
             }
             console.log(vehicleId);
         },
