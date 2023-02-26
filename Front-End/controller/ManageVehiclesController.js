@@ -204,9 +204,9 @@ function getRowDataToFields() {
 
 function setTextFieldData(regisNO, make, model, yom, type, color, fuelType, passengers,
                           transmission, mileage, dailyRate, monthlyRate, extraKmRate, kmDaily, kmMonthly,
-                          description, reserved) {
+                          description, reservedStatus) {
     var resStatus;
-    if (reserved == "YES") {
+    if (reservedStatus == "YES") {
         resStatus = "Reserved";
     } else {
         resStatus = "Available"
@@ -220,7 +220,7 @@ function setTextFieldData(regisNO, make, model, yom, type, color, fuelType, pass
     $('#txtYOM').val(yom);
     $('#txtType').val(type);
     $('#clrPicker').val(color);
-    $('#cbxFuelType').append(fuelType);
+    $('#cbxFuelType option:selected').text(fuelType);
     $('#txtPassengers').val(passengers);
     $('#txtTransmission').val(transmission);
     $('#txtMileage').val(mileage);
@@ -311,12 +311,16 @@ function saveVehicleImages() {
 
 
 $('#btnUpdateVehicle').click(function () {
-    updateVehicleDetails(false);
+    updateVehicleDetails(undefined);
     replaceExistingImages();
 });
 
 
 function updateVehicleDetails(status) {
+    if(status === undefined) {
+        status = false;
+    }
+
     // get data
     var vehiMake = $('#txtMake').val();
     var vehiModel = $('#txtModel').val();
@@ -333,7 +337,6 @@ function updateVehicleDetails(status) {
     var vehiDailyKm = $('#txtDailyKm').val();
     var vehiMonthlyKm = $('#txtMonthlyKm').val();
     var vehiDescription = $('#txtDescription').val();
-
 
     let vehicleObj = {
         registrationNo: regisNo,
@@ -373,31 +376,37 @@ function updateVehicleDetails(status) {
 
 
 function replaceExistingImages() {
-    //===== remove existing images from the localStorage =====
-    localStorage.removeItem(vehicleModel + 1);
-    // localStorage.removeItem(vehicleModel+2);
-    // localStorage.removeItem(vehicleModel+3);
+    //replace only if images are uploaded
+    if (frontImage == null) {
+    } else if (rearImage == null) {
+    } else if (interiorImage == null) {
+    } else {
+        //===== remove existing images from the localStorage =====
+        localStorage.removeItem(vehicleModel + 1);
+        // localStorage.removeItem(vehicleModel+2);
+        // localStorage.removeItem(vehicleModel+3);
 
 
-    //===== save updated images on localStorage =====
-    const frontImage = document.getElementById('frontViewImgFile');
-    const rearImage = document.getElementById('rearViewImgFile');
-    const interiorImage = document.getElementById('interiorViewImgFile');
+        //===== save updated images on localStorage =====
+        const frontImage = document.getElementById('frontViewImgFile');
+        const rearImage = document.getElementById('rearViewImgFile');
+        const interiorImage = document.getElementById('interiorViewImgFile');
 
-    const imgFile1 = frontImage.files[0];
-    const imgFile2 = rearImage.files[0];
-    const imgFile3 = interiorImage.files[0];
+        const imgFile1 = frontImage.files[0];
+        const imgFile2 = rearImage.files[0];
+        const imgFile3 = interiorImage.files[0];
 
-    reader.readAsDataURL(imgFile1);
-    // reader.readAsDataURL(imgFile2);
-    // reader.readAsDataURL(imgFile3);
+        reader.readAsDataURL(imgFile1);
+        // reader.readAsDataURL(imgFile2);
+        // reader.readAsDataURL(imgFile3);
 
-    reader.addEventListener('load', () => {
-        const url = reader.result
-        // add image to localStorage
-        localStorage.setItem($('#txtModel').val() + 1, url);
-        // reader.abort();
-    });
+        reader.addEventListener('load', () => {
+            const url = reader.result
+            // add image to localStorage
+            localStorage.setItem($('#txtModel').val() + 1, url);
+            // reader.abort();
+        });
+    }
 }
 
 
@@ -423,7 +432,7 @@ $('#btnDeleteVehicle').click(function () {
 
 
 $('#btnAddToMaintenance').click(function () {
-    //record as maintenance
+    //add to maintenance list
     $.ajax({
         url: baseURL + "maintenance",
         method: "post",
@@ -444,6 +453,25 @@ $('#btnAddToMaintenance').click(function () {
     updateVehicleDetails(true);
 });
 
-$('#btnAddToDefective').click(function () {
 
+$('#btnAddToDefective').click(function () {
+    //add to defective list
+    $.ajax({
+        url: baseURL + "defective",
+        method: "post",
+        data: {
+            "vehicleId": regisNo,
+            "date": today
+        },
+        dataType: "json",
+        success: function (res) {
+            alert("Vehicle added to defective list.");
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    //set vehicle as reserved
+    updateVehicleDetails(true);
 });
