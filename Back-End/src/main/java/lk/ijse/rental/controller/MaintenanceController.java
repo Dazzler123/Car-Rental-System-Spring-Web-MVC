@@ -2,6 +2,7 @@ package lk.ijse.rental.controller;
 
 import lk.ijse.rental.dto.MaintenanceDTO;
 import lk.ijse.rental.service.MaintenanceService;
+import lk.ijse.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,10 +18,9 @@ public class MaintenanceController {
     MaintenanceService service;
 
     @PostMapping
-    public String addToMaintenance(MaintenanceDTO dto) {
+    public ResponseUtil addToMaintenance(MaintenanceDTO dto) {
         service.recordVehicle(dto);
-        return "Vehicle added to maintenance. This will not be available until maintenance process is" +
-                " completed and returned";
+        return new ResponseUtil("200", "Vehicle added to maintenance.", null);
     }
 
 }

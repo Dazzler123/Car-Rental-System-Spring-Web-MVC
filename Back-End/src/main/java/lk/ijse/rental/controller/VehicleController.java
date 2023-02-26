@@ -54,7 +54,6 @@ public class VehicleController {
 
     @PutMapping
     public ResponseUtil updateVehicleDetails(@RequestBody VehicleDTO dto) {
-        System.out.println("inside controller");
         return new ResponseUtil("200", "Vehicle details updated successfully.", service.updateVehicle(dto));
     }
 

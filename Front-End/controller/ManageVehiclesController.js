@@ -311,6 +311,12 @@ function saveVehicleImages() {
 
 
 $('#btnUpdateVehicle').click(function () {
+    updateVehicleDetails(false);
+    replaceExistingImages();
+});
+
+
+function updateVehicleDetails(status) {
     // get data
     var vehiMake = $('#txtMake').val();
     var vehiModel = $('#txtModel').val();
@@ -341,7 +347,7 @@ $('#btnUpdateVehicle').click(function () {
         mileage: vehiMileage,
         passengers: vehiPassengers,
         description: vehiDescription,
-        reserved: false,
+        reserved: status,
         dailyRate: vehiDailyRate,
         kmDaily: vehiDailyKm,
         monthlyRate: vehiMonthlyRate,
@@ -363,9 +369,7 @@ $('#btnUpdateVehicle').click(function () {
             alert(JSON.parse(error.responseText).message);
         }
     });
-
-    replaceExistingImages();
-});
+}
 
 
 function replaceExistingImages() {
@@ -419,7 +423,6 @@ $('#btnDeleteVehicle').click(function () {
 
 
 $('#btnAddToMaintenance').click(function () {
-
     //record as maintenance
     $.ajax({
         url: baseURL + "maintenance",
@@ -430,7 +433,7 @@ $('#btnAddToMaintenance').click(function () {
         },
         dataType: "json",
         success: function (res) {
-            alert(res.message);
+            alert("Vehicle added to maintenance.");
         },
         error: function (error) {
             alert(error.message);
@@ -438,7 +441,7 @@ $('#btnAddToMaintenance').click(function () {
     });
 
     //set vehicle as reserved
-
+    updateVehicleDetails(true);
 });
 
 $('#btnAddToDefective').click(function () {
