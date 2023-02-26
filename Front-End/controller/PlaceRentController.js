@@ -15,6 +15,9 @@ let custId = "";
 let custName = "";
 let vehicleId = ""
 
+//file reader obj
+const reader = new FileReader();
+
 
 //verify customer (username & password)
 $('#btnVerifyCustomer').click(function () {
@@ -124,6 +127,8 @@ $('#cbxSelectVehicle').change(function () {
     //select container
     var dynamic = document.querySelector('#cars_container');
 
+    $('#lblDamageWaiverAmt').text(null);
+    
     //generated id's for bootstrap controls
     let id = 0;
 
@@ -256,6 +261,9 @@ $('#cbxSelectVehicle').change(function () {
                 // record registration no
                 vehicleId = vehicle.registrationNo;
 
+                //show loss damage amt
+                setLossDamagePaymentValue(vehicle.type);
+
                 //just record the first available car and break the loop
                 break;
             }
@@ -266,6 +274,18 @@ $('#cbxSelectVehicle').change(function () {
         }
     });
 });
+
+
+function setLossDamagePaymentValue(type) {
+    //show damage waiver amount
+    if (type == "General Car") {
+        $('#lblDamageWaiverAmt').append("10000.00");
+    } else if(type == "Premium Car") {
+        $('#lblDamageWaiverAmt').append("15000.00")
+    } else {
+        $('#lblDamageWaiverAmt').append("20000.00")
+    }
+}
 
 
 //save rent request (save request)
@@ -315,6 +335,15 @@ $('#btnPlaceRent').click(function () {
         error: function (error) {
             alert(error.message);
         }
+    });
+
+    //=== save loss damage waiver payment bank slip on localStorage ==
+    const imgInput = document.getElementById('imgBankPaymentSlip');
+    const img = imgInput.files[0];
+    reader.readAsDataURL(img);
+    reader.addEventListener('load', () => {
+        const url = reader.result
+        localStorage.setItem(bnkImg, url);
     });
 });
 
