@@ -10,8 +10,18 @@ let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 dashboardSummary();
 
 
-
 function dashboardSummary() {
+    getVehicleReservedStatusCount();
+    getRegisteredCustomerCount();
+
+    //search & set available/reserved drivers count
+    let driverOccupiedStatus = getDriverOccupiedStatus()
+    $('#lblAvailableDrivers').text(driverOccupiedStatus.nonOccupied);
+    $('#lblOccupiedDrivers').text(driverOccupiedStatus.occupied);
+}
+
+
+function getVehicleReservedStatusCount() {
     let availableCars = 0;
     let reservedCars = 0;
 
@@ -37,7 +47,9 @@ function dashboardSummary() {
             alert(JSON.parse(error.responseText).message);
         }
     });
+}
 
+function getRegisteredCustomerCount() {
     //request for all customers
     $.ajax({
         url: baseURL + "customer/loadAll",
@@ -51,4 +63,46 @@ function dashboardSummary() {
             alert(JSON.parse(error.responseText).message);
         }
     });
+}
+
+function getDriverOccupiedStatus() {
+    var occupiedCount = 0;
+    var nonOccupiedCount = 0;
+
+    //available count
+    $.ajax({
+        url: baseURL + "driver?occupied=" + false + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            for (const respElement of resp.data) {
+                nonOccupiedCount = nonOccupiedCount + 1;
+            }
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    //reserved count
+    $.ajax({
+        url: baseURL + "driver?occupied=" + true + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            for (const respElement of resp.data) {
+                occupiedCount = occupiedCount + 1;
+            }
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    return {
+        "occupied": occupiedCount,
+        "nonOccupied": nonOccupiedCount
+    };
 }
