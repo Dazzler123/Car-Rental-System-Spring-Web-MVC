@@ -143,9 +143,9 @@ $('#cbxSelectVehicle').change(function () {
                 var count = availableCount(vehicle.model);
 
                 // Get images from localStorage
-                const frontImage = localStorage.getItem(vehicle.model+"1");
-                const rearImage = localStorage.getItem(vehicle.model+"2");
-                const interiorImage = localStorage.getItem(vehicle.model+"3");
+                const frontImage = localStorage.getItem(vehicle.model + "1");
+                const rearImage = localStorage.getItem(vehicle.model + "2");
+                const interiorImage = localStorage.getItem(vehicle.model + "3");
 
                 //append card to the existing cards list
                 dynamic.innerHTML = `<div class="col">
@@ -271,17 +271,7 @@ $('#cbxSelectVehicle').change(function () {
 //save rent request (save request)
 $('#btnPlaceRent').click(function () {
     var date = new Date();
-
     let driverId;
-    let pikUpD = $('#dtePikrPickup').val();
-    let pikUpT = $('#timePikrPickup').val();
-    let bnkImg = "SampathBankSlip.jpg";
-    let retD = $('#dtePikrReturn').val();
-    let retT = $('#timePikrReturn').val();
-    let rentDura = "4 Days";
-    let dateD = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-    let timeT = date.getHours() + ":" + date.getMinutes();
-
 
     // assign a non-occupied driver
     if ($('#driverTrue').is(":checked")) {
@@ -289,6 +279,15 @@ $('#btnPlaceRent').click(function () {
     } else {
         driverId = "SELF";
     }
+
+    let pikUpD = $('#dtePikrPickup').val();
+    let pikUpT = $('#timePikrPickup').val();
+    let retD = $('#dtePikrReturn').val();
+    let retT = $('#timePikrReturn').val();
+    let bnkImg = custId+driverId+retD+retT+vehicleId;
+    let rentDura = "4 Days";
+    let dateD = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    let timeT = date.getHours() + ":" + date.getMinutes();
 
     //send save request
     $.ajax({
@@ -310,11 +309,11 @@ $('#btnPlaceRent').click(function () {
         },
         dataType: "json",
         success: function (res) {
-            alert(res);
+            alert(res.message);
             console.log("Rental Request saved.");
         },
         error: function (error) {
-            alert(error.responseText.message);
+            alert(error.message);
         }
     });
 });
@@ -322,16 +321,19 @@ $('#btnPlaceRent').click(function () {
 
 //search for non-occupied drivers
 function getNonOccupiedDriver() {
+    var drv;
     $.ajax({
-        url: baseURL + "driver",
+        url: baseURL + "driver?occupied=" + false + "",
         method: "get",
+        async: false,
         dataType: "json",
-        success: function (res) {
-            alert(res);
-            console.log("Rental Request saved.");
+        success: function (resp) {
+            drv = resp.data[0].nic;
         },
         error: function (error) {
-            alert(error.responseText.message);
+            alert(error.message);
         }
     });
+    console.log(drv);
+    return drv;
 }
