@@ -22,7 +22,11 @@ public class MaintenanceServiceImpl implements MaintenanceService {
 
     @Override
     public void recordVehicle(MaintenanceDTO dto) {
-        Maintenance vehicle = mapper.map(dto, Maintenance.class);
-        repo.save(vehicle);
+        if (repo.existsById(dto.getVehicleId())) {
+            throw new RuntimeException("Vehicle already added to maintenance.");
+        } else {
+            Maintenance vehicle = mapper.map(dto, Maintenance.class);
+            repo.save(vehicle);
+        }
     }
 }

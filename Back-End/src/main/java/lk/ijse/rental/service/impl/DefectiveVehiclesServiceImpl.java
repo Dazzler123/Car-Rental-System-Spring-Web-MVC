@@ -22,7 +22,11 @@ public class DefectiveVehiclesServiceImpl implements DefectiveVehiclesService {
 
     @Override
     public void saveVehicle(DefectiveVehiclesDTO dto) {
-        Defective_Vehicles vehicle = mapper.map(dto, Defective_Vehicles.class);
-        repo.save(vehicle);
+        if (repo.existsById(dto.getVehicleId())) {
+            throw new RuntimeException("Vehicle already added to defective list.");
+        } else {
+            Defective_Vehicles vehicle = mapper.map(dto, Defective_Vehicles.class);
+            repo.save(vehicle);
+        }
     }
 }

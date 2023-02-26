@@ -445,10 +445,9 @@ $('#btnAddToMaintenance').click(function () {
             alert("Vehicle added to maintenance.");
         },
         error: function (error) {
-            alert(error.message);
+            alert(error.responseText.message);
         }
     });
-
     //set vehicle as reserved
     updateVehicleDetails(true);
 });
@@ -471,7 +470,6 @@ $('#btnAddToDefective').click(function () {
             alert(error.message);
         }
     });
-
     //set vehicle as reserved
     updateVehicleDetails(true);
 });
