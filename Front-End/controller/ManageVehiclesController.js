@@ -280,7 +280,6 @@ $('#btnSaveVehicle').click(function () {
             alert(JSON.parse(error.responseText).message);
         }
     });
-
     saveVehicleImages();
 });
 
@@ -362,7 +361,11 @@ $('#btnUpdateVehicle').click(function () {
         }
     });
 
+    replaceExistingImages();
+});
 
+
+function replaceExistingImages() {
     //===== remove existing images from the localStorage =====
     localStorage.removeItem(vehicleModel + 1);
     // localStorage.removeItem(vehicleModel+2);
@@ -388,7 +391,7 @@ $('#btnUpdateVehicle').click(function () {
         localStorage.setItem($('#txtModel').val() + 1, url);
         // reader.abort();
     });
-});
+}
 
 
 $('#btnDeleteVehicle').click(function () {
@@ -409,5 +412,10 @@ $('#btnDeleteVehicle').click(function () {
     localStorage.removeItem(vehicleModel + 1);
     // localStorage.removeItem(vehicleModel+2);
     // localStorage.removeItem(vehicleModel+3);
+});
+
+
+$('#btnAddToMaintenance').click(function () {
+
 });
 
