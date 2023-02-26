@@ -419,3 +419,6 @@ $('#btnAddToMaintenance').click(function () {
 
 });
 
+$('#btnAddToDefective').click(function () {
+
+});
