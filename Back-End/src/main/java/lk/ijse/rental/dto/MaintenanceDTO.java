@@ -11,4 +11,5 @@ import lombok.ToString;
 @ToString
 public class MaintenanceDTO {
     String vehicleId;
+    String date; //date added to maintenance
 }
