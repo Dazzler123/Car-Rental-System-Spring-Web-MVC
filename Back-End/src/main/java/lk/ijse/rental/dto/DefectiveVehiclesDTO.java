@@ -9,7 +9,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Data
 @ToString
-public class DefectiveVehicleDTO {
+public class DefectiveVehiclesDTO {
     String vehicleId;
     String date; //date marked as defective
 }

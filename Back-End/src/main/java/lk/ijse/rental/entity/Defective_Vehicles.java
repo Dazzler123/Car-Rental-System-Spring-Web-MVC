@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Data
 @ToString
 @Entity
-public class Defective_Vehicle {
+public class Defective_Vehicles {
     @Id
     String vehicleId;
     String date; //date marked as defective
