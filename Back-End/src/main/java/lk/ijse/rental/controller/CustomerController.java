@@ -23,7 +23,7 @@ public class CustomerController {
     @Autowired
     CustomerService service;
 
-    private static final ArrayList<String> allImages = new ArrayList<>();
+//    private static final ArrayList<String> allImages = new ArrayList<>();
 
 //    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 //    public ResponseEntity uploadFile(@RequestPart("myFile") MultipartFile myFile, @RequestPart("myFile") byte[] isFile, @RequestPart("myFile") Part myPart) {
@@ -72,32 +72,32 @@ public class CustomerController {
 //    }
 
     //    Formalized end-point to upload files using Spring
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile) {
-        try {
-            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
-            File uploadsDir = new File(projectPath + "/uploads");
-            System.out.println(projectPath);
-            uploadsDir.mkdir();
-            myFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
-
-            //save the path of the uploaded image in the temporary database
-            allImages.add("uploads/" + myFile.getOriginalFilename());
-
-            return ResponseEntity.ok(HttpStatus.OK);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getAllImagesFromDatabase() {
-        return new ResponseEntity(allImages, HttpStatus.OK);
-    }
+//    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity uploadFileWithSpringWay(@RequestPart("myFile") MultipartFile myFile) {
+//        try {
+//            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
+//            File uploadsDir = new File(projectPath + "/uploads");
+//            System.out.println(projectPath);
+//            uploadsDir.mkdir();
+//            myFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
+//
+//            //save the path of the uploaded image in the temporary database
+//            allImages.add("uploads/" + myFile.getOriginalFilename());
+//
+//            return ResponseEntity.ok(HttpStatus.OK);
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+//
+//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity getAllImagesFromDatabase() {
+//        return new ResponseEntity(allImages, HttpStatus.OK);
+//    }
 
     @PostMapping(path = "/register")
     public String saveCustomer(CustomerDTO dto) {
