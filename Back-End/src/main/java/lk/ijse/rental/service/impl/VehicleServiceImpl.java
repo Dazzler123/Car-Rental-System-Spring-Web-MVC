@@ -45,8 +45,9 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public VehicleDTO findByVehicleModel(String model) {
-        return mapper.map(repo.findVehicleByModel(model), VehicleDTO.class);
+    public ArrayList<VehicleDTO> findByVehicleModel(String model, boolean reserved) {
+        return mapper.map(repo.findVehicleByModelAndReserved(model,reserved), new TypeToken<ArrayList<VehicleDTO>>() {
+        }.getType());
     }
 
     @Override
@@ -56,7 +57,7 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public VehicleDTO searchVehicle(String registrationNo) {
-        if(!repo.existsById(registrationNo)) {
+        if (!repo.existsById(registrationNo)) {
             throw new RuntimeException("No vehicle found with matching Registration Number.");
         } else {
             return mapper.map(repo.findById(registrationNo), VehicleDTO.class);
@@ -76,7 +77,7 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public String updateVehicle(VehicleDTO dto) {
-        if(!repo.existsById(dto.getRegistrationNo())) {
+        if (!repo.existsById(dto.getRegistrationNo())) {
             throw new RuntimeException("Vehicle not found.");
         } else {
             Vehicle vehicle = mapper.map(dto, Vehicle.class);
@@ -87,7 +88,7 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public void deleteVehicle(String registrationNo) {
-        if(!repo.existsById(registrationNo)) {
+        if (!repo.existsById(registrationNo)) {
             throw new RuntimeException("Vehicle not found.");
         } else {
             repo.deleteById(registrationNo);

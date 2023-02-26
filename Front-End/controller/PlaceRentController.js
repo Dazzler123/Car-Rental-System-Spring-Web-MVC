@@ -93,15 +93,17 @@ $('#cbxSelectVehicle').change(function () {
         url: baseURL + "vehicle/byModel",
         method: "get",
         data: {
-            "model": modelName
+            "model": modelName,
+            "reserved": false
         },
         dataType: "json",
-        success: function (vehicle) {
-            console.log(vehicle);
-            //append card to the existing cards list
-            dynamic.innerHTML = `<div class="col">
+        success: function (resp) {
+            console.log(resp);
+            for (const vehicle of resp.data) {
+                //append card to the existing cards list
+                dynamic.innerHTML = `<div class="col">
                         <div class="card">
-                            <div class="card-header fw-semibold fst-italic">${vehicle.data.type}</div>
+                            <div class="card-header fw-semibold fst-italic">${vehicle.type}</div>
                             <div id="carouselExampleControls${id}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
@@ -132,8 +134,8 @@ $('#cbxSelectVehicle').change(function () {
                                 </button>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title fs-3">${vehicle.data.model}</h5>
-                                <p class="card-text fst-italic">${vehicle.data.description}</p>
+                                <h5 class="card-title fs-3">${vehicle.model}</h5>
+                                <p class="card-text fst-italic">${vehicle.description}</p>
                                 <div class="accordion mt-3" id="accordionExample${id}">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="heading${id}">
@@ -150,27 +152,27 @@ $('#cbxSelectVehicle').change(function () {
                                             <div class="accordion-body text-secondary">
                                                 <ul class="list-group list-group-horizontal fw-bold">
                                                     <li class="list-group-item col-7">Make</li>
-                                                    <li class="list-group-item col-5">${vehicle.data.make}</li>
+                                                    <li class="list-group-item col-5">${vehicle.make}</li>
                                                 </ul>
                                                 <ul class="list-group list-group-horizontal">
                                                     <li class="list-group-item col-7">YOM</li>
-                                                    <li class="list-group-item col-5">${vehicle.data.yom}</li>
+                                                    <li class="list-group-item col-5">${vehicle.yom}</li>
                                                 </ul>
                                                 <ul class="list-group list-group-horizontal">
                                                     <li class="list-group-item col-7">Fuel Type</li>
-                                                    <li class="list-group-item col-5">${vehicle.data.fuelType}</li>
+                                                    <li class="list-group-item col-5">${vehicle.fuelType}</li>
                                                 </ul>
                                                 <ul class="list-group list-group-horizontal">
                                                     <li class="list-group-item col-7">Transmission</li>
-                                                    <li class="list-group-item col-5">${vehicle.data.transmission}</li>
+                                                    <li class="list-group-item col-5">${vehicle.transmission}</li>
                                                 </ul>
                                                 <ul class="list-group list-group-horizontal">
                                                     <li class="list-group-item col-7">Mileage</li>
-                                                    <li class="list-group-item col-5">${vehicle.data.mileage}</li>
+                                                    <li class="list-group-item col-5">${vehicle.mileage}</li>
                                                 </ul>
                                                 <ul class="list-group list-group-horizontal">
                                                     <li class="list-group-item col-7">Passenger Count</li>
-                                                    <li class="list-group-item col-5">${vehicle.data.passengers}</li>
+                                                    <li class="list-group-item col-5">${vehicle.passengers}</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -178,23 +180,23 @@ $('#cbxSelectVehicle').change(function () {
                                 </div>
                                 <ul class="list-group list-group-horizontal fw-bold mt-2">
                                     <li class="list-group-item list-group-item-primary col-9">Daily Rate (Rs.)</li>
-                                    <li class="list-group-item list-group-item-primary col-3">${vehicle.data.dailyRate}</li>
+                                    <li class="list-group-item list-group-item-primary col-3">${vehicle.dailyRate}</li>
                                 </ul>
                                 <ul class="list-group list-group-horizontal fw-bold">
                                     <li class="list-group-item list-group-item-primary col-9">Daily KM</li>
-                                    <li class="list-group-item list-group-item-primary col-3">${vehicle.data.kmDaily}</li>
+                                    <li class="list-group-item list-group-item-primary col-3">${vehicle.kmDaily}</li>
                                 </ul>
                                 <ul class="list-group list-group-horizontal fw-bold">
                                     <li class="list-group-item list-group-item-primary col-9">Monthly Rate (Rs.)</li>
-                                    <li class="list-group-item list-group-item-primary col-3">${vehicle.data.monthlyRate}</li>
+                                    <li class="list-group-item list-group-item-primary col-3">${vehicle.monthlyRate}</li>
                                 </ul>
                                 <ul class="list-group list-group-horizontal fw-bold">
                                     <li class="list-group-item list-group-item-primary col-9">Monthly KM</li>
-                                    <li class="list-group-item list-group-item-primary col-3">${vehicle.data.kmMonthly}</li>
+                                    <li class="list-group-item list-group-item-primary col-3">${vehicle.kmMonthly}</li>
                                 </ul>
                                 <ul class="list-group list-group-horizontal fw-bold">
                                     <li class="list-group-item list-group-item-primary col-9">Rate Per Extra KM (Rs.)</li>
-                                    <li class="list-group-item list-group-item-primary col-3">${vehicle.data.extraKmRate}</li>
+                                    <li class="list-group-item list-group-item-primary col-3">${vehicle.extraKmRate}</li>
                                 </ul>
                                 <ul class="list-group list-group-horizontal fw-bold mt-2">
                                     <li class="list-group-item list-group-item-success col-9">Available for Rent</li>
@@ -204,8 +206,10 @@ $('#cbxSelectVehicle').change(function () {
                         </div>
                     </div>`;
 
-            // record registration no
-            vehicleId = vehicle.data.registrationNo;
+                // record registration no
+                vehicleId = vehicle.registrationNo;
+            }
+            console.log(vehicleId);
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);

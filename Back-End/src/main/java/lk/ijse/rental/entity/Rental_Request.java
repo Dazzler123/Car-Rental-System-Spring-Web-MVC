@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Data
 @ToString
 @Entity
-public class RentalRequest {
+public class Rental_Request {
     @Id
     private int requestId;
     private String customerNic;

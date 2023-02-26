@@ -11,7 +11,7 @@ public interface VehicleService {
     public ArrayList<VehicleDTO> findAllByFilters(String type, String make, int passengers, String fuelType,
                                                   String transmission);
 
-    public VehicleDTO findByVehicleModel(String model);
+    public ArrayList<VehicleDTO> findByVehicleModel(String model, boolean reserved);
 
     public Long countAvailableOfModel(String model, boolean reserved);
 

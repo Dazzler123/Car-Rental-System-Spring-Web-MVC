@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface VehicleRepo extends JpaRepository<Vehicle, String> {
     List<Vehicle> findVehiclesByTypeAndMakeAndPassengersAndFuelTypeAndTransmission(String type, String make,
-                                                                                 int passengers, String fuelType, String transmission);
+                                                                                   int passengers, String fuelType, String transmission);
 
-    Vehicle findVehicleByModel(String model);
+    List<Vehicle> findVehicleByModelAndReserved(String model, boolean reserved);
 
     Long countByModelAndReserved(String model, boolean reserved);
 }

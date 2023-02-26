@@ -31,9 +31,9 @@ public class VehicleController {
     }
 
     @GetMapping(path = "/byModel")
-    public ResponseUtil searchVehicleByModel(String model) {
-        VehicleDTO vehicle = service.findByVehicleModel(model);
-        return new ResponseUtil("200", "Vehicle found.", vehicle);
+    public ResponseUtil searchVehicleByModel(String model, boolean reserved) {
+        ArrayList<VehicleDTO> vehicles = service.findByVehicleModel(model,reserved);
+        return new ResponseUtil("200", "Vehicle found.", vehicles);
     }
 
     @GetMapping(path = "/available")
