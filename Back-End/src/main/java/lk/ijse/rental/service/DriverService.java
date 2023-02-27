@@ -8,4 +8,6 @@ public interface DriverService {
     public ArrayList<DriverDTO> getAllNonOccupied(boolean occupied);
 
     public DriverDTO searchDriverById(String nic);
+
+    public void updateDriver(DriverDTO dto);
 }

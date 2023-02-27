@@ -1,7 +1,7 @@
 package lk.ijse.rental.service.impl;
 
 import lk.ijse.rental.dto.DriverDTO;
-import lk.ijse.rental.dto.VehicleDTO;
+import lk.ijse.rental.entity.Driver;
 import lk.ijse.rental.repo.DriverRepo;
 import lk.ijse.rental.service.DriverService;
 import org.modelmapper.ModelMapper;
@@ -36,5 +36,11 @@ public class DriverServiceImpl implements DriverService {
         } else {
             return mapper.map(repo.findById(nic), DriverDTO.class);
         }
+    }
+
+    @Override
+    public void updateDriver(DriverDTO dto) {
+        Driver driver = mapper.map(dto, Driver.class);
+        repo.save(driver);
     }
 }

@@ -298,5 +298,55 @@ function replaceDriver(id) {
 
 
 function setDriverAsOccupied(id) {
+    var drvDlNo;
+    var drvName;
+    var drvAddress;
+    var drvContactNo;
 
+    //get driver
+    $.ajax({
+        url: baseURL + "driver?search=" + id + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            console.log("helllo")
+            console.log(resp);
+            var drv = resp.data;
+            drvDlNo = drv.dlNo;
+            drvName = drv.name;
+            drvAddress = drv.address;
+            drvContactNo = drv.contactNo;
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    let driver = {
+        nic: id,
+        dlNo: drvDlNo,
+        name: drvName,
+        address: drvAddress,
+        contactNo: drvContactNo,
+        occupied: true
+    };
+
+    console.log(driver)
+
+    //update driver occupied to true
+    $.ajax({
+        url: baseURL + "driver",
+        method: "put",
+        contentType: "application/json",
+        async: false,
+        data: JSON.stringify(driver),
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
 }
