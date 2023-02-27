@@ -190,23 +190,104 @@ function loadRequestDetails(id) {
 
 
 $('#btnSearchDriver').click(function () {
-    //search driver
-    $.ajax({
-        url: baseURL + "driver/search?nic=" + $('#txtDriverNIC').val() + "",
-        method: "get",
-        async: false,
-        dataType: "json",
-        success: function (resp) {
-            var d = resp.data;
-            if (d.occupied) {
-                alert("This Driver has been occupied already. Please replace with a different Driver.");
-            } else {
-                //load replaced driver's details
-                loadDriverDetails(d.nic);
+    var replacedId = $('#txtDriverNIC').val();
+    if (replacedId == "self" || replacedId == "Self" || replacedId == "SELF") {
+        replaceDriver("SELF");
+    } else {
+        //search driver
+        $.ajax({
+            url: baseURL + "driver/search?nic=" + replacedId + "",
+            method: "get",
+            async: false,
+            dataType: "json",
+            success: function (resp) {
+                var d = resp.data;
+                //if the driver is occupied
+                if (d.occupied) {
+                    alert("This Driver has been occupied already. Please replace with a different Driver.");
+                } else {
+                    //load replaced driver's details
+                    loadDriverDetails(d.nic);
+
+                    driverID = d.nic;
+
+                    //replace driver in the request entry
+                    replaceDriver(d.nic);
+                }
+            },
+            error: function (error) {
+                alert(error.message);
             }
+        });
+    }
+});
+
+
+//replace driver in a request entry
+function replaceDriver(id) {
+    let customerId;
+    let vehicleId;
+    let pikUpD;
+    let pikUpT;
+    let retD;
+    let retT;
+    let bnkImg;
+    let rentDura;
+    let dateD;
+    let timeT;
+
+    //get request details
+    $.ajax({
+        url: baseURL + "rentalRequest/search?requestId=" + requestID + "",
+        method: "get",
+        dataType: "json",
+        async: false,
+        success: function (resp) {
+            console.log(resp);
+            var req = resp.data;
+            customerId = req.customerNic;
+            vehicleId = req.registrationNo;
+            pikUpD = req.pickUpDate;
+            pikUpT = req.pickUpTime;
+            retD = req.returnDate;
+            retT = req.returnTime;
+            bnkImg = req.bankImgKey;
+            rentDura = req.rentDuration;
+            dateD = req.date;
+            timeT = req.time;
         },
-        error: function (error) {
-            alert(error.message);
+        error: function (err) {
+            alert(err.message);
         }
     });
-});
+
+    // ==================================
+    let newRequest = {
+        requestId: requestID,
+        customerNic: customerId,
+        registrationNo: vehicleId,
+        driverNic: id,
+        date: dateD,
+        time: timeT,
+        pickUpDate: pikUpD,
+        pickUpTime: pikUpT,
+        bankImgKey: bnkImg,
+        returnDate: retD,
+        returnTime: retT,
+        rentDuration: rentDura
+    }
+
+    //change driver in rental_requests table
+    $.ajax({
+        url: baseURL + "rentalRequest/update" + "",
+        method: "put",
+        data: JSON.stringify(newRequest),
+        dataType: "json",
+        success: function (resp) {
+            alert(resp.message);
+        },
+        error: function (err) {
+            alert(err.message);
+        }
+    });
+}

@@ -10,4 +10,6 @@ public interface RentalRequestService {
     public ArrayList<RentalRequestDTO> getAllRentalRequests();
 
     public RentalRequestDTO searchRentalDetails(int requestId);
+
+    public void updateDetails(RentalRequestDTO dto);
 }

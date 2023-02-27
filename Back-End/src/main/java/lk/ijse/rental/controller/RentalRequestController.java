@@ -30,4 +30,10 @@ public class RentalRequestController {
         return new ResponseUtil("200", "Rental request details found",
                 service.searchRentalDetails(requestId));
     }
+
+    @PutMapping("/update")
+    public ResponseUtil updateRequestDetails(RentalRequestDTO dto) {
+        service.updateDetails(dto);
+        return new ResponseUtil("200", "Driver replaced from the request.", null);
+    }
 }

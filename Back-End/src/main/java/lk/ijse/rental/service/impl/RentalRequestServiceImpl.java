@@ -43,4 +43,10 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     public RentalRequestDTO searchRentalDetails(int requestId) {
         return mapper.map(repo.findRental_RequestByRequestId(requestId), RentalRequestDTO.class);
     }
+
+    @Override
+    public void updateDetails(RentalRequestDTO dto) {
+        Rental_Request request = mapper.map(dto, Rental_Request.class);
+        repo.save(request);
+    }
 }
