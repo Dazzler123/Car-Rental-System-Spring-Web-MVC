@@ -6,4 +6,6 @@ import java.util.ArrayList;
 
 public interface DriverService {
     public ArrayList<DriverDTO> getAllNonOccupied(boolean occupied);
+
+    public DriverDTO searchDriverById(String nic);
 }

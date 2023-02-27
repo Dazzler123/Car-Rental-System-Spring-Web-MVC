@@ -28,4 +28,13 @@ public class DriverServiceImpl implements DriverService {
         return mapper.map(repo.findDriverByOccupied(occupied), new TypeToken<ArrayList<DriverDTO>>() {
         }.getType());
     }
+
+    @Override
+    public DriverDTO searchDriverById(String nic) {
+        if (!repo.existsById(nic)) {
+            throw new RuntimeException("Driver not found.");
+        } else {
+            return mapper.map(repo.findById(nic), DriverDTO.class);
+        }
+    }
 }

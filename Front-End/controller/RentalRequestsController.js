@@ -105,16 +105,38 @@ function loadCustomerDetails(id) {
             //set image
             const img = document.querySelector("#nicDlImg");
             img.src = url;
-            // img.setAttribute("height","400px");
         },
         error: function (err) {
             alert(err.responseText.message);
         }
     });
-
-
 }
 
 function loadDriverDetails(id) {
-// $('#lblDriverNIC').val(driverId);
+    $.ajax({
+        url: baseURL + "driver/search?nic=" + id + "",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            var driver = resp.data;
+            //set data
+            $('#lblDriverNIC').val(driver.nic);
+            $('#lblDriverDLNo').val(driver.dlNo);
+            $('#lblDriverName').val(driver.name);
+            $('#lblDriverAddress').val(driver.address);
+            $('#lblDriverContactNo').val(driver.contactNo);
+
+            //load nic/dl image
+            // Get data URL from localStorage
+            const url = localStorage.getItem(driver.nic);
+
+            //set image
+            const img = document.querySelector("#driverNicDlImg");
+            img.src = url;
+        },
+        error: function (err) {
+            alert(err.responseText.message);
+        }
+    });
 }

@@ -19,9 +19,14 @@ public class DriverController {
     @Autowired
     DriverService service;
 
-    @GetMapping()
+    @GetMapping
     public ResponseUtil getAllNonOccupied(boolean occupied) {
         ArrayList<DriverDTO> drivers = service.getAllNonOccupied(occupied);
-        return new ResponseUtil("200","All non-occupied drivers loaded.", drivers);
+        return new ResponseUtil("200", "All non-occupied drivers loaded.", drivers);
+    }
+
+    @GetMapping("/search")
+    public ResponseUtil searchDriverByNic(String nic) {
+        return new ResponseUtil("200", "Driver found", service.searchDriverById(nic));
     }
 }
