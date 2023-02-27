@@ -263,7 +263,7 @@ function replaceDriver(id) {
 
     // ==================================
     let newRequest = {
-        requestId: requestID,
+        requestId: parseInt(requestID),
         customerNic: customerId,
         registrationNo: vehicleId,
         driverNic: id,
@@ -279,15 +279,24 @@ function replaceDriver(id) {
 
     //change driver in rental_requests table
     $.ajax({
-        url: baseURL + "rentalRequest/update" + "",
+        url: baseURL + "rentalRequest",
         method: "put",
+        contentType: "application/json",
         data: JSON.stringify(newRequest),
         dataType: "json",
         success: function (resp) {
             alert(resp.message);
+
+            //update driver as occupied
+            setDriverAsOccupied(id);
         },
         error: function (err) {
             alert(err.message);
         }
     });
+}
+
+
+function setDriverAsOccupied(id) {
+
 }

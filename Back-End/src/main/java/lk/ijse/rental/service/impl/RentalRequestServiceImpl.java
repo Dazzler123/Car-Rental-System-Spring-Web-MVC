@@ -46,6 +46,7 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 
     @Override
     public void updateDetails(RentalRequestDTO dto) {
+        System.out.println("awa2");
         Rental_Request request = mapper.map(dto, Rental_Request.class);
         repo.save(request);
     }
