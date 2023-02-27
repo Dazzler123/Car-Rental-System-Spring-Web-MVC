@@ -25,8 +25,10 @@
     </div>
 </nav>
 
+
 <!----------------heading---------------->
 <h1 class="col-12 text-center mt-5 mb-5 fw-semibold fs-2 border-5">Rental Requests</h1>
+
 
 <!------------all requests table-------------->
 <div class="col-11 m-0 p-0 mx-auto">
@@ -207,18 +209,17 @@
         <button id="btnAcceptRequest" type="button" class="col-11 btn btn-success btn-lg col-4 ms-3 mt-4">Accept Request
         </button>
     </div>
-
 </div>
 
 
 <!--------denial reason input--------->
-<div class="mb-3 col-9 mx-auto mt-5 pt-5">
-    <label for="exampleFormControlTextarea1" class="form-label">Denial Reason</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+<div class="mb-5 col-6 mt-5 pt-5 ms-5 row justify-content-end">
+    <label for="exampleFormControlTextarea1" class="form-label ms-4 fst-italic">Enter Denial Reason</label>
+    <textarea class="form-control col-12 m-0 ms-4" id="exampleFormControlTextarea1" rows="5"></textarea>
+    <!--deny button-->
+    <button id="btnDenyRequest" type="button" class="btn btn-danger btn-lg col-7 mt-3">Deny Request
+    </button>
 </div>
-
-<button id="btnDenyRequest" type="button" class="btn btn-danger btn-lg col-4 ms-3 mt-3">Deny Request
-</button>
 
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
