@@ -111,6 +111,7 @@ function loadCustomerDetails(id) {
     });
 }
 
+
 function loadDriverDetails(id) {
     if (id == "SELF") {
         //set text
@@ -155,6 +156,7 @@ function loadDriverDetails(id) {
     }
 }
 
+
 function loadRequestDetails(id) {
     $.ajax({
         url: baseURL + "rentalRequest/search?requestId=" + id + "",
@@ -185,3 +187,26 @@ function loadRequestDetails(id) {
         }
     });
 }
+
+
+$('#btnSearchDriver').click(function () {
+    //search driver
+    $.ajax({
+        url: baseURL + "driver/search?nic=" + $('#txtDriverNIC').val() + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            var d = resp.data;
+            if (d.occupied) {
+                alert("This Driver has been occupied already. Please replace with a different Driver.");
+            } else {
+                //load replaced driver's details
+                loadDriverDetails(d.nic);
+            }
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+});
