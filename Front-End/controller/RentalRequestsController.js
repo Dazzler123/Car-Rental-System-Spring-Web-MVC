@@ -82,7 +82,37 @@ function setTextFieldData(reqId, customerId, vehicleId, driverId, date, time, pi
 }
 
 function loadCustomerDetails(id) {
-// $('#lblCustomerNIC').val(customerId);
+    $.ajax({
+        url: baseURL + "customer/search?nic=" + id + "",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            var customer = resp.data;
+            //set data
+            $('#lblCustomerNIC').val(customer.nic);
+            $('#lblCustomerDLNo').val(customer.dl_no);
+            $('#lblCustomerName').val(customer.name);
+            $('#lblCustomerAddress').val(customer.address);
+            $('#lblCustomerContactNo').val(customer.contact_no);
+            $('#lblCustomerEmail').val(customer.email);
+            $('#lblCustomerGender').val(customer.gender);
+
+            //load nic/dl image
+            // Get data URL from localStorage
+            const url = localStorage.getItem(customer.nic);
+
+            //set image
+            const img = document.querySelector("#nicDlImg");
+            img.src = url;
+            // img.setAttribute("height","400px");
+        },
+        error: function (err) {
+            alert(err.responseText.message);
+        }
+    });
+
+
 }
 
 function loadDriverDetails(id) {
