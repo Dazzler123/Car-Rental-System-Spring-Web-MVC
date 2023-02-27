@@ -12,6 +12,9 @@ loadAllRentalRequests();
 
 //request id
 let requestID = "";
+let custID = "";
+let driverID = "";
+let vehicleID = "";
 
 
 function loadAllRentalRequests() {
@@ -67,18 +70,12 @@ function getRowDataToFields() {
 function setTextFieldData(reqId, customerId, vehicleId, driverId, date, time, pickupDate, pickupTime, returnDate,
                           returnTime, rentDuration) {
     requestID = reqId;
+    vehicleID = vehicleId;
 
     //load customer & driver
     loadCustomerDetails(customerId);
     loadDriverDetails(driverId);
-
-    // $('#txtCustomerNIC').val(custNic);
-    // $('#txtCustomerName').val(custName);
-    // $('#txtCustomerAddress').val(custAddress);
-    // $('#txtCustomerDLNo').val(custDlNo);
-    // $('#txtCustomerEmail').val(custEmail);
-    // $('#txtCustomerContactNo').val(custContactNo);
-    // $('#cbxCustomerGender option:selected').text(custGender);
+    loadRequestDetails(reqId);
 }
 
 function loadCustomerDetails(id) {
@@ -105,6 +102,8 @@ function loadCustomerDetails(id) {
             //set image
             const img = document.querySelector("#nicDlImg");
             img.src = url;
+
+            custID = customer.nic;
         },
         error: function (err) {
             alert(err.responseText.message);
@@ -113,30 +112,76 @@ function loadCustomerDetails(id) {
 }
 
 function loadDriverDetails(id) {
+    if (id == "SELF") {
+        //set text
+        $('#lblDriverNIC').val("SELF");
+        $('#lblDriverDLNo').val("SELF");
+        $('#lblDriverName').val("SELF");
+        $('#lblDriverAddress').val("SELF");
+        $('#lblDriverContactNo').val("SELF");
+
+        const img = document.querySelector("#driverNicDlImg");
+        img.removeAttribute("src");
+        img.setAttribute("alt", "No Driver has been hired by the customer");
+    } else {
+        $.ajax({
+            url: baseURL + "driver/search?nic=" + id + "",
+            method: "get",
+            dataType: "json",
+            success: function (resp) {
+                console.log(resp);
+                var driver = resp.data;
+                //set data
+                $('#lblDriverNIC').val(driver.nic);
+                $('#lblDriverDLNo').val(driver.dlNo);
+                $('#lblDriverName').val(driver.name);
+                $('#lblDriverAddress').val(driver.address);
+                $('#lblDriverContactNo').val(driver.contactNo);
+
+                //load nic/dl image
+                // Get data URL from localStorage
+                const url = localStorage.getItem(driver.nic);
+
+                //set image
+                const img = document.querySelector("#driverNicDlImg");
+                img.src = url;
+
+                driverID = driver.nic;
+            },
+            error: function (err) {
+                alert(err.responseText.message);
+            }
+        });
+    }
+}
+
+function loadRequestDetails(id) {
     $.ajax({
-        url: baseURL + "driver/search?nic=" + id + "",
+        url: baseURL + "rentalRequest/search?requestId=" + id + "",
         method: "get",
         dataType: "json",
         success: function (resp) {
             console.log(resp);
-            var driver = resp.data;
+            var request = resp.data;
             //set data
-            $('#lblDriverNIC').val(driver.nic);
-            $('#lblDriverDLNo').val(driver.dlNo);
-            $('#lblDriverName').val(driver.name);
-            $('#lblDriverAddress').val(driver.address);
-            $('#lblDriverContactNo').val(driver.contactNo);
+            $('#lblPickUpDate').val(request.pickUpDate);
+            $('#lblPickUpTime').val(request.pickUpTime);
+            $('#lblReturnDate').val(request.returnDate);
+            $('#lblReturnTime').val(request.returnTime);
+            $('#lblRentDuration').val(request.rentDuration);
+
+            // custId + driverId + retD + retT + vehicleId
 
             //load nic/dl image
             // Get data URL from localStorage
-            const url = localStorage.getItem(driver.nic);
+            const url = localStorage.getItem(custID + driverID + request.returnDate + request.returnTime + vehicleID);
 
             //set image
-            const img = document.querySelector("#driverNicDlImg");
+            const img = document.querySelector("#bankSlipImage");
             img.src = url;
         },
         error: function (err) {
-            alert(err.responseText.message);
+            alert(err.message);
         }
     });
 }

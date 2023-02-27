@@ -1,7 +1,6 @@
 package lk.ijse.rental.service.impl;
 
 import lk.ijse.rental.dto.RentalRequestDTO;
-import lk.ijse.rental.dto.VehicleDTO;
 import lk.ijse.rental.entity.Rental_Request;
 import lk.ijse.rental.repo.RentalRequestRepo;
 import lk.ijse.rental.service.RentalRequestService;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @Transactional
@@ -39,5 +37,10 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     public ArrayList<RentalRequestDTO> getAllRentalRequests() {
         return mapper.map(repo.findAll(), new TypeToken<ArrayList<RentalRequestDTO>>() {
         }.getType());
+    }
+
+    @Override
+    public RentalRequestDTO searchRentalDetails(int requestId) {
+        return mapper.map(repo.findRental_RequestByRequestId(requestId), RentalRequestDTO.class);
     }
 }

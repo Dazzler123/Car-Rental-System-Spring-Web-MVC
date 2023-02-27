@@ -8,4 +8,6 @@ public interface RentalRequestService {
     public void saveRequest(RentalRequestDTO dto);
 
     public ArrayList<RentalRequestDTO> getAllRentalRequests();
+
+    public RentalRequestDTO searchRentalDetails(int requestId);
 }

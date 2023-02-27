@@ -24,4 +24,10 @@ public class RentalRequestController {
     public ResponseUtil loadAllRequests() {
         return new ResponseUtil("200", "All rental requests loaded.", service.getAllRentalRequests());
     }
+
+    @GetMapping("/search")
+    public ResponseUtil getRentalRequestDetails(int requestId) {
+        return new ResponseUtil("200", "Rental request details found",
+                service.searchRentalDetails(requestId));
+    }
 }

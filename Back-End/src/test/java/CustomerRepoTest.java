@@ -2,6 +2,8 @@ import lk.ijse.rental.config.WebRootConfig;
 import lk.ijse.rental.entity.Customer;
 import lk.ijse.rental.entity.Vehicle;
 import lk.ijse.rental.repo.CustomerRepo;
+import lk.ijse.rental.repo.DriverRepo;
+import lk.ijse.rental.repo.RentalRequestRepo;
 import lk.ijse.rental.repo.VehicleRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,6 +30,10 @@ class CustomerRepoTest {
     @Autowired
     CustomerRepo repo2;
 
+    @Autowired
+    RentalRequestRepo repo3;
+
+
     @Test
     public void testOne() {
 //        List<Vehicle> byTypeAndMakeAndTransmission =
@@ -44,6 +50,9 @@ class CustomerRepoTest {
 //
 //        Long suzuki_wagon_r_hybrid = repo.countByModelAndReserved("Mercedes Benz CLA 200 AMG", false);
 //        System.out.println(suzuki_wagon_r_hybrid);
+//        int id = 4;
+//
+//        System.out.println(repo3.findRental_RequestByRequestId(5));
 
     }
 
