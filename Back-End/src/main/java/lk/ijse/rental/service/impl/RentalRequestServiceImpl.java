@@ -1,14 +1,18 @@
 package lk.ijse.rental.service.impl;
 
 import lk.ijse.rental.dto.RentalRequestDTO;
+import lk.ijse.rental.dto.VehicleDTO;
 import lk.ijse.rental.entity.Rental_Request;
 import lk.ijse.rental.repo.RentalRequestRepo;
 import lk.ijse.rental.service.RentalRequestService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
@@ -29,5 +33,11 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 //        }
         Rental_Request request = mapper.map(dto, Rental_Request.class);
         repo.save(request);
+    }
+
+    @Override
+    public ArrayList<RentalRequestDTO> getAllRentalRequests() {
+        return mapper.map(repo.findAll(), new TypeToken<ArrayList<RentalRequestDTO>>() {
+        }.getType());
     }
 }

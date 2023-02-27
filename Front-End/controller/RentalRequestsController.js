@@ -12,5 +12,15 @@ loadAllRentalRequests();
 
 
 function loadAllRentalRequests() {
-
+    $.ajax({
+        url: baseURL + "rentalRequest/loadAll" + "",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp)
+        },
+        error: function (err) {
+            alert(err.responseText.message);
+        }
+    });
 }
