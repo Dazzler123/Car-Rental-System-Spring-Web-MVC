@@ -326,7 +326,8 @@ $('#btnPlaceRent').click(function () {
             "returnDate": retD,
             "returnTime": retT,
             "rentDuration": rentDura + " Days",
-            "status": "PENDING"
+            "status": "PENDING",
+            "reason": ""
         },
         dataType: "json",
         success: function (res) {

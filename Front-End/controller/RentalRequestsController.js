@@ -350,3 +350,19 @@ function setDriverAsOccupied(id) {
         }
     });
 }
+
+
+$('#btnAcceptRequest').click(function () {
+    $.ajax({
+        url: baseURL + "rentalRequest/search?requestId=" + requestID + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp.data);
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+});

@@ -32,4 +32,5 @@ public class Rental_Request {
     private String returnTime;
     private String rentDuration;
     private String status;
+    private String reason;
 }
