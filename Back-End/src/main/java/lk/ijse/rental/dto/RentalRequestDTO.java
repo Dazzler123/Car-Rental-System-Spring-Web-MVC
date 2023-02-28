@@ -23,4 +23,5 @@ public class RentalRequestDTO {
     private String returnDate;
     private String returnTime;
     private String rentDuration;  //count of days of the rental period
+    private boolean accepted;
 }

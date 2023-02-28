@@ -325,7 +325,8 @@ $('#btnPlaceRent').click(function () {
             "bankImgKey": bnkImg,
             "returnDate": retD,
             "returnTime": retT,
-            "rentDuration": rentDura + " Days"
+            "rentDuration": rentDura + " Days",
+            "accepted": false
         },
         dataType: "json",
         success: function (res) {

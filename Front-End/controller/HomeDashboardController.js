@@ -9,6 +9,7 @@ $(window).on('load', function () {
     $("#loader_Container").fadeOut(700);
 });
 
+
 // save customer details (Customer Registration form model)
 $('#btnSaveCustomer').click(function () {
     //send ajax request to the customer servlet
@@ -41,15 +42,15 @@ $('#btnSaveCustomer').click(function () {
 
     //save image
     // nicDlImageFile.addEventListener('change', () => {
-        // Get file from input element
-        const imgFile = nicDlImageFile.files[0];
-        reader.readAsDataURL(imgFile);
+    // Get file from input element
+    const imgFile = nicDlImageFile.files[0];
+    reader.readAsDataURL(imgFile);
 
-        reader.addEventListener('load', () => {
-            const url = reader.result
-            // add image to localStorage
-            localStorage.setItem($('#txtCustomerNIC').val(), url);
-            // reader.abort();
-        });
+    reader.addEventListener('load', () => {
+        const url = reader.result
+        // add image to localStorage
+        localStorage.setItem($('#txtCustomerNIC').val(), url);
+        // reader.abort();
+    });
     // });
 });

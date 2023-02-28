@@ -15,9 +15,10 @@ public class RentalRequestController {
     RentalRequestService service;
 
     @PostMapping
-    public String placeRentalRequest(RentalRequestDTO dto) {
+    public ResponseUtil placeRentalRequest(RentalRequestDTO dto) {
         service.saveRequest(dto);
-        return "Rental request placed successfully.";
+        return new ResponseUtil("200","Rental request sent successfully. Please check your" +
+                " Rental Responses page for feedbacks.",null);
     }
 
     @GetMapping("/loadAll")

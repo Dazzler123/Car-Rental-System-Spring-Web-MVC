@@ -288,7 +288,7 @@ function replaceDriver(id) {
             alert(resp.message);
 
             //update driver as occupied
-            setDriverAsOccupied(id);
+            // setDriverAsOccupied(id);
         },
         error: function (err) {
             alert(err.message);
