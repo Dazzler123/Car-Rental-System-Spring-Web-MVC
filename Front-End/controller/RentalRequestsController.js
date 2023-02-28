@@ -364,13 +364,12 @@ $('#btnAcceptRequest').click(function () {
     $.ajax({
         url: baseURL + "rentalRequest",
         method: "put",
-        // async: false,
         contentType: "application/json",
         data: JSON.stringify(change),
         dataType: "json",
         success: function (resp) {
             console.log(resp.message);
-            alert("Request accepted. The feedback will be sent to the customer.");
+            alert("Request accepted. Status and reason feedback will be sent to the customer.");
         },
         error: function (error) {
             alert(error.message);
