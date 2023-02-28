@@ -325,7 +325,7 @@ $('#btnPlaceRent').click(function () {
             "bankImgKey": bnkImg,
             "returnDate": retD,
             "returnTime": retT,
-            "rentDuration": rentDura + " Days",
+            "rentDuration": rentDura,
             "status": "PENDING",
             "reason": ""
         },
@@ -455,8 +455,10 @@ function getNonOccupiedDriver() {
 
 
 function getDateDifference(dateFrom, dateTo) {
-    const diffTime = Math.abs(dateFrom - dateTo);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    console.log(diffDays + " days");
-    return diffDays;
+    // const diffTime = Math.abs(dateFrom - dateTo);
+    // const diffDays = Math.ceil(diffTime / (24 * 3600 * 1000));
+    var t2 = new Date(dateFrom);
+    var t1 = new Date(dateTo);
+
+    return (t1 - t2) / (24 * 3600 * 1000);
 }
