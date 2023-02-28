@@ -188,13 +188,11 @@
     <div class="col-6 mt-5 ms-5">
         <div class="m-0">
             <h3 class="fw-semibold fs-5 border-5">Total Charge for Rent Duration : </h3>
-            <h3 id="lblTotRentAmount" class="mt-1 mb-4 fw-semibold font-monospace text-danger fs-1">
-                10000/=</h3>
+            <h3 id="lblTotRentAmount" class="mt-1 mb-4 fw-semibold font-monospace text-danger fs-1"></h3>
         </div>
         <div class="mt-5">
             <h3 class="fw-semibold fs-5 border-5">Driver Charges : </h3>
-            <h3 id="lblDriverCharge" class="mb-4 fw-semibold font-monospace text-danger fs-1">
-                1000/=</h3>
+            <h3 id="lblDriverCharge" class="mb-4 fw-semibold font-monospace text-danger fs-1"></h3>
         </div>
         <div class="mt-5">
             <label class="form-label fst-italic fs-6 mb-2 fw-light ms-2">Enter no. of extra kilometers driven</label>
@@ -203,6 +201,18 @@
             </div>
         </div>
     </div>
+
+    <!----------calculate grand total button------->
+    <div class="col-3 mt-5 ms-5">
+        <button id="btnCalculateRentTotal" type="button" class="btn btn-lg btn-primary col-12 m-0 w-100 mx-auto">Calculate Total</button>
+    </div>
+
+    <div class="mt-5 ms-5">
+        <h3 class="fw-semibold fs-5 border-5">TOTAL (Rs.) : </h3>
+        <h1 id="lblGrandTotal" class="mb-4 fw-bold font-monospace text-danger"></h1>
+    </div>
+
+    <h1>===========================</h1>
 
     <div class="col-6 mt-5 ms-5">
         <div class="m-0">
@@ -220,13 +230,11 @@
                 <h3 id="lblLossDamageBalance" class="mb-4 fw-semibold font-monospace text-danger fs-2">
                     1000/=</h3>
             </div>
-            <div class="mt-5">
-                <h3 class="fw-semibold fs-5 border-5">TOTAL (Rs.) : </h3>
-                <h1 id="lblGrandTotal" class="mb-4 fw-bold font-monospace text-danger">1000/=</h1>
-            </div>
         </div>
     </div>
-
+<!--    <div class="col-3 mt-0">-->
+<!--        <button id="btnCalculateWaiverTotal" type="button" class="btn btn-lg btn-primary col-12 m-0 w-100 mx-auto">Calculate Total</button>-->
+<!--    </div>-->
 </div>
 
 

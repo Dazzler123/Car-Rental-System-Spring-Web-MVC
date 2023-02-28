@@ -7,6 +7,8 @@ let rentID;
 let driverID;
 let vehicleID;
 let rentDurationCount;
+let rentDurationValue;
+let extraKmRate;
 
 
 $('#btnSearchRent').click(function () {
@@ -20,6 +22,7 @@ $('#btnSearchRent').click(function () {
             var request = resp.data;
 
             rentID = request.requestId;
+            driverID = request.driverNic;
             rentDurationCount = request.rentDuration;
             rentDurationCount++;
 
@@ -47,6 +50,8 @@ $('#btnSearchRent').click(function () {
 
             //load vehicle details
             loadVehicleDetails(request.registrationNo);
+
+            setDriverCharges();
         },
         error: function (err) {
             alert("Incorrect Rent ID! Rent details not found.");
@@ -122,6 +127,7 @@ function loadVehicleDetails(id) {
             $('#lblMonthlyRate').val(vehicle.monthlyRate);
             $('#lblKmMonthly').val(vehicle.kmMonthly);
             $('#lblExtraKmRate').val(vehicle.extraKmRate);
+            extraKmRate = vehicle.extraKmRate;
 
             //record vehicle
             vehicleID = vehicle.registrationNo;
@@ -137,14 +143,38 @@ function loadVehicleDetails(id) {
 
 
 function calculateAmountForRentalDurationCount(dailyAmount, monthlyAmount) {
+    var tempAmount = 0;
     // if rented days count is more than or equal to a month
     if (rentDurationCount >= 30) {
-        $('#lblTotRentAmount').text(rentDurationCount * monthlyAmount + "/=");
+        tempAmount = rentDurationCount * monthlyAmount;
+        $('#lblTotRentAmount').text(tempAmount + "/=");
     } else {
-        $('#lblTotRentAmount').text(rentDurationCount * dailyAmount + "/=");
+        tempAmount = rentDurationCount * dailyAmount;
+        $('#lblTotRentAmount').text(tempAmount + "/=");
     }
-
-    // $('#txtLossDamageAmount').change(function () {
-    //     console.log("added");
-    // });
+    rentDurationValue = tempAmount;
 }
+
+
+function setDriverCharges() {
+    if (driverID == "SELF") {
+        $('#lblDriverCharge').text("SELF");
+    } else {
+        $('#lblDriverCharge').text(1000 + "/=");
+    }
+}
+
+
+$('#btnCalculateRentTotal').click(function () {
+    var extraKmValue = extraKmRate * $('#txtExtraKmCount').val();
+    //set total
+    if (driverID == "SELF") {
+    } else {
+        setGrandTotal(extraKmValue + rentDurationValue + 1000);
+    }
+});
+
+function setGrandTotal(val) {
+    $('#lblGrandTotal').text(val + "/=")
+}
+
