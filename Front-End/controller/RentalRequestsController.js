@@ -422,5 +422,41 @@ $('#btnDenyRequest').click(function () {
     });
 
     //update driver and vehicle as available
-
+    setDriverAsNonOccupied(driverID);
+    setVehicleAsAvailable();
 });
+
+
+function setVehicleAsAvailable() {
+    let change;
+
+    //get vehicle
+    $.ajax({
+        url: baseURL + "vehicle/search?registrationNo=" + vehicleId + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            change = resp.data;
+            change.reserved = false;
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    //update (save) vehicle reserved as true
+    $.ajax({
+        url: baseURL + "vehicle",
+        method: "put",
+        contentType: "application/json",
+        data: JSON.stringify(change),
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp.message);
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+}
