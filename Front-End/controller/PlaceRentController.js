@@ -340,6 +340,18 @@ $('#btnPlaceRent').click(function () {
     });
 
     //=== save loss damage waiver payment bank slip on localStorage ==
+    saveLossDamagePaymentBankSlip(bnkImg);
+
+    //update driver as occupied
+    if (driverId === "SELF") {
+    } else {
+        setDriverAsOccupied(driverId);
+    }
+
+});
+
+
+function saveLossDamagePaymentBankSlip(bnkImg) {
     const imgInput = document.getElementById('imgBankPaymentSlip');
     const img = imgInput.files[0];
     reader.readAsDataURL(img);
@@ -347,62 +359,38 @@ $('#btnPlaceRent').click(function () {
         const url = reader.result
         localStorage.setItem(bnkImg, url);
     });
-
-    //update driver as occupied
-    if (!driverId == "SELF") {
-        // setDriverAsOccupied(driverId);
-    }
-
-});
+}
 
 
 function setDriverAsOccupied(id) {
-    var drvDlNo;
-    var drvName;
-    var drvAddress;
-    var drvContactNo;
+    let change;
 
     //get driver
     $.ajax({
-        url: baseURL + "driver?search=" + id + "",
+        url: baseURL + "driver/search?nic=" + id + "",
         method: "get",
         async: false,
         dataType: "json",
         success: function (resp) {
-            console.log("helllo")
-            console.log(resp);
-            var drv = resp.data;
-            drvDlNo = drv.dlNo;
-            drvName = drv.name;
-            drvAddress = drv.address;
-            drvContactNo = drv.contactNo;
+            console.log(resp.data);
+            change = resp.data;
+            change.occupied = true;
+            console.log(change);
         },
         error: function (error) {
             alert(error.message);
         }
     });
 
-    let driver = {
-        nic: id,
-        dlNo: drvDlNo,
-        name: drvName,
-        address: drvAddress,
-        contactNo: drvContactNo,
-        occupied: true
-    };
-
-    console.log(driver)
-
-    //update driver occupied to true
+    //update (save) driver occupied as true
     $.ajax({
         url: baseURL + "driver",
         method: "put",
         contentType: "application/json",
-        async: false,
-        data: JSON.stringify(driver),
+        data: JSON.stringify(change),
         dataType: "json",
         success: function (resp) {
-            console.log(resp);
+            console.log(resp.message);
         },
         error: function (error) {
             alert(error.message);

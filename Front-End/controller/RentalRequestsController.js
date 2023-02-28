@@ -25,14 +25,18 @@ function loadAllRentalRequests() {
         success: function (resp) {
             console.log(resp);
             for (const c of resp.data) {
-                var row = '<tr><td>' + c.requestId + '</td><td>' + c.customerNic + '</td><td>' +
-                    c.registrationNo + '</td><td>' + c.driverNic + '</td><td>' + c.date + '</td><td>' + c.time +
-                    '</td><td>' +
-                    c.pickUpDate + '</td><td>' + c.pickUpTime + '</td><td>' + c.returnDate +
-                    '</td><td>' + c.returnTime + '</td><td>' + c.rentDuration + '</td></tr>';
+                if (c.status === "ACCEPTED") {
+                    continue;
+                } else {
+                    var row = '<tr><td>' + c.requestId + '</td><td>' + c.customerNic + '</td><td>' +
+                        c.registrationNo + '</td><td>' + c.driverNic + '</td><td>' + c.date + '</td><td>' + c.time +
+                        '</td><td>' +
+                        c.pickUpDate + '</td><td>' + c.pickUpTime + '</td><td>' + c.returnDate +
+                        '</td><td>' + c.returnTime + '</td><td>' + c.rentDuration + '</td></tr>';
 
-                //append to the table
-                $('#tblRequests').append(row);
+                    //append to the table
+                    $('#tblRequests').append(row);
+                }
             }
             getRowDataToFields();
         },
@@ -353,6 +357,8 @@ function setDriverAsOccupied(id) {
 
 
 $('#btnAcceptRequest').click(function () {
+    let change;
+    //get request data and set changes
     $.ajax({
         url: baseURL + "rentalRequest/search?requestId=" + requestID + "",
         method: "get",
@@ -360,9 +366,30 @@ $('#btnAcceptRequest').click(function () {
         dataType: "json",
         success: function (resp) {
             console.log(resp.data);
+            change = resp.data;
+            change.status = "ACCEPTED";
         },
         error: function (error) {
             alert(error.message);
         }
     });
+
+    //update (save) data
+    $.ajax({
+        url: baseURL + "rentalRequest",
+        method: "put",
+        // async: false,
+        contentType: "application/json",
+        data: JSON.stringify(change),
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp.message);
+            alert("Request accepted. The feedback will be sent to the customer.");
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+
 });
