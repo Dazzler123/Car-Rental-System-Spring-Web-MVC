@@ -31,5 +31,5 @@ public class Rental_Request {
     private String returnDate;
     private String returnTime;
     private String rentDuration;
-    private boolean accepted;
+    private String status;
 }
