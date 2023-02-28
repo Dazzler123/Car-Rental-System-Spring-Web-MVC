@@ -184,9 +184,49 @@
 
 
 <!------payment details------>
-<div class="col-11 ms-5">
-    <h3 class="col-4 text-center mt-5 mb-4 fw-semibold fs-5 border-5">Total Amount for Rent Duration (Rs.) : </h3>
-    <h3 class="col-4 text-center mt-5 mb-4 fw-semibold fs-5 border-5">Total Charge for Rent Duration : </h3>
+<div class="col-11 ms-5 mt-2">
+    <div class="col-6 mt-5 ms-5">
+        <div class="m-0">
+            <h3 class="fw-semibold fs-5 border-5">Total Charge for Rent Duration : </h3>
+            <h3 id="lblTotRentAmount" class="mt-1 mb-4 fw-semibold font-monospace text-danger fs-1">
+                10000/=</h3>
+        </div>
+        <div class="mt-5">
+            <h3 class="fw-semibold fs-5 border-5">Driver Charges : </h3>
+            <h3 id="lblDriverCharge" class="mb-4 fw-semibold font-monospace text-danger fs-1">
+                1000/=</h3>
+        </div>
+        <div class="mt-5">
+            <label class="form-label fst-italic fs-6 mb-2 fw-light ms-2">Enter no. of extra kilometers driven</label>
+            <div class=" mt-0">
+                <input id="txtExtraKmCount" type="number" class="form-control" placeholder="Kilometers (KM)">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 mt-5 ms-5">
+        <div class="m-0">
+            <label class="form-label fst-italic fs-6 mb-2 fw-light ms-2">Enter loss amount of the damage (Rs.)</label>
+            <div class=" mt-0">
+                <input id="txtLossDamageAmount" type="number" class="form-control" placeholder="Amount in Rs.">
+            </div>
+            <div class="mt-5">
+                <h3 class="fw-semibold fs-5 border-5">Loss / Damage Waiver amount (Rs.) : </h3>
+                <h3 id="lblLossDamageAmount" class="mb-4 fw-semibold font-monospace text-danger fs-1">
+                    1000/=</h3>
+            </div>
+            <div class="mt-5">
+                <h3 class="fw-semibold fs-5 border-5">Balance (Rs.) : </h3>
+                <h3 id="lblLossDamageBalance" class="mb-4 fw-semibold font-monospace text-danger fs-2">
+                    1000/=</h3>
+            </div>
+            <div class="mt-5">
+                <h3 class="fw-semibold fs-5 border-5">TOTAL (Rs.) : </h3>
+                <h1 id="lblGrandTotal" class="mb-4 fw-bold font-monospace text-danger">1000/=</h1>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

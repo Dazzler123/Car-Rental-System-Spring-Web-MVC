@@ -6,6 +6,7 @@ let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 let rentID;
 let driverID;
 let vehicleID;
+let rentDurationCount;
 
 
 $('#btnSearchRent').click(function () {
@@ -19,6 +20,8 @@ $('#btnSearchRent').click(function () {
             var request = resp.data;
 
             rentID = request.requestId;
+            rentDurationCount = request.rentDuration;
+            rentDurationCount++;
 
             //set data
             $('#lblPickUpDate').val(request.pickUpDate);
@@ -122,9 +125,26 @@ function loadVehicleDetails(id) {
 
             //record vehicle
             vehicleID = vehicle.registrationNo;
+
+            //calculate amount for rent duration days
+            calculateAmountForRentalDurationCount(vehicle.dailyRate, vehicle.monthlyRate)
         },
         error: function (err) {
             alert(err.responseText.message);
         }
     });
+}
+
+
+function calculateAmountForRentalDurationCount(dailyAmount, monthlyAmount) {
+    // if rented days count is more than or equal to a month
+    if (rentDurationCount >= 30) {
+        $('#lblTotRentAmount').text(rentDurationCount * monthlyAmount + "/=");
+    } else {
+        $('#lblTotRentAmount').text(rentDurationCount * dailyAmount + "/=");
+    }
+
+    // $('#txtLossDamageAmount').change(function () {
+    //     console.log("added");
+    // });
 }
