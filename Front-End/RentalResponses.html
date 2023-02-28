@@ -78,9 +78,8 @@
 
 <!------status labels----->
 <div class="mt-5 col-6 ms-5">
-    <h1 class="fw-semibold fs-2 border-5 text-success">ACCEPTED</h1>
-    <h1 class="mb-5 fw-normal mt-3 fst-italic fs-6 border-5">Your rental request has been verified and placed. Your occupied Driver will
-        contact you shortly.</h1>
+    <h1 id="lblStatus" class="fw-semibold fs-2 border-5"></h1>
+    <h1 id="lblStatusTwo" class="mb-5 fw-normal mt-3 fst-italic fs-6 border-5"></h1>
 </div>
 
 <!------------driver details list--------------->
@@ -102,6 +101,13 @@
         </div>
     </div>
 </div>
+
+<!------denial reason------>
+<div class="col-6 ms-5 mb-5">
+    <label for="txtDenialReason" class="form-label fst-italic">Denial Reason</label>
+    <textarea class="form-control" id="txtDenialReason" rows="5"></textarea>
+</div>
+
 
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>

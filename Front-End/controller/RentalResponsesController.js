@@ -76,7 +76,64 @@ function loadAllResponses() {
                     $('#tblResponses').append(row);
                 }
             }
-            // getRowDataToFields();
+            getRowDataToLabels();
+        },
+        error: function (err) {
+            alert(err.responseText.message);
+        }
+    });
+}
+
+function getRowDataToLabels() {
+    $('#tblResponses > tr').click(function () {
+        var driverId = $(this).children(":eq(1)").text();
+        var status = $(this).children(":eq(9)").text();
+        var reason = $(this).children(":eq(10)").text();
+
+        //clear data
+        $('#txtDenialReason').val("");
+
+        // set text
+        $('#lblStatus').text(status);
+
+        if (status === "ACCEPTED") {
+            $('#lblStatus').css('color', 'green');
+            $('#lblStatusTwo').text("Your rental request has been verified and placed. Your assigned driver will\n" +
+                "        contact you shortly. Please contact us for any inquiries. Thank you!");
+
+        } else if (status === "DENIED") {
+            $('#lblStatus').css('color', 'red');
+            $('#lblStatusTwo').text("Your rental request has been denied and cancelled. Check the reason below for the" +
+                "denial and place a rent again. Please contact us for any inquiries. Thank you!");
+            $('#txtDenialReason').val(reason);
+
+        } else {
+            $('#lblStatus').css('color', 'grey');
+            $('#lblStatusTwo').text("Your rental request has not been verified yet by our manager. " +
+                "Please be patient to wait until it's been verified, it will process within 24hrs. " +
+                "Please contact us for any inquiries. Thank you!");
+        }
+
+        //set driver details
+        if (driverId === "SELF") {
+        } else {
+            loadDriverDetails(driverId);
+        }
+    });
+}
+
+function loadDriverDetails(id) {
+    //request for details
+    $.ajax({
+        url: baseURL + "driver/search?nic=" + id + "",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            var driver = resp.data;
+            //set data
+            $('#lblDriverName').val(driver.name);
+            $('#lblDriverContactNo').val(driver.contactNo);
         },
         error: function (err) {
             alert(err.responseText.message);
