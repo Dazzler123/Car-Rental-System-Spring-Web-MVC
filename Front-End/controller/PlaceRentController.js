@@ -333,21 +333,23 @@ $('#btnPlaceRent').click(function () {
         success: function (res) {
             alert(res.message);
             console.log("Rental Request saved.");
+
+            //=== save loss damage waiver payment bank slip on localStorage ==
+            saveLossDamagePaymentBankSlip(bnkImg);
+
+            //update driver as occupied
+            if (driverId === "SELF") {
+            } else {
+                setDriverAsOccupied(driverId);
+            }
+
+            //update vehicle as reserved
+            setVehicleAsReserved();
         },
         error: function (error) {
             alert(error.message);
         }
     });
-
-    //=== save loss damage waiver payment bank slip on localStorage ==
-    saveLossDamagePaymentBankSlip(bnkImg);
-
-    //update driver as occupied
-    if (driverId === "SELF") {
-    } else {
-        setDriverAsOccupied(driverId);
-    }
-
 });
 
 
@@ -372,10 +374,8 @@ function setDriverAsOccupied(id) {
         async: false,
         dataType: "json",
         success: function (resp) {
-            console.log(resp.data);
             change = resp.data;
             change.occupied = true;
-            console.log(change);
         },
         error: function (error) {
             alert(error.message);
@@ -385,6 +385,41 @@ function setDriverAsOccupied(id) {
     //update (save) driver occupied as true
     $.ajax({
         url: baseURL + "driver",
+        method: "put",
+        contentType: "application/json",
+        data: JSON.stringify(change),
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp.message);
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+}
+
+
+function setVehicleAsReserved() {
+    let change;
+
+    //get vehicle
+    $.ajax({
+        url: baseURL + "vehicle/search?registrationNo=" + vehicleId + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            change = resp.data;
+            change.reserved = true;
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    //update (save) vehicle reserved as true
+    $.ajax({
+        url: baseURL + "vehicle",
         method: "put",
         contentType: "application/json",
         data: JSON.stringify(change),
