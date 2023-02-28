@@ -35,10 +35,29 @@ $('#btnSearchRent').click(function () {
             img.src = url;
 
             //load customer details
-
+            loadCustomerDetails(request.customerNic);
         },
         error: function (err) {
             alert("Incorrect Rent ID!");
         }
     });
 });
+
+
+function loadCustomerDetails(id) {
+    $.ajax({
+        url: baseURL + "customer/search?nic=" + id + "",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            var customer = resp.data;
+            //set data
+            $('#lblCustomerNIC').val(customer.nic);
+            $('#lblCustomerName').val(customer.name);
+        },
+        error: function (err) {
+            alert(err.responseText.message);
+        }
+    });
+}
