@@ -35,6 +35,6 @@ public class RentalRequestController {
     @PutMapping
     public ResponseUtil updateRequestDetails(@RequestBody RentalRequestDTO dto) {
         service.updateDetails(dto);
-        return new ResponseUtil("200", "Driver replaced from the request.", null);
+        return new ResponseUtil("200", "Details updated.", null);
     }
 }

@@ -176,8 +176,6 @@ function loadRequestDetails(id) {
             $('#lblReturnTime').val(request.returnTime);
             $('#lblRentDuration').val(request.rentDuration);
 
-            // custId + driverId + retD + retT + vehicleId
-
             //load nic/dl image
             // Get data URL from localStorage
             const url = localStorage.getItem(custID + driverID + request.returnDate + request.returnTime + vehicleID);
@@ -210,13 +208,17 @@ $('#btnSearchDriver').click(function () {
                 if (d.occupied) {
                     alert("This Driver has been occupied already. Please replace with a different Driver.");
                 } else {
+                    // mark old driver's id
+                    let oldDriverID = driverID;
+                    console.log(oldDriverID);
+
                     //load replaced driver's details
                     loadDriverDetails(d.nic);
 
                     driverID = d.nic;
 
                     //replace driver in the request entry
-                    replaceDriver(d.nic);
+                    replaceDriver(d.nic,oldDriverID);
                 }
             },
             error: function (error) {
@@ -228,17 +230,8 @@ $('#btnSearchDriver').click(function () {
 
 
 //replace driver in a request entry
-function replaceDriver(id) {
-    let customerId;
-    let vehicleId;
-    let pikUpD;
-    let pikUpT;
-    let retD;
-    let retT;
-    let bnkImg;
-    let rentDura;
-    let dateD;
-    let timeT;
+function replaceDriver(id,oldDriverID) {
+    let change;
 
     //get request details
     $.ajax({
@@ -247,52 +240,30 @@ function replaceDriver(id) {
         dataType: "json",
         async: false,
         success: function (resp) {
-            console.log(resp);
-            var req = resp.data;
-            customerId = req.customerNic;
-            vehicleId = req.registrationNo;
-            pikUpD = req.pickUpDate;
-            pikUpT = req.pickUpTime;
-            retD = req.returnDate;
-            retT = req.returnTime;
-            bnkImg = req.bankImgKey;
-            rentDura = req.rentDuration;
-            dateD = req.date;
-            timeT = req.time;
+            console.log(resp.data);
+            change = resp.data;
+            change.driverNic = id;
         },
         error: function (err) {
             alert(err.message);
         }
     });
 
-    // ==================================
-    let newRequest = {
-        requestId: parseInt(requestID),
-        customerNic: customerId,
-        registrationNo: vehicleId,
-        driverNic: id,
-        date: dateD,
-        time: timeT,
-        pickUpDate: pikUpD,
-        pickUpTime: pikUpT,
-        bankImgKey: bnkImg,
-        returnDate: retD,
-        returnTime: retT,
-        rentDuration: rentDura
-    }
-
-    //change driver in rental_requests table
+    //update (save) driver in rental_requests table
     $.ajax({
         url: baseURL + "rentalRequest",
         method: "put",
         contentType: "application/json",
-        data: JSON.stringify(newRequest),
+        data: JSON.stringify(change),
         dataType: "json",
         success: function (resp) {
             alert(resp.message);
 
             //update driver as occupied
-            // setDriverAsOccupied(id);
+            setDriverAsOccupied(id);
+
+            //update before selected driver's occupied status back to as available
+            setDriverAsNonOccupied(oldDriverID);
         },
         error: function (err) {
             alert(err.message);
@@ -302,52 +273,67 @@ function replaceDriver(id) {
 
 
 function setDriverAsOccupied(id) {
-    var drvDlNo;
-    var drvName;
-    var drvAddress;
-    var drvContactNo;
+    let change;
 
     //get driver
     $.ajax({
-        url: baseURL + "driver?search=" + id + "",
+        url: baseURL + "driver/search?nic=" + id + "",
         method: "get",
         async: false,
         dataType: "json",
         success: function (resp) {
-            console.log("helllo")
-            console.log(resp);
-            var drv = resp.data;
-            drvDlNo = drv.dlNo;
-            drvName = drv.name;
-            drvAddress = drv.address;
-            drvContactNo = drv.contactNo;
+            change = resp.data;
+            change.occupied = true;
         },
         error: function (error) {
             alert(error.message);
         }
     });
 
-    let driver = {
-        nic: id,
-        dlNo: drvDlNo,
-        name: drvName,
-        address: drvAddress,
-        contactNo: drvContactNo,
-        occupied: true
-    };
-
-    console.log(driver)
-
-    //update driver occupied to true
+    //update (save) driver occupied as true
     $.ajax({
         url: baseURL + "driver",
         method: "put",
         contentType: "application/json",
-        async: false,
-        data: JSON.stringify(driver),
+        data: JSON.stringify(change),
         dataType: "json",
         success: function (resp) {
-            console.log(resp);
+            console.log(resp.message);
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+}
+
+
+function setDriverAsNonOccupied(id) {
+    let change;
+
+    //get driver
+    $.ajax({
+        url: baseURL + "driver/search?nic=" + id + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            change = resp.data;
+            change.occupied = false;
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    //update (save) driver occupied as true
+    $.ajax({
+        url: baseURL + "driver",
+        method: "put",
+        contentType: "application/json",
+        data: JSON.stringify(change),
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp.message);
         },
         error: function (error) {
             alert(error.message);
@@ -390,6 +376,4 @@ $('#btnAcceptRequest').click(function () {
             alert(error.message);
         }
     });
-
-
 });
