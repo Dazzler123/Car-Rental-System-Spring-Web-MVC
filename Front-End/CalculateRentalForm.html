@@ -21,14 +21,166 @@
     </div>
 </nav>
 
-
 <!----------------heading---------------->
-<h1 class="col-12 text-center mt-5 mb-5 fw-semibold fs-2 border-5">Calculate Rental</h1>
+<h1 class="col-12 text-center mt-5 mb-4 fw-semibold fs-2 border-5">Calculate Rental Charge</h1>
+
+<!-------search rent--------->
+<div class="row g-3 mt-3 ms-5 ps-5 col-4">
+    <label class="form-label fst-italic fs-6 mb-2 fw-light ms-2">Enter Rent ID</label>
+    <div class="col-9 mt-0">
+        <input id="txtRentID" type="text" class="form-control" placeholder="Rent ID">
+    </div>
+    <!--verify btn-->
+    <div class="col mt-0">
+        <button id="btnVerifyCustomer" type="button" class="btn btn-primary col-12 m-0 w-100 mx-auto">Search
+        </button>
+    </div>
+</div>
+
+<!------------rent details list--------------->
+<div class="col-12 row mt-3 text-center mx-auto">
+    <!--bank slip image-->
+    <div class="col-7 row ms-5 mb-3">
+        <img id="bankSlipImage" class="rounded-3 mt-5" alt="" style="width: 55em; height: 17em">
+    </div>
+    <!--details-->
+    <div class="col-4 row mx-auto mt-5 ms-0">
+        <div class="row m-0">
+            <div class="row m-0 mx-auto input-group input-group-sm mb-3 row-cols-1 g-1">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-4" id="inputGroup-sizing-sm19">Pickup Date</span>
+                    <input id="lblPickUpDate" type="text" class="form-control col-9 fw-bold bg-white"
+                           aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-sm19" disabled>
+                </div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-4" id="inputGroup-sizing-sm20">Pickup Time</span>
+                    <input id="lblPickUpTime" type="text" class="form-control col-9 fw-bold bg-white"
+                           aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-sm20" disabled>
+                </div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-4" id="inputGroup-sizing-sm21">Return Date</span>
+                    <input id="lblReturnDate" type="text" class="form-control col-9 fw-bold bg-white"
+                           aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-sm21" disabled>
+                </div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-4" id="inputGroup-sizing-sm22">Return Time</span>
+                    <input id="lblReturnTime" type="text" class="form-control col-9 fw-bold bg-white"
+                           aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-sm22" disabled>
+                </div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-4" id="inputGroup-sizing-sm24">Rent Duration (Days)</span>
+                    <input id="lblRentDuration" type="text" class="form-control col-9 fw-bold bg-white"
+                           aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-sm24" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-
-
-
+<!------------customer,driver & vehicle details list--------------->
+<div class="col-11 row mt-5 text-center mx-auto">
+    <div class="col-6 row m-0">
+        <div class="row m-0 mx-auto input-group input-group-sm mb-3 row-cols-1 g-1">
+            <!--------customer details------------->
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm">Customer NIC</span>
+                <input id="lblCustomerNIC" type="text" class="form-control col-9 fw-bolder bg-white text-danger"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm" disabled>
+            </div>
+            <div class="input-group input-group-sm mb-5">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm2">Name</span>
+                <input id="lblCustomerName" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm2" disabled>
+            </div>
+            <!--------driver details------------->
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm7">Driver NIC</span>
+                <input id="lblDriverNIC" type="text" class="form-control col-9 fw-bold bg-white text-danger"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm7" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm8">Driving License No.</span>
+                <input id="lblDriverDLNo" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm8" disabled>
+            </div>
+            <div class="input-group input-group-sm mb-5">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm9">Name</span>
+                <input id="lblDriverName" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm9" disabled>
+            </div>
+        </div>
+    </div>
+    <!--------vehicle details------------->
+    <div class="col-6 row m-0">
+        <div class="row m-0 mx-auto input-group input-group-sm mb-3 row-cols-1 g-1">
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm10">Registration No.</span>
+                <input id="lblRegistrationNo" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm10" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm11">Make</span>
+                <input id="lblMake" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm11" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm12">Model</span>
+                <input id="lblModel" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm12" disabled>
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm13">YOM</span>
+                <input id="lblYOM" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm13" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm14">Daily Rate (Rs.)</span>
+                <input id="lblDailyRate" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm14" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm15">KM Daily</span>
+                <input id="lblKmDaily" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm15" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm16">Monthly Rate (Rs.)</span>
+                <input id="lblMonthlyRate" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm16" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm17">KM Monthly</span>
+                <input id="lblKmMonthly" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm17" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm18">Extra KM Rate (Rs.)</span>
+                <input id="lblExtraKmRate" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm18" disabled>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
