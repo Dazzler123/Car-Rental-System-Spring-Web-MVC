@@ -25,7 +25,7 @@ function loadAllRentalRequests() {
         success: function (resp) {
             console.log(resp);
             for (const c of resp.data) {
-                if (c.status === "ACCEPTED") {
+                if (c.status === "ACCEPTED" || c.status === "DENIED") {
                     continue;
                 } else {
                     var row = '<tr><td>' + c.requestId + '</td><td>' + c.customerNic + '</td><td>' +
@@ -344,6 +344,7 @@ function setDriverAsNonOccupied(id) {
 
 $('#btnAcceptRequest').click(function () {
     let change;
+
     //get request data and set changes
     $.ajax({
         url: baseURL + "rentalRequest/search?requestId=" + requestID + "",
@@ -369,10 +370,57 @@ $('#btnAcceptRequest').click(function () {
         dataType: "json",
         success: function (resp) {
             console.log(resp.message);
-            alert("Request accepted. Status and reason feedback will be sent to the customer.");
+            alert("Request accepted. Status feedback will be sent to the customer.");
+
+            //refresh page
+            location.reload();
         },
         error: function (error) {
             alert(error.message);
         }
     });
+});
+
+
+$('#btnDenyRequest').click(function () {
+    let change;
+
+    //get request data and set changes
+    $.ajax({
+        url: baseURL + "rentalRequest/search?requestId=" + requestID + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp.data);
+            change = resp.data;
+            change.reason = $('#txtDenialReason').val();
+            change.status = "DENIED";
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    //update (save) data
+    $.ajax({
+        url: baseURL + "rentalRequest",
+        method: "put",
+        contentType: "application/json",
+        data: JSON.stringify(change),
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp.message);
+            alert("Request denied. Status and reason feedback will be sent to the customer.");
+
+            //refresh page
+            location.reload();
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    //update driver and vehicle as available
+
 });
