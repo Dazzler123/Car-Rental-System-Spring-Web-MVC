@@ -40,6 +40,9 @@ $('#btnVerifyCustomer').click(function () {
             //disable input fields
             $('#txtCustomerUsername').attr('disabled', true);
             $('#pwdCustomerPassword').attr('disabled', true);
+
+            //load all responses of this customer
+            loadAllResponses();
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
@@ -48,3 +51,35 @@ $('#btnVerifyCustomer').click(function () {
         }
     });
 });
+
+
+function loadAllResponses() {
+    $.ajax({
+        url: baseURL + "rentalRequest/loadAll" + "",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            for (const c of resp.data) {
+                //filter for this customer's responses
+                if (!c.customerNic === custId) {
+                    continue;
+                } else {
+                    var row = '<tr><td>' + c.requestId + '</td><td>' +
+                        c.driverNic + '</td><td>' + c.date + '</td><td>' + c.time +
+                        '</td><td>' +
+                        c.pickUpDate + '</td><td>' + c.pickUpTime + '</td><td>' + c.returnDate +
+                        '</td><td>' + c.returnTime + '</td><td>' + c.rentDuration + '</td><td>' + c.status + '</td><td>'
+                        + c.reason + '</td></tr>';
+
+                    //append to the table
+                    $('#tblResponses').append(row);
+                }
+            }
+            // getRowDataToFields();
+        },
+        error: function (err) {
+            alert(err.responseText.message);
+        }
+    });
+}
