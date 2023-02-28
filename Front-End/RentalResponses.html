@@ -29,6 +29,83 @@
 <!----------------heading---------------->
 <h1 class="col-12 text-center mt-5 mb-5 fw-semibold fs-2 border-5">Rental Response</h1>
 
+<!------------all requests table-------------->
+<div class="col-11 m-0 p-0 mx-auto">
+    <!----username & password----->
+    <div class="row g-3 mt-1 ms-3">
+        <label class="form-label fst-italic fs-6 fw-light ms-2 mb-1">Enter your Username and Password to
+            verify</label>
+        <div class="col-3">
+            <input id="txtCustomerUsername" type="text" class="form-control" placeholder="Username">
+        </div>
+        <div class="col-3">
+            <input id="pwdCustomerPassword" type="password" class="form-control"
+                   placeholder="Password">
+        </div>
+        <!--verify btn-->
+        <div class="col-1">
+            <button id="btnVerifyCustomer" type="button" class="btn btn-primary col-12 m-0 w-100 mx-auto">Verify
+            </button>
+        </div>
+        <!--customer name & nic-->
+        <div class="col-4 m-0 mx-auto mt-2">
+            <label id="lblCustName" class="form-label fst-italic fs-6 fw-bold col-12 text-primary"></label>
+            <label id="lblCustNIC" class="form-label fst-italic fs-6 fw-bold col-12 text-primary"></label>
+        </div>
+        <!------verification status label----->
+        <label id="lblVerificationStatus" class="form-label fst-italic fs-6 fw-normal col-12 m-0 mt-1 text-success"></label>
+    </div>
+
+    <!------all responses table----->
+    <table class="table table-bordered table-hover caption-top">
+        <caption class="ms-3 mb-1 mt-5">All Responses - Click the entry to expand details separately</caption>
+        <thead class="table-primary text-center">
+        <tr>
+            <th scope="col">Request ID</th>
+            <th scope="col">Customer ID</th>
+            <th scope="col">Vehicle Reg. No.</th>
+            <th scope="col">Driver ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Pickup Date</th>
+            <th scope="col">Pickup Time</th>
+            <th scope="col">Return Date</th>
+            <th scope="col">Return Time</th>
+            <th scope="col">Rent Duration</th>
+
+        </tr>
+        </thead>
+        <tbody id="tblRequests" class="table-group-divider">
+        </tbody>
+    </table>
+</div>
+
+<!------status labels----->
+<div class="mt-5 col-6 ms-5">
+    <h1 class="fw-semibold fs-2 border-5 text-success">ACCEPTED</h1>
+    <h1 class="mb-5 fw-normal mt-3 fst-italic fs-6 border-5">Your rental request has been verified and placed. Your occupied Driver will
+        contact you shortly.</h1>
+</div>
+
+<!------------driver details list--------------->
+<div class="col-4 row mt-5 ms-1 text-center mx-auto mb-4">
+    <div class="col-12 row m-0">
+        <div class="row m-0 mx-auto input-group input-group-sm mb-3 row-cols-1 g-1">
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm9">Driver Name</span>
+                <input id="lblDriverName" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm9" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm11">Contact No.</span>
+                <input id="lblDriverContactNo" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm11" disabled>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
