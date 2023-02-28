@@ -13,6 +13,8 @@ dashboardSummary();
 function dashboardSummary() {
     getVehicleReservedStatusCount();
     getRegisteredCustomerCount();
+    getVehiclesOnMaintenanceCount();
+    getDefectiveVehiclesCount();
 
     //search & set available/reserved drivers count
     let driverOccupiedStatus = getDriverOccupiedStatus()
@@ -105,4 +107,48 @@ function getDriverOccupiedStatus() {
         "occupied": occupiedCount,
         "nonOccupied": nonOccupiedCount
     };
+}
+
+function getVehiclesOnMaintenanceCount() {
+    let maintenanceCount = 0;
+
+    //request for all vehicles
+    $.ajax({
+        url: baseURL + "maintenance",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            for (var vehicle of resp.data) {
+                //increment by one
+                maintenanceCount = maintenanceCount + 1;
+            }
+            //set data
+            $('#lblMaintenanceVehicles').text(maintenanceCount);
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+}
+
+function getDefectiveVehiclesCount() {
+    let defectiveCount = 0;
+
+    //request for all vehicles
+    $.ajax({
+        url: baseURL + "defective",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            for (var vehicle of resp.data) {
+                //increment by one
+                defectiveCount = defectiveCount + 1;
+            }
+            //set data
+            $('#lblDefectiveVehicles').text(defectiveCount);
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
 }

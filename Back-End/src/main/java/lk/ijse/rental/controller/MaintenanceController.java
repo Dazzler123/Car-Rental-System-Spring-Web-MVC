@@ -4,10 +4,9 @@ import lk.ijse.rental.dto.MaintenanceDTO;
 import lk.ijse.rental.service.MaintenanceService;
 import lk.ijse.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/maintenance")
@@ -21,6 +20,12 @@ public class MaintenanceController {
     public ResponseUtil addToMaintenance(MaintenanceDTO dto) {
         service.recordVehicle(dto);
         return new ResponseUtil("200", "Vehicle added to maintenance.", null);
+    }
+
+    @GetMapping
+    public ResponseUtil getAllVehicles() {
+        ArrayList<MaintenanceDTO> vehicles = service.loadAllVehicles();
+        return new ResponseUtil("200", "All Vehicles loaded.", vehicles);
     }
 
 }
