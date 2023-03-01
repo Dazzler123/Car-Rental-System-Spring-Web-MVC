@@ -32,4 +32,9 @@ public class DriverController {
         service.updateDriver(dto);
         return new ResponseUtil("200", "Driver details updated.", null);
     }
+
+    @GetMapping("/exists")
+    public boolean checkIfExists(String nic) {
+        return service.findIfExists(nic);
+    }
 }

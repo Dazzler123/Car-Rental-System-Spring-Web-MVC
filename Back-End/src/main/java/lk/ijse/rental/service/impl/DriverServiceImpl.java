@@ -43,4 +43,9 @@ public class DriverServiceImpl implements DriverService {
         Driver driver = mapper.map(dto, Driver.class);
         repo.save(driver);
     }
+
+    @Override
+    public boolean findIfExists(String nic) {
+        return repo.existsById(nic);
+    }
 }

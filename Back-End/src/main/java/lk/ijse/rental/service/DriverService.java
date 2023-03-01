@@ -10,4 +10,6 @@ public interface DriverService {
     public DriverDTO searchDriverById(String nic);
 
     public void updateDriver(DriverDTO dto);
+
+    public boolean findIfExists(String nic);
 }
