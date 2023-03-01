@@ -45,6 +45,8 @@
         <caption class="ms-3 mb-1 mt-4">All Rentals - Click the entry to expand details separately</caption>
         <thead class="table-primary text-center">
         <tr>
+            <th scope="col">Customer NIC</th>
+            <th scope="col">Vehicle ID</th>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
             <th scope="col">Pickup Date</th>
@@ -109,8 +111,10 @@
             </div>
             <!--------contact customer button------->
             <div class="col-5 mt-4 mb-5">
-                <button id="btnContactCustomer" type="button"
-                        class="btn btn-primary col-12 m-0 w-100 mx-auto">Contact Customer
+                <button type="button"
+                        class="btn btn-primary col-12 m-0 w-100 mx-auto">
+                    <a id="btnContactCustomer" href="tel:+94762093858" class="text-white text-decoration-none">
+                        Contact Customer</a>
                 </button>
             </div>
         </div>
