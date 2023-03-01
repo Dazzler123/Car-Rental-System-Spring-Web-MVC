@@ -22,18 +22,157 @@
 </nav>
 
 <!----------------heading---------------->
-<h1 class="col-12 text-center mt-5 mb-4 fw-semibold fs-2 border-5">Calculate Rental Charge</h1>
+<h1 class="col-12 text-center mt-5 mb-4 fw-semibold fs-2 border-5">Driver's Schedule</h1>
 
-<!-------search rent--------->
-<div class="row g-3 mt-3 ms-5 ps-5 col-4">
-    <label class="form-label fst-italic fs-6 mb-2 fw-light ms-2">Enter Rent ID</label>
-    <div class="col-9 mt-0">
-        <input id="txtRentID" type="text" class="form-control" placeholder="Rent ID">
+
+<!------------search driver & view schedule table-------------->
+<div class="col-11 m-0 p-0 mx-auto">
+    <!-------search driver--------->
+    <div class="row g-3 mt-2 ms-0 ps-5 col-4">
+        <label class="form-label fst-italic fs-6 mb-2 fw-light">Enter Your NIC</label>
+        <div class="col-9 mt-0">
+            <input id="txtSearchNIC" type="text" class="form-control" placeholder="NIC">
+        </div>
+        <!--verify btn-->
+        <div class="col mt-0">
+            <button id="btnSearchDriver" type="button" class="btn btn-primary col-12 m-0 w-100 mx-auto">Search
+            </button>
+        </div>
     </div>
-    <!--verify btn-->
-    <div class="col mt-0">
-        <button id="btnSearchRent" type="button" class="btn btn-primary col-12 m-0 w-100 mx-auto">Search
-        </button>
+
+    <!------all rents table----->
+    <table class="table table-bordered table-hover caption-top">
+        <caption class="ms-3 mb-1 mt-4">All Rentals - Click the entry to expand details separately</caption>
+        <thead class="table-primary text-center">
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Pickup Date</th>
+            <th scope="col">Pickup Time</th>
+            <th scope="col">Return Date</th>
+            <th scope="col">Return Time</th>
+            <th scope="col">Rent Duration</th>
+        </tr>
+        </thead>
+        <tbody id="tblResponses" class="table-group-divider">
+        </tbody>
+    </table>
+</div>
+
+
+<!------------all details lists--------------->
+<div class="col-11 row mt-5 text-center mx-auto">
+    <!------customer details------->
+    <div class="col-6 row m-0">
+        <div class="row m-0 mx-auto input-group input-group-sm mb-3 row-cols-1 g-1">
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm">Customer NIC</span>
+                <input id="lblCustomerNIC" type="text" class="form-control col-9 fw-bolder bg-white text-danger"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm1">Driving License No.</span>
+                <input id="lblCustomerDLNo" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm1" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm2">Name</span>
+                <input id="lblCustomerName" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm2" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm3">Address</span>
+                <input id="lblCustomerAddress" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm3" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm4">Contact No.</span>
+                <input id="lblCustomerContactNo" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm4" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm5">Email</span>
+                <input id="lblCustomerEmail" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm5" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm6">Gender</span>
+                <input id="lblCustomerGender" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm6" disabled>
+            </div>
+            <!--------contact customer button------->
+            <div class="col-5 mt-4 mb-5">
+                <button id="btnContactCustomer" type="button"
+                        class="btn btn-primary col-12 m-0 w-100 mx-auto">Contact Customer
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--------vehicle details------------->
+    <div class="col-6 row m-0 mb-5">
+        <div class="row m-0 mx-auto input-group input-group-sm mb-3 row-cols-1 g-1">
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm10">Registration No.</span>
+                <input id="lblRegistrationNo" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm10" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm11">Make</span>
+                <input id="lblMake" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm11" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm12">Model</span>
+                <input id="lblModel" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm12" disabled>
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text col-3" id="inputGroup-sizing-sm13">YOM</span>
+                <input id="lblYOM" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm13" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-4" id="inputGroup-sizing-sm19">Pickup Date</span>
+                <input id="lblPickUpDate" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm19" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-4" id="inputGroup-sizing-sm20">Pickup Time</span>
+                <input id="lblPickUpTime" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm20" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-4" id="inputGroup-sizing-sm21">Return Date</span>
+                <input id="lblReturnDate" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm21" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-4" id="inputGroup-sizing-sm22">Return Time</span>
+                <input id="lblReturnTime" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm22" disabled>
+            </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-4" id="inputGroup-sizing-sm24">Rent Duration (Days)</span>
+                <input id="lblRentDuration" type="text" class="form-control col-9 fw-bold bg-white"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-sm24" disabled>
+            </div>
+        </div>
     </div>
 </div>
 
