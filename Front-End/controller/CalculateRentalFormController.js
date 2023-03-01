@@ -9,6 +9,8 @@ let vehicleID;
 let rentDurationCount;
 let rentDurationValue;
 let extraKmRate;
+let vehicleType;
+let lossDamageAmount;
 
 
 $('#btnSearchRent').click(function () {
@@ -128,6 +130,7 @@ function loadVehicleDetails(id) {
             $('#lblKmMonthly').val(vehicle.kmMonthly);
             $('#lblExtraKmRate').val(vehicle.extraKmRate);
             extraKmRate = vehicle.extraKmRate;
+            vehicleType = vehicle.type;
 
             //record vehicle
             vehicleID = vehicle.registrationNo;
@@ -174,7 +177,25 @@ $('#btnCalculateRentTotal').click(function () {
     }
 });
 
+
 function setGrandTotal(val) {
     $('#lblGrandTotal').text(val + "/=")
 }
+
+
+$('#txtLossDamageAmount').change(function () {
+    var tempVal = $('#txtLossDamageAmount').val();
+
+    if (vehicleType === "General Car") {
+        lossDamageAmount = 10000;
+    } else if(vehicleType === "Premium Car") {
+        lossDamageAmount = 15000;
+    } else if(vehicleType === "Luxury Car") {
+        lossDamageAmount = 20000;
+    }
+
+    //set total and balance
+    $('#lblLossDamageAmount').text(lossDamageAmount + "/=");
+    $('#lblLossDamageBalance').text(lossDamageAmount - tempVal + "/=");
+});
 
