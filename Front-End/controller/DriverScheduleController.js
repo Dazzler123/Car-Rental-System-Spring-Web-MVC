@@ -30,6 +30,10 @@ $('#btnSearchDriver').click(function () {
 
 
 function loadRentals() {
+    //clear table
+    $('#tblRentals').empty();
+
+    //request for rentals
     $.ajax({
         url: baseURL + "rentalRequest/loadAll" + "",
         method: "get",
