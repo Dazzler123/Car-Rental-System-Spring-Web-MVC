@@ -311,16 +311,12 @@ function saveVehicleImages() {
 
 
 $('#btnUpdateVehicle').click(function () {
-    updateVehicleDetails(undefined);
+    updateVehicleDetails();
     replaceExistingImages();
 });
 
 
-function updateVehicleDetails(status) {
-    if(status === undefined) {
-        status = false;
-    }
-
+function updateVehicleDetails() {
     // get data
     var vehiMake = $('#txtMake').val();
     var vehiModel = $('#txtModel').val();
@@ -350,7 +346,7 @@ function updateVehicleDetails(status) {
         mileage: vehiMileage,
         passengers: vehiPassengers,
         description: vehiDescription,
-        reserved: status,
+        reserved: false,
         dailyRate: vehiDailyRate,
         kmDaily: vehiDailyKm,
         monthlyRate: vehiMonthlyRate,
@@ -449,7 +445,7 @@ $('#btnAddToMaintenance').click(function () {
         }
     });
     //set vehicle as reserved
-    updateVehicleDetails(true);
+    updateVehicleStatus(true);
 });
 
 
@@ -471,5 +467,42 @@ $('#btnAddToDefective').click(function () {
         }
     });
     //set vehicle as reserved
-    updateVehicleDetails(true);
+    updateVehicleStatus(true);
 });
+
+
+
+function updateVehicleStatus(status) {
+    let vehicle;
+    //get vehicle
+    $.ajax({
+        url: baseURL + "vehicle/search?registrationNo=" + regisNo + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            vehicle = resp.data;
+            vehicle.reserved = status;
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+
+    //save updated status
+    $.ajax({
+        url: baseURL + "vehicle",
+        method: "put",
+        contentType: "application/json",
+        data: JSON.stringify(vehicle),
+        dataType: "json",
+        success: function (res) {
+            console.log(res.message);
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+}
+
