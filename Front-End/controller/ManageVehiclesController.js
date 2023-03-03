@@ -36,6 +36,7 @@ $('#btnSearchVehicle').click(function () {
 
     vehicleModel = "";
 
+
     // get registration no.
     regisNo = $('#txtSearchRegistrationNo').val();
 
@@ -208,8 +209,10 @@ function setTextFieldData(regisNO, make, model, yom, type, color, fuelType, pass
     var resStatus;
     if (reservedStatus == "YES") {
         resStatus = "Reserved";
+    } else if(reservedStatus == "NO") {
+        resStatus = "Available";
     } else {
-        resStatus = "Available"
+        resStatus = "";
     }
 
     $('#lblRegisNo').val(regisNO);
