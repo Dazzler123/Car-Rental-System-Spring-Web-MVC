@@ -41,7 +41,7 @@ body {
 /*carouse description*/
 #carousel_desc {
     z-index: 1;
-    backdrop-filter: blur(70px);
+    backdrop-filter: blur(30px);
     border-radius: 10px;
 }
 
