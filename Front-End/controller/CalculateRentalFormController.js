@@ -263,6 +263,9 @@ $('#btnSaveRent').click(function () {
         dataType: "json",
         success: function (resp) {
             alert("Rental information recorded successfully.")
+
+            //remove rental from request table
+            deleteRentalRequest();
         },
         error: function (err) {
             alert(err.responseText.message);
@@ -270,5 +273,20 @@ $('#btnSaveRent').click(function () {
     });
 });
 
-
+function deleteRentalRequest() {
+    //delete request
+    $.ajax({
+        url: baseURL + "rentalRequest?requestId=" + rentID + "",
+        method: "delete",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            console.log("Request deleted from requests table.")
+        },
+        error: function (err) {
+            alert("Something went wrong.");
+        }
+    });
+}
 
