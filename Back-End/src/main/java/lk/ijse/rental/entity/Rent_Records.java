@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @Entity
 public class Rent_Records {
     @Id
-    private int id;
+    private String id;
     private String customerNic;
     private String registrationNo;
     private String driverNic;
