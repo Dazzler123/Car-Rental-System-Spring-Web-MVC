@@ -19,6 +19,7 @@ public class RentRecordsController {
 
     @PostMapping
     public ResponseUtil saveRentDetails(RentRecordsDTO dto) {
+        System.out.println(dto);
         service.saveRent(dto);
         return new ResponseUtil("200","Rent details saved.", null);
     }

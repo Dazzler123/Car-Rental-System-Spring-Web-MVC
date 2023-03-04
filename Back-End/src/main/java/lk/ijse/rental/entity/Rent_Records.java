@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
@@ -17,7 +18,8 @@ import java.math.BigDecimal;
 @Entity
 public class Rent_Records {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String customerNic;
     private String registrationNo;
     private String driverNic;

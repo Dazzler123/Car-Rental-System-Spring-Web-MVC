@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @Data
 @ToString
 public class RentRecordsDTO {
-    private String id;
+    private int id;
     private String customerNic; //customer id
     private String registrationNo;  //vehicle id
     private String driverNic;  //driver nic or save "SELF"

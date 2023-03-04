@@ -161,7 +161,7 @@ function getDailyIncome() {
 
     //get all rentals
     $.ajax({
-        url: baseURL + "rentalRequest/loadAll" + "",
+        url: baseURL + "rentRecords/loadAll" + "",
         method: "get",
         dataType: "json",
         async: false,
@@ -169,7 +169,7 @@ function getDailyIncome() {
             console.log(resp);
             for (const c of resp.data) {
                 if (c.date === today) {
-
+                    total = total + c.totalCharge;
                 }
             }
         },
@@ -177,4 +177,7 @@ function getDailyIncome() {
             alert(err.responseText.message);
         }
     });
+
+    //set total
+    $('#lblDailyIncome').text(total);
 }

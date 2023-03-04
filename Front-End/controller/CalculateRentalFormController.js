@@ -221,38 +221,54 @@ $('#btnSaveRent').click(function () {
         }
     });
 
-    let record = {
-        id: "R001",
-        customerNic: info.customerNic,
-        registrationNo: info.registrationNo,
-        driverNic: info.driverNic,
-        date: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
-        time: date.getHours() + ":" + date.getMinutes(),
-        pickUpDate: info.pickUpDate,
-        pickUpTime: info.pickUpTime,
-        bankImgKey: info.bankImgKey,
-        returnDate: info.returnDate,
-        returnTime: info.returnTime,
-        rentDuration: info.rentDuration,
-        extraKmDriven: $('#txtExtraKmCount').val(),
-        totalCharge: grandTotal,
-        damageWaiver: $('#txtLossDamageAmount').val(),
-    };
-
+    // let record = {
+    //     id: 0,
+    //     customerNic: info.customerNic,
+    //     registrationNo: info.registrationNo,
+    //     driverNic: info.driverNic,
+    //     date: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
+    //     time: date.getHours() + ":" + date.getMinutes(),
+    //     pickUpDate: info.pickUpDate,
+    //     pickUpTime: info.pickUpTime,
+    //     bankImgKey: info.bankImgKey,
+    //     returnDate: info.returnDate,
+    //     returnTime: info.returnTime,
+    //     rentDuration: info.rentDuration,
+    //     extraKmDriven: $('#txtExtraKmCount').val(),
+    //     totalCharge: grandTotal,
+    //     damageWaiver: $('#txtLossDamageAmount').val(),
+    // };
 
     //save rent
     $.ajax({
-        url: baseURL + "rentRecords" + "",
+        url: baseURL + "rentRecords",
         method: "post",
-        data: JSON.stringify(record),
+        data: {
+            "id": 0,
+            "customerNic": info.customerNic,
+            "registrationNo": info.registrationNo,
+            "driverNic": info.driverNic,
+            "date": date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
+            "time": date.getHours() + ":" + date.getMinutes(),
+            "pickUpDate": info.pickUpDate,
+            "pickUpTime": info.pickUpTime,
+            "bankImgKey": info.bankImgKey,
+            "returnDate": info.returnDate,
+            "returnTime": info.returnTime,
+            "rentDuration": info.rentDuration,
+            "extraKmDriven": $('#txtExtraKmCount').val(),
+            "totalCharge": grandTotal,
+            "damageWaiver": $('#txtLossDamageAmount').val(),
+        },
         dataType: "json",
         success: function (resp) {
-            console.log(resp);
-            alert("Records saved.")
+            alert("Rental information recorded successfully.")
         },
         error: function (err) {
             alert(err.responseText.message);
         }
     });
 });
+
+
 
