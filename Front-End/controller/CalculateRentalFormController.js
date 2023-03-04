@@ -1,6 +1,7 @@
 // backend url
 let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 
+var date = new Date();
 
 //ids
 let rentID;
@@ -11,6 +12,7 @@ let rentDurationValue;
 let extraKmRate;
 let vehicleType;
 let lossDamageAmount;
+let grandTotal = 0;
 
 
 $('#btnSearchRent').click(function () {
@@ -174,6 +176,7 @@ $('#btnCalculateRentTotal').click(function () {
     if (driverID == "SELF") {
     } else {
         setGrandTotal(extraKmValue + rentDurationValue + 1000);
+        grandTotal = extraKmValue + rentDurationValue + 1000;
     }
 });
 
@@ -188,14 +191,68 @@ $('#txtLossDamageAmount').change(function () {
 
     if (vehicleType === "General Car") {
         lossDamageAmount = 10000;
-    } else if(vehicleType === "Premium Car") {
+    } else if (vehicleType === "Premium Car") {
         lossDamageAmount = 15000;
-    } else if(vehicleType === "Luxury Car") {
+    } else if (vehicleType === "Luxury Car") {
         lossDamageAmount = 20000;
     }
 
     //set total and balance
     $('#lblLossDamageAmount').text(lossDamageAmount + "/=");
     $('#lblLossDamageBalance').text(lossDamageAmount - tempVal + "/=");
+});
+
+
+$('#btnSaveRent').click(function () {
+    let info;
+
+    //get request details
+    $.ajax({
+        url: baseURL + "rentalRequest/search?requestId=" + rentID + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            info = resp.data;
+        },
+        error: function (err) {
+            alert("Something went wrong.");
+        }
+    });
+
+    let record = {
+        id: "R001",
+        customerNic: info.customerNic,
+        registrationNo: info.registrationNo,
+        driverNic: info.driverNic,
+        date: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
+        time: date.getHours() + ":" + date.getMinutes(),
+        pickUpDate: info.pickUpDate,
+        pickUpTime: info.pickUpTime,
+        bankImgKey: info.bankImgKey,
+        returnDate: info.returnDate,
+        returnTime: info.returnTime,
+        rentDuration: info.rentDuration,
+        extraKmDriven: $('#txtExtraKmCount').val(),
+        totalCharge: grandTotal,
+        damageWaiver: $('#txtLossDamageAmount').val(),
+    };
+
+
+    //save rent
+    $.ajax({
+        url: baseURL + "rentRecords" + "",
+        method: "post",
+        data: JSON.stringify(record),
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            alert("Records saved.")
+        },
+        error: function (err) {
+            alert(err.responseText.message);
+        }
+    });
 });
 

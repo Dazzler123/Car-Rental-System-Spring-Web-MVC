@@ -1,6 +1,7 @@
 package lk.ijse.rental.service.impl;
 
 import lk.ijse.rental.dto.RentRecordsDTO;
+import lk.ijse.rental.entity.Rent_Records;
 import lk.ijse.rental.repo.RentRecordsRepo;
 import lk.ijse.rental.service.RentRecordsService;
 import org.modelmapper.ModelMapper;
@@ -21,6 +22,7 @@ public class RentRecordsServiceImpl implements RentRecordsService {
 
     @Override
     public void saveRent(RentRecordsDTO dto) {
-
+        Rent_Records record = mapper.map(dto, Rent_Records.class);
+        repo.save(record);
     }
 }
