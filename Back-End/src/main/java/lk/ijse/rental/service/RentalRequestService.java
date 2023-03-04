@@ -12,4 +12,6 @@ public interface RentalRequestService {
     public RentalRequestDTO searchRentalDetails(int requestId);
 
     public void updateDetails(RentalRequestDTO dto);
+
+    public void deleteRequest(int requestId);
 }

@@ -37,4 +37,10 @@ public class RentalRequestController {
         service.updateDetails(dto);
         return new ResponseUtil("200", "Details updated.", null);
     }
+
+    @DeleteMapping
+    public ResponseUtil deleteRequestDetails(int requestId) {
+        service.deleteRequest(requestId);
+        return new ResponseUtil("200","Rent Deleted.",null);
+    }
 }

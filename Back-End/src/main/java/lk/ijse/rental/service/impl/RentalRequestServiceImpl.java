@@ -49,4 +49,9 @@ public class RentalRequestServiceImpl implements RentalRequestService {
         Rental_Request request = mapper.map(dto, Rental_Request.class);
         repo.save(request);
     }
+
+    @Override
+    public void deleteRequest(int requestId) {
+        repo.deleteById(String.valueOf(requestId));
+    }
 }

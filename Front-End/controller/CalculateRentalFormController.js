@@ -273,6 +273,7 @@ $('#btnSaveRent').click(function () {
     });
 });
 
+
 function deleteRentalRequest() {
     //delete request
     $.ajax({
@@ -282,7 +283,7 @@ function deleteRentalRequest() {
         dataType: "json",
         success: function (resp) {
             console.log(resp);
-            console.log("Request deleted from requests table.")
+            console.log("Request deleted from requests list.")
         },
         error: function (err) {
             alert("Something went wrong.");
