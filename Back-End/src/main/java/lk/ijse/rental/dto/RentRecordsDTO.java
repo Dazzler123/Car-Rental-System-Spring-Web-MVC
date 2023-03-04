@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.math.BigDecimal;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -24,6 +26,6 @@ public class RentRecordsDTO {
     private String returnTime;
     private String rentDuration;
     private String extraKmDriven;
-    private String totalCharge;
-    private String damageWaiver;
+    private BigDecimal totalCharge;
+    private BigDecimal damageWaiver;
 }
