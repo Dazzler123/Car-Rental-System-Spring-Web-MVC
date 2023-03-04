@@ -152,3 +152,29 @@ function getDefectiveVehiclesCount() {
         }
     });
 }
+
+function getDailyIncome() {
+    var date = new Date();
+    let today = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
+    let total = 0;
+
+    //get all rentals
+    $.ajax({
+        url: baseURL + "rentalRequest/loadAll" + "",
+        method: "get",
+        dataType: "json",
+        async: false,
+        success: function (resp) {
+            console.log(resp);
+            for (const c of resp.data) {
+                if (c.date === today) {
+
+                }
+            }
+        },
+        error: function (err) {
+            alert(err.responseText.message);
+        }
+    });
+}
