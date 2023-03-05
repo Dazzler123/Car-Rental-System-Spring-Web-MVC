@@ -15,6 +15,7 @@ function dashboardSummary() {
     getRegisteredCustomerCount();
     getVehiclesOnMaintenanceCount();
     getDefectiveVehiclesCount();
+    getDailyIncome();
 
     //search & set available/reserved drivers count
     let driverOccupiedStatus = getDriverOccupiedStatus()
@@ -179,5 +180,5 @@ function getDailyIncome() {
     });
 
     //set total
-    $('#lblDailyIncome').text(total);
+    $('#lblDailyIncome').text(total + "/=");
 }
