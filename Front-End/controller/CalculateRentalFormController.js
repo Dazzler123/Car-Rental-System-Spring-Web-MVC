@@ -174,6 +174,8 @@ $('#btnCalculateRentTotal').click(function () {
     var extraKmValue = extraKmRate * $('#txtExtraKmCount').val();
     //set total
     if (driverID == "SELF") {
+        setGrandTotal(extraKmValue + rentDurationValue);
+        grandTotal = extraKmValue + rentDurationValue;
     } else {
         setGrandTotal(extraKmValue + rentDurationValue + 1000);
         grandTotal = extraKmValue + rentDurationValue + 1000;

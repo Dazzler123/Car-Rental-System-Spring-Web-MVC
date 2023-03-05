@@ -52,6 +52,6 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 
     @Override
     public void deleteRequest(int requestId) {
-        repo.deleteById(String.valueOf(requestId));
+        repo.deleteById(requestId);
     }
 }
