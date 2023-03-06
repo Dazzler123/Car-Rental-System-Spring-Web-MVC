@@ -67,7 +67,7 @@ body {
     left: 37%;
 }
 
-#admin_control_btn_group > a > button {
+#admin_control_btn_group > div > a > button {
     height: 20vh;
     font-family: "Century Gothic";
     font-size: 26px;
