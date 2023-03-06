@@ -66,3 +66,10 @@ body {
     top: 200%;
     left: 37%;
 }
+
+#admin_control_btn_group > a > button {
+    height: 20vh;
+    font-family: "Century Gothic";
+    font-size: 26px;
+    font-weight: bold;
+}
