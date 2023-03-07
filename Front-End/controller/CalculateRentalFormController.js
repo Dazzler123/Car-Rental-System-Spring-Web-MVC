@@ -250,6 +250,12 @@ $('#btnSaveRent').click(function () {
 
             //remove rental from request table
             deleteRentalRequest();
+
+            //set driver as available
+            setDriverAsAvailable(driverID);
+
+            //set vehicle as available
+            setVehicleAsAvailable();
         },
         error: function (err) {
             alert(err.responseText.message);
@@ -271,6 +277,76 @@ function deleteRentalRequest() {
         },
         error: function (err) {
             alert("Something went wrong.");
+        }
+    });
+}
+
+
+function setDriverAsAvailable(id) {
+    let change;
+
+    //get driver
+    $.ajax({
+        url: baseURL + "driver/search?nic=" + id + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            change = resp.data;
+            change.occupied = false;
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    //update (save) driver occupied as true
+    $.ajax({
+        url: baseURL + "driver",
+        method: "put",
+        contentType: "application/json",
+        data: JSON.stringify(change),
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp.message);
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+}
+
+
+function setVehicleAsAvailable() {
+    let change;
+
+    //get vehicle
+    $.ajax({
+        url: baseURL + "vehicle/search?registrationNo=" + vehicleID + "",
+        method: "get",
+        async: false,
+        dataType: "json",
+        success: function (resp) {
+            change = resp.data;
+            change.reserved = false;
+        },
+        error: function (error) {
+            alert(error.message);
+        }
+    });
+
+    //update (save) vehicle reserved as true
+    $.ajax({
+        url: baseURL + "vehicle",
+        method: "put",
+        contentType: "application/json",
+        data: JSON.stringify(change),
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp.message);
+        },
+        error: function (error) {
+            alert(error.message);
         }
     });
 }
