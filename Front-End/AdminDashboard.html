@@ -73,10 +73,9 @@
 
 
 
-
 <div class="container text-center col-11 mt-5 mb-5 ms-5 row">
     <!-----------------control buttons------------------>
-    <div id="admin_control_btn_group" class="row col-8">
+    <div id="admin_control_btn_group" class="row col-8 mb-5">
         <div class="row col-12 row-cols-2 g-4">
             <a class="col" href="RentalRequests.html">
                 <button type="button" class="btn btn-lg btn-outline-primary col-12">
@@ -100,20 +99,35 @@
                     Manage Defective & Vehicles on Maintenance</button>
             </a>
         </div>
+        <div class="row col-6 mb-5">
+        </div>
     </div>
 
-    <!--------------income total--------------->
-    <div class="col-4 text-center mt-5 mb-5 ms-4">
-        <div class="row row-cols-1 border border-success border-3">
-            <div class="col bg-light border border-success">
-                <h5 class="pt-2 fw-light">Daily Income Total (Rs.)</h5>
-                <h1 id="lblDailyIncome" class="display-5 font-monospace"></h1>
+
+    <!--------------calculate total income--------------->
+    <div class="col-4 mb-5 ms-4 text-start">
+        <div class="row row-cols-1">
+            <div class="col-6 mb-3">
+                <label class="form-label fs-6 fst-italic fw-light">Select Date</label>
+                <input id="dteDate" type="date" class="form-control fw-light">
             </div>
-            <div class="col bg-light border border-success">
+            <div class="col bg-light border border-success border-3">
+                <h5 class="pt-2 fw-light">Daily Income Total (Rs.)</h5>
+                <h1 id="lblDailyIncome" class="display-5 font-monospace">50000/=</h1>
+            </div>
+            <div class="col-6 mb-3 mt-3">
+                <label class="form-label fs-6 fst-italic fw-light">Select Month</label>
+                <input id="dteMonth" type="month" class="form-control fw-light">
+            </div>
+            <div class="col bg-light border border-success border-3">
                 <h5 class="pt-2 fw-light">Monthly Income Total (Rs.)</h5>
                 <h1 id="lblMonthlyIncome" class="display-5 font-monospace">900000/=</h1>
             </div>
-            <div class="col bg-light border border-success">
+            <div class="col-6 mb-3 mt-3">
+                <label class="form-label fs-6 fst-italic fw-light">Select Year</label>
+                <input id="dteYear" type="date" class="form-control fw-light">
+            </div>
+            <div class="col bg-light border border-success border-3">
                 <h5 class="pt-2 fw-light">Annual Income Total (Rs.)</h5>
                 <h1 id="lblAnnualIncome" class="display-5 font-monospace">45000000/=</h1>
             </div>
