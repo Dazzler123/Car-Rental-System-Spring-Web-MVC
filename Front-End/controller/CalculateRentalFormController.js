@@ -232,7 +232,7 @@ $('#btnSaveRent').click(function () {
             "customerNic": info.customerNic,
             "registrationNo": info.registrationNo,
             "driverNic": info.driverNic,
-            "date": date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
+            "date": date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
             "time": date.getHours() + ":" + date.getMinutes(),
             "pickUpDate": info.pickUpDate,
             "pickUpTime": info.pickUpTime,
