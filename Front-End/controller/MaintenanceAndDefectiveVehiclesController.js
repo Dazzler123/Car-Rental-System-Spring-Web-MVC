@@ -1,6 +1,8 @@
 // backend url
 let baseURL = "http://localhost:8080/Back_End_war_exploded/";
 
+//vehicle registration no. (id)
+let vehicle;
 
 //load all vehicles on maintenance & defective one's to the table
 loadAllVehiclesOnMaintenance();
@@ -94,6 +96,9 @@ function getRowDataToFields(table) {
             var model = $(this).children(":eq(2)").text();
             var yom = $(this).children(":eq(3)").text();
 
+            //record vehicle id
+            vehicle = regisNum;
+
             // set text
             setTextFieldData(regisNum, make, model, yom, "Maintenance");
         });
@@ -103,6 +108,9 @@ function getRowDataToFields(table) {
             var make = $(this).children(":eq(1)").text();
             var model = $(this).children(":eq(2)").text();
             var yom = $(this).children(":eq(3)").text();
+
+            //record vehicle id
+            vehicle = regisNum;
 
             // set text
             setTextFieldData(regisNum, make, model, yom, "Defective");
@@ -159,3 +167,34 @@ function updateVehicleStatus(status) {
         }
     });
 }
+
+
+$('#btnRemoveFromMaintenance').click(function () {
+    //delete from maintenance table
+    $.ajax({
+        url: baseURL + "maintenance?vehicleId=" + vehicle + "",
+        method: "delete",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+});
+
+$('#btnRemoveFromDefective').click(function () {
+    //delete from defective table
+    $.ajax({
+        url: baseURL + "defective?vehicleId=" + vehicle + "",
+        method: "get",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+});
