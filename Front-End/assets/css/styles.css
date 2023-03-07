@@ -73,3 +73,8 @@ body {
     font-size: 26px;
     font-weight: bold;
 }
+
+.card_carousel  img {
+    height: 40vh;
+    width: 31.2vw;
+}
