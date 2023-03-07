@@ -1,7 +1,6 @@
 package lk.ijse.rental.controller;
 
 import lk.ijse.rental.dto.DefectiveVehiclesDTO;
-import lk.ijse.rental.dto.MaintenanceDTO;
 import lk.ijse.rental.service.DefectiveVehiclesService;
 import lk.ijse.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +26,11 @@ public class DefectiveVehiclesController {
     public ResponseUtil getAllVehicles() {
         ArrayList<DefectiveVehiclesDTO> vehicles = service.loadAllVehicles();
         return new ResponseUtil("200", "All Vehicles loaded.", vehicles);
+    }
+
+    @DeleteMapping
+    public ResponseUtil removeVehicle(String vehicleId) {
+        service.deleteVehicle(vehicleId);
+        return new ResponseUtil("200", "Vehicle removed from list.", null);
     }
 }

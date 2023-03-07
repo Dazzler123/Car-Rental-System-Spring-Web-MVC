@@ -8,4 +8,6 @@ public interface MaintenanceService {
     public void recordVehicle(MaintenanceDTO dto);
 
     public ArrayList<MaintenanceDTO> loadAllVehicles();
+
+    public void deleteVehicle(String vehicleId);
 }

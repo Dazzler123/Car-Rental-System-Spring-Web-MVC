@@ -38,4 +38,9 @@ public class MaintenanceServiceImpl implements MaintenanceService {
         return mapper.map(repo.findAll(), new TypeToken<ArrayList<MaintenanceDTO>>() {
         }.getType());
     }
+
+    @Override
+    public void deleteVehicle(String vehicleId) {
+        repo.deleteById(vehicleId);
+    }
 }

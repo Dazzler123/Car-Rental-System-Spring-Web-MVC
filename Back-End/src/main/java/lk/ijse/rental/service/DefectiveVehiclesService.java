@@ -8,4 +8,6 @@ public interface DefectiveVehiclesService {
     public void saveVehicle(DefectiveVehiclesDTO dto);
 
     public ArrayList<DefectiveVehiclesDTO> loadAllVehicles();
+
+    public void deleteVehicle(String vehicleId);
 }

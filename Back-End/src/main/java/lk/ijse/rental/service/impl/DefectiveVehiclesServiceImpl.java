@@ -38,4 +38,9 @@ public class DefectiveVehiclesServiceImpl implements DefectiveVehiclesService {
         return mapper.map(repo.findAll(), new TypeToken<ArrayList<DefectiveVehiclesDTO>>() {
         }.getType());
     }
+
+    @Override
+    public void deleteVehicle(String vehicleId) {
+        repo.deleteById(vehicleId);
+    }
 }

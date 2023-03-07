@@ -135,17 +135,17 @@ function setTextFieldData(regisNO, make, model, yom, list) {
 
 
 function updateVehicleStatus(status) {
-    let vehicle;
-    //get vehicle
+    let car;
+    //get car
     $.ajax({
-        url: baseURL + "vehicle/search?registrationNo=" + regisNo + "",
+        url: baseURL + "vehicle/search?registrationNo=" + vehicle + "",
         method: "get",
         async: false,
         dataType: "json",
         success: function (resp) {
             console.log(resp);
-            vehicle = resp.data;
-            vehicle.reserved = status;
+            car = resp.data;
+            car.reserved = status;
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
@@ -157,7 +157,7 @@ function updateVehicleStatus(status) {
         url: baseURL + "vehicle",
         method: "put",
         contentType: "application/json",
-        data: JSON.stringify(vehicle),
+        data: JSON.stringify(car),
         dataType: "json",
         success: function (res) {
             console.log(res.message);
@@ -177,6 +177,10 @@ $('#btnRemoveFromMaintenance').click(function () {
         dataType: "json",
         success: function (resp) {
             console.log(resp);
+            alert("Vehicle removed from Maintenance.");
+
+            //update vehicle as available back again
+            updateVehicleStatus(false);
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
@@ -184,14 +188,19 @@ $('#btnRemoveFromMaintenance').click(function () {
     });
 });
 
+
 $('#btnRemoveFromDefective').click(function () {
     //delete from defective table
     $.ajax({
         url: baseURL + "defective?vehicleId=" + vehicle + "",
-        method: "get",
+        method: "delete",
         dataType: "json",
         success: function (resp) {
             console.log(resp);
+            alert("Vehicle removed from Defective list.");
+
+            //update vehicle as available back again
+            updateVehicleStatus(false);
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);

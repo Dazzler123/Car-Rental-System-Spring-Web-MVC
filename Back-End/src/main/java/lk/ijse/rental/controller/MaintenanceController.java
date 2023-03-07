@@ -28,4 +28,10 @@ public class MaintenanceController {
         return new ResponseUtil("200", "All Vehicles loaded.", vehicles);
     }
 
+    @DeleteMapping
+    public ResponseUtil removeVehicle(String vehicleId) {
+        service.deleteVehicle(vehicleId);
+        return new ResponseUtil("200","Vehicle removed from list.",null);
+    }
+
 }
