@@ -2,9 +2,149 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta content="Dasindu Hewagamage" name="author">
+    <meta content="Dasindu Hewagamage" name="owner">
+    <meta content="width=device-width initial-scale=1 maximum-scale=1 minimum-scale=1 user-scalable=no" name="viewport">
+
+    <title>Easy Car Rental Pvt. Ltd.</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/images/75702.png" rel="icon">
 </head>
-<body>
+<body class="container-fluid m-0 p-0 mx-auto row">
+
+<!----------navbar---------->
+<nav class="navbar navbar-dark bg-dark sticky-top border-4">
+  <div class="container-fluid">
+    <a class="navbar-brand fst-italic ms-3 col-9 mb-1 mt-1" href="AdminDashboard.html">Easy Car Rental Pvt. Ltd.</a>
+  </div>
+</nav>
+
+
+<!------------maintenance vehicles table-------------->
+<div class="col-11 m-0 p-0 mx-auto mt-5">
+  <table class="table table-bordered table-hover caption-top">
+    <caption class="ms-3 mb-1">Click the entry to expand details separately</caption>
+
+    <thead class="table-primary text-center">
+    <tr>
+      <th scope="col">Regis. No.</th>
+      <th scope="col">Make</th>
+      <th scope="col">Model</th>
+      <th scope="col">YOM</th>
+      <th scope="col">Type</th>
+      <th scope="col">Color</th>
+      <th scope="col">Fuel Type</th>
+      <th scope="col">Passengers</th>
+      <th scope="col">Transmission</th>
+      <th scope="col">Mileage</th>
+    </tr>
+    </thead>
+    <tbody id="tblMaintenanceVehicles" class="table-group-divider">
+    </tbody>
+  </table>
+</div>
+
+<!--------vehicle details (maintenance)------------->
+<div class="col-6 row m-0 ms-5 mb-5">
+    <div class="row m-0 mx-auto input-group input-group-sm mb-3 row-cols-1 g-1">
+        <div class="input-group input-group-sm">
+            <span class="input-group-text col-3" id="inputGroup-sizing-sm10">Registration No.</span>
+            <input id="lblRegistrationNo" type="text" class="form-control col-9 fw-bold bg-white"
+                   aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-sm10" disabled>
+        </div>
+        <div class="input-group input-group-sm">
+            <span class="input-group-text col-3" id="inputGroup-sizing-sm11">Make</span>
+            <input id="lblMake" type="text" class="form-control col-9 fw-bold bg-white"
+                   aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-sm11" disabled>
+        </div>
+        <div class="input-group input-group-sm">
+            <span class="input-group-text col-3" id="inputGroup-sizing-sm12">Model</span>
+            <input id="lblModel" type="text" class="form-control col-9 fw-bold bg-white"
+                   aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-sm12" disabled>
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text col-3" id="inputGroup-sizing-sm13">YOM</span>
+            <input id="lblYOM" type="text" class="form-control col-9 fw-bold bg-white"
+                   aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-sm13" disabled>
+        </div>
+    </div>
+</div>
+
+<!-------remove from list button (maintenance)------>
+<div class="col-4 ms-5 mt-5">
+    <button type="button" class="btn btn-lg btn-warning col-12">
+        Remove From List
+    </button>
+</div>
+
+
+
+<!------------defective vehicles table-------------->
+<div class="col-11 m-0 p-0 mx-auto">
+    <table class="table table-bordered table-hover caption-top">
+        <caption class="ms-3 mb-1">Click the entry to expand details separately</caption>
+
+        <thead class="table-primary text-center">
+        <tr>
+            <th scope="col">Regis. No.</th>
+            <th scope="col">Make</th>
+            <th scope="col">Model</th>
+            <th scope="col">YOM</th>
+            <th scope="col">Type</th>
+            <th scope="col">Color</th>
+            <th scope="col">Fuel Type</th>
+            <th scope="col">Passengers</th>
+            <th scope="col">Transmission</th>
+            <th scope="col">Mileage</th>
+        </tr>
+        </thead>
+        <tbody id="tblDefectiveVehicles" class="table-group-divider">
+        </tbody>
+    </table>
+</div>
+
+<!--------vehicle details (defective)------------->
+<div class="col-6 row m-0 ms-5">
+    <div class="row m-0 mx-auto input-group input-group-sm mb-3 row-cols-1 g-1">
+        <div class="input-group input-group-sm">
+            <span class="input-group-text col-3" id="inputGroup-sizing-sm14">Registration No.</span>
+            <input id="lblDefectiveRegistrationNo" type="text" class="form-control col-9 fw-bold bg-white"
+                   aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-sm14" disabled>
+        </div>
+        <div class="input-group input-group-sm">
+            <span class="input-group-text col-3" id="inputGroup-sizing-sm15">Make</span>
+            <input id="lblDefectiveMake" type="text" class="form-control col-9 fw-bold bg-white"
+                   aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-sm15" disabled>
+        </div>
+        <div class="input-group input-group-sm">
+            <span class="input-group-text col-3" id="inputGroup-sizing-sm16">Model</span>
+            <input id="lblDefectiveModel" type="text" class="form-control col-9 fw-bold bg-white"
+                   aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-sm16" disabled>
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text col-3" id="inputGroup-sizing-sm17">YOM</span>
+            <input id="lblDefectiveYOM" type="text" class="form-control col-9 fw-bold bg-white"
+                   aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-sm17" disabled>
+        </div>
+    </div>
+</div>
+
+<!-------remove from list button (defective)------>
+<div class="col-4 ms-5 mt-5">
+    <button type="button" class="btn btn-lg btn-warning col-12">
+        Remove From List
+    </button>
+</div>
 
 </body>
 </html>
