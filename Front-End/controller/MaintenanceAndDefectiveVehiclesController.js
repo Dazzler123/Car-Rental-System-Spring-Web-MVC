@@ -181,6 +181,10 @@ $('#btnRemoveFromMaintenance').click(function () {
 
             //update vehicle as available back again
             updateVehicleStatus(false);
+
+            //refresh content
+            // refreshAll();
+            location.reload();
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
@@ -201,9 +205,23 @@ $('#btnRemoveFromDefective').click(function () {
 
             //update vehicle as available back again
             updateVehicleStatus(false);
+
+            //refresh content
+            // refreshAll();
+            location.reload();
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
         }
     });
 });
+
+
+// function refreshAll() {
+//     //refresh table
+//     $('#tblMaintenanceVehicles').reload();
+//
+//     //clear labels
+//     setTextFieldData(null,null,null,null,"Maintenance");
+//     setTextFieldData(null,null,null,null,"Defective");
+// }
