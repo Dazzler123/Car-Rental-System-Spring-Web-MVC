@@ -15,7 +15,8 @@ function dashboardSummary() {
     getRegisteredCustomerCount();
     getVehiclesOnMaintenanceCount();
     getDefectiveVehiclesCount();
-    getDailyIncome();
+    // getDailyIncome();
+    calculateIncome()
 
     //search & set available/reserved drivers count
     let driverOccupiedStatus = getDriverOccupiedStatus()
@@ -181,4 +182,47 @@ function getDailyIncome() {
 
     //set total
     $('#lblDailyIncome').text(total + "/=");
+}
+
+
+function calculateIncome() {
+    var date = new Date();
+    let today = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDay();
+
+    let dailyIncomeTotal = 0;
+    let monthlyIncomeTotal = 0;
+    let annualIncomeTotal = 0;
+
+    //get all rentals
+    $.ajax({
+        url: baseURL + "rentRecords/loadAll" + "",
+        method: "get",
+        dataType: "json",
+        async: false,
+        success: function (resp) {
+            console.log(resp);
+            for (const c of resp.data) {
+                if (c.date === today) {
+                    dailyIncomeTotal = dailyIncomeTotal + c.totalCharge;
+                } else if (c.date.substring(5, 6) == (date.getMonth() + 1)) {
+                    monthlyIncomeTotal = monthlyIncomeTotal + c.totalCharge;
+                } else {
+                    dailyIncomeTotal = 0;
+                    monthlyIncomeTotal = 0;
+                    annualIncomeTotal = 5555;
+                }
+                if (c.date.substring(0, 4) == date.getFullYear()) {
+                    annualIncomeTotal = annualIncomeTotal + c.totalCharge;
+                }
+            }
+        },
+        error: function (err) {
+            alert(err.responseText.message);
+        }
+    });
+
+    //set income total values
+    $('#lblDailyIncome').text(dailyIncomeTotal + "/=");
+    $('#lblMonthlyIncome').text(monthlyIncomeTotal + "/=");
+    $('#lblAnnualIncome').text(annualIncomeTotal + "/=");
 }

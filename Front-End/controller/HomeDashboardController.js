@@ -28,20 +28,18 @@ $('#btnSaveCustomer').click(function () {
             "password": $('#pwdCustomerPassword').val()
         },
         dataType: "json",
-        success: function (res) {
-            alert(res.message);
+        success: function (resp) {
+            alert(resp.message);
         },
         error: function (error) {
             alert(JSON.parse(error.responseText).message);
         }
     });
 
-
     //====== save nic/dl image on local storage (web) ========
     const nicDlImageFile = document.getElementById('nicDlImageFile');
 
     //save image
-    // nicDlImageFile.addEventListener('change', () => {
     // Get file from input element
     const imgFile = nicDlImageFile.files[0];
     reader.readAsDataURL(imgFile);
@@ -52,5 +50,4 @@ $('#btnSaveCustomer').click(function () {
         localStorage.setItem($('#txtCustomerNIC').val(), url);
         // reader.abort();
     });
-    // });
 });

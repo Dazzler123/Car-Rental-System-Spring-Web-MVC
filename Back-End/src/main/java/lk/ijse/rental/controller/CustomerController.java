@@ -100,11 +100,9 @@ public class CustomerController {
 //    }
 
     @PostMapping(path = "/register")
-    public String saveCustomer(CustomerDTO dto) {
+    public ResponseUtil saveCustomer(CustomerDTO dto) {
         service.saveCustomer(dto);
-
-        System.out.println(dto.toString());
-        return "Customer Saved Successfully.";
+        return new ResponseUtil("200","Customer Saved successfully.",null);
     }
 
     @GetMapping(path = "/verify")
