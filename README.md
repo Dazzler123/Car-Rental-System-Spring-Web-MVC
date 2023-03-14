@@ -1,4 +1,4 @@
-# ==== Car Rental System - Easy Car Rental Pvt. Ltd. ====
+# == Car Rental System - Easy Car Rental Pvt. Ltd. ==
 
 * A Web Application developed for "Easy Car Rental Pvt. Ltd." to upgrade & expand their business to the trending digital world.
 
