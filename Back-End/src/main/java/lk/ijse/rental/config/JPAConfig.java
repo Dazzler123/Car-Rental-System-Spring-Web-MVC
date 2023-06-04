@@ -24,22 +24,20 @@ public class JPAConfig {
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
         bean.setPackagesToScan("lk.ijse.rental.entity"); //set entity location
 
-        bean.setJpaVendorAdapter(adapter);  //join hibernate here
+        bean.setJpaVendorAdapter(adapter);  //join hibernate
         bean.setDataSource(dataSource);  // a data source
         return bean;
     }
 
     @Bean
     public DataSource dataSource() {
-        //used only for testing purposes (development process)
-        //DBCP Pool can be used if we are in production
         DriverManagerDataSource ds = new DriverManagerDataSource();
 
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver"); //driver classname
         ds.setUrl("jdbc:mysql://localhost:3306/rental?createDatabaseIfNotExist=true");  //jdbc driver location and
         // create database too
-        ds.setUsername("root");  //give username
-        ds.setPassword("1234"); //give password
+        ds.setUsername("root");  // username
+        ds.setPassword("1234"); // password
         return ds;
     }
 
@@ -49,7 +47,7 @@ public class JPAConfig {
         va.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");  //give dialect location and version
         va.setDatabase(Database.MYSQL); //set database type
         va.setGenerateDdl(true); //query is not generated if this is set false
-        va.setShowSql(true); //query is executed but shown if this is set false
+        va.setShowSql(true);
         return va;
     }
 
